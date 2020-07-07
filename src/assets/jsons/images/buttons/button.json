@@ -1,0 +1,125 @@
+{
+	"textures": [
+		{
+			"image": "button.png",
+			"format": "RGBA8888",
+			"size": {
+				"w": 903,
+				"h": 101
+			},
+			"scale": 1,
+			"frames": [
+				{
+					"filename": "btn-coin.png",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 179,
+						"h": 99
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 179,
+						"h": 99
+					},
+					"frame": {
+						"x": 1,
+						"y": 1,
+						"w": 179,
+						"h": 99
+					}
+				},
+				{
+					"filename": "btn-info.png",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 140,
+						"h": 99
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 140,
+						"h": 99
+					},
+					"frame": {
+						"x": 182,
+						"y": 1,
+						"w": 140,
+						"h": 99
+					}
+				},
+				{
+					"filename": "btn-maxbet.png",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 216,
+						"h": 98
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 216,
+						"h": 98
+					},
+					"frame": {
+						"x": 324,
+						"y": 1,
+						"w": 216,
+						"h": 98
+					}
+				},
+				{
+					"filename": "btn-line.png",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 180,
+						"h": 98
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 180,
+						"h": 98
+					},
+					"frame": {
+						"x": 542,
+						"y": 1,
+						"w": 180,
+						"h": 98
+					}
+				},
+				{
+					"filename": "btn-spin.png",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 178,
+						"h": 98
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 178,
+						"h": 98
+					},
+					"frame": {
+						"x": 724,
+						"y": 1,
+						"w": 178,
+						"h": 98
+					}
+				}
+			]
+		}
+	],
+	"meta": {
+		"app": "https://www.codeandweb.com/texturepacker",
+		"version": "3.0",
+		"smartupdate": "$TexturePacker:SmartUpdate:6161f17393d26ce320150040369f9592:ddcdb674237f72fcf51076833540a7ab:c39245c3a59c1712d97d26c862b4cbc5$"
+	}
+}
