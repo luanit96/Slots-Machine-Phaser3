@@ -13,5 +13,10 @@ export const style = {
         fontSize : '15px',
         color : '#fff',
         fontFamily : 'PT Serif'
+    },
+    styleWin : {
+        fontSize : '20px',
+        color : '#25a028',
+        fontFamily : 'PT Serif'
     }
 };
