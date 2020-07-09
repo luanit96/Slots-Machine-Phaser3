@@ -5,7 +5,7 @@ export const style = {
         fontFamily : 'PT Serif'
     },
     styleTextPoint : {
-        fontSize : '40px',
+        fontSize : '30px',
         color : '#fff',
         fontFamily : 'PT Serif'
     },

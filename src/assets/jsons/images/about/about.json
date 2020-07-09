@@ -1,0 +1,83 @@
+{
+	"textures": [
+		{
+			"image": "about.png",
+			"format": "RGBA8888",
+			"size": {
+				"w": 1366,
+				"h": 1444
+			},
+			"scale": 1,
+			"frames": [
+				{
+					"filename": "btn-credits.png",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 82,
+						"h": 82
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 82,
+						"h": 82
+					},
+					"frame": {
+						"x": 1,
+						"y": 1,
+						"w": 82,
+						"h": 82
+					}
+				},
+				{
+					"filename": "palines.png",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 1280,
+						"h": 720
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 1280,
+						"h": 720
+					},
+					"frame": {
+						"x": 85,
+						"y": 1,
+						"w": 1280,
+						"h": 720
+					}
+				},
+				{
+					"filename": "paytable.png",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 1280,
+						"h": 720
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 1280,
+						"h": 720
+					},
+					"frame": {
+						"x": 1,
+						"y": 723,
+						"w": 1280,
+						"h": 720
+					}
+				}
+			]
+		}
+	],
+	"meta": {
+		"app": "https://www.codeandweb.com/texturepacker",
+		"version": "3.0",
+		"smartupdate": "$TexturePacker:SmartUpdate:959c4fd4cb9ead9c68f35c3a20bae079:c77c6be21d9dca1747917b2a9ecc4631:91b37cf3f092ba74a2aa06c26bab13f5$"
+	}
+}
