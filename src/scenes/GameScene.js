@@ -82,7 +82,7 @@ class GameScene extends Phaser.Scene {
         this.add.sprite(config.width / 2, config.height / 2, 'background', 'machine.png');
         this.valueMoney = localStorage.getItem('money') ? localStorage.getItem('money') :
             options.money;
-        this.txtMoney = this.add.text(config.width - 1040, config.height - 695, this.valueMoney + '$', style.styleTextPoint);
+        this.txtMoney = this.add.text(config.width - 1050, config.height - 695, this.valueMoney + '$', style.styleTextPoint);
         this.credits = this.add.sprite(config.width - 235, config.height - 680,
             'about', 'btn-credits.png').setInteractive().setScale(0.7);
         this.credits.on('pointerover', () => {
@@ -138,7 +138,7 @@ class GameScene extends Phaser.Scene {
                         symbol.setVisible(true).setTexture('symbols_blur', 'symbols_' + randomNumber + '.png');
                         this.targets[0].moveTo(symbol, 4);
                     },
-                    onComplete: this.stopTweens
+                    onComplete: this.stopTweens,
                 }, this);
                 //column tweens 2
                 this.columnTween2 = this.tweens.add({
@@ -218,7 +218,7 @@ class GameScene extends Phaser.Scene {
                         audioMusic.reels.stop();
                         //reset check click
                         options.checkClick = false;
-                    }
+                    },
                 }, this);
             }
         });
