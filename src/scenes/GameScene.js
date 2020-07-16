@@ -349,61 +349,76 @@ class GameScene extends Phaser.Scene {
 
     getLine1() {
         if (this.result[1][0] == this.result[1][1] &&
-            this.result[1][1] == this.result[1][2] && this.result[1][2] == this.result[1][3]) {
-            //play audio win
-            audioMusic.win.play();
-            //get money
-            this.lineArray.push(this.add.sprite(config.width / 2, config.height / 2,
-                'line', 'payline_1.png'));
-            this.fourMoney(this.result[1][0]);
-        } else if (this.result[1][0] == this.result[1][1] &&
-            this.result[1][1] == this.result[1][2]) {
+            this.result[1][1] == this.result[1][2] && 
+            this.result[1][2] == this.result[1][3] && 
+            this.result[1][3] == this.result[1][4]) {
             //play audio win
             audioMusic.win.play();
             //get money
             this.lineArray.push(this.add.sprite(config.width / 2, config.height / 2,
                 'line', 'payline_1.png'));
             this.threeMoney(this.result[1][0]);
-        } else if (this.result[1][0] == this.result[1][1]) {
+        } else if (this.result[1][0] == this.result[1][1] &&
+            this.result[1][1] == this.result[1][2] && this.result[1][2]
+            == this.result[1][3]) {
+            //play audio win
+            audioMusic.win.play();
+            //get money
+            this.lineArray.push(this.add.sprite(config.width / 2, config.height / 2,
+                'line', 'payline_1.png'));
+            this.twoMoney(this.result[1][0]);
+        } else if (this.result[1][0] == this.result[1][1] && this.result[1][1]
+            == this.result[1][2]) {
             //play audio win
             audioMusic.win.play();
             //get money 
             this.lineArray.push(this.add.sprite(config.width / 2, config.height / 2,
                 'line', 'payline_1.png'));
-            this.twoMoney(this.result[1][0]);
+            this.oneMoney(this.result[1][0]);
         }
     }
 
     getLine2() {
         if (this.result[0][0] == this.result[0][1] &&
             this.result[0][1] == this.result[0][2] && this.result[0][2]
-            == this.result[0][3]) {
-            //play audio win
-            audioMusic.win.play();
-            // get money
-            this.lineArray.push(this.add.sprite(config.width / 2, config.height / 2,
-                'line', 'payline_2.png'));
-            this.fourMoney(this.result[0][0]);
-        } else if (this.result[0][0] == this.result[0][1] &&
-            this.result[0][1] == this.result[0][2]) {
+            == this.result[0][3] && this.result[0][3] == this.result[0][4]) {
             //play audio win
             audioMusic.win.play();
             // get money
             this.lineArray.push(this.add.sprite(config.width / 2, config.height / 2,
                 'line', 'payline_2.png'));
             this.threeMoney(this.result[0][0]);
-        } else if (this.result[0][0] == this.result[0][1]) {
+        } else if (this.result[0][0] == this.result[0][1] &&
+            this.result[0][1] == this.result[0][2] && this.result[0][2] ==
+            this.result[0][3]) {
             //play audio win
             audioMusic.win.play();
             // get money
             this.lineArray.push(this.add.sprite(config.width / 2, config.height / 2,
                 'line', 'payline_2.png'));
             this.twoMoney(this.result[0][0]);
+        } else if (this.result[0][0] == this.result[0][1] && this.result[0][1]
+            == this.result[0][2]) {
+            //play audio win
+            audioMusic.win.play();
+            // get money
+            this.lineArray.push(this.add.sprite(config.width / 2, config.height / 2,
+                'line', 'payline_2.png'));
+            this.oneMoney(this.result[0][0]);
         }
     }
 
     getLine3() {
         if (this.result[2][0] == this.result[2][1] &&
+            this.result[2][1] == this.result[2][2] && this.result[2][2]
+            == this.result[2][3] && this.result[2][3] == this.result[2][4]) {
+            //play audio win
+            audioMusic.win.play();
+            //get money
+            this.lineArray.push(this.add.sprite(config.width / 2, config.height / 2,
+                'line', 'payline_3.png'));
+            this.threeMoney(this.result[2][0]);
+        } else if (this.result[2][0] == this.result[2][1] &&
             this.result[2][1] == this.result[2][2] && this.result[2][2]
             == this.result[2][3]) {
             //play audio win
@@ -411,33 +426,36 @@ class GameScene extends Phaser.Scene {
             //get money
             this.lineArray.push(this.add.sprite(config.width / 2, config.height / 2,
                 'line', 'payline_3.png'));
-            this.fourMoney(this.result[2][0]);
-        } else if (this.result[2][0] == this.result[2][1] &&
-            this.result[2][1] == this.result[2][2]) {
-            //play audio win
-            audioMusic.win.play();
-            //get money
-            this.lineArray.push(this.add.sprite(config.width / 2, config.height / 2,
-                'line', 'payline_3.png'));
-            this.threeMoney(this.result[2][0]);
-        } else if (this.result[2][0] == this.result[2][1]) {
-            //play audio win
-            audioMusic.win.play();
-            //get money
-            this.lineArray.push(this.add.sprite(config.width / 2, config.height / 2,
-                'line', 'payline_3.png'));
             this.twoMoney(this.result[2][0]);
+        } else if (this.result[2][0] == this.result[2][1] && this.result[2][1]
+            == this.result[2][2]) {
+            //play audio win
+            audioMusic.win.play();
+            //get money
+            this.lineArray.push(this.add.sprite(config.width / 2, config.height / 2,
+                'line', 'payline_3.png'));
+            this.oneMoney(this.result[2][0]);
         }
     }
     getLine4() {
         if (this.result[0][0] == this.result[1][1] &&
-            this.result[1][1] == this.result[2][2] && this.result[2][2] == this.result[1][3]) {
+            this.result[1][1] == this.result[2][2] && this.result[2][2] == 
+            this.result[1][3] && this.result[1][3] == this.result[0][4]) {
             //play audio win
             audioMusic.win.play();
             // get money
             this.lineArray.push(this.add.sprite(config.width / 2, config.height / 2,
                 'line', 'payline_4.png'));
-            this.fourMoney(this.result[0][0]);
+            this.threeMoney(this.result[0][0]);
+        } else if (this.result[0][0] == this.result[1][1] &&
+            this.result[1][1] == this.result[2][2] && this.result[2][2] == 
+            this.result[1][3]) {
+            //play audio win
+            audioMusic.win.play();
+            // get money
+            this.lineArray.push(this.add.sprite(config.width / 2, config.height / 2,
+                'line', 'payline_4.png'));
+            this.twoMoney(this.result[0][0]);
         } else if (this.result[0][0] == this.result[1][1] &&
             this.result[1][1] == this.result[2][2]) {
             //play audio win
@@ -445,18 +463,21 @@ class GameScene extends Phaser.Scene {
             // get money
             this.lineArray.push(this.add.sprite(config.width / 2, config.height / 2,
                 'line', 'payline_4.png'));
-            this.threeMoney(this.result[0][0]);
-        } else if (this.result[0][0] == this.result[1][1]) {
-            //play audio win
-            audioMusic.win.play();
-            // get money
-            this.lineArray.push(this.add.sprite(config.width / 2, config.height / 2,
-                'line', 'payline_4.png'));
-            this.twoMoney(this.result[0][0]);
+            this.oneMoney(this.result[0][0]);
         }
     }
     getLine5() {
         if (this.result[2][0] == this.result[1][1] &&
+            this.result[1][1] == this.result[0][2] &&
+            this.result[0][2] == this.result[1][3] && this.result[1][3]
+            == this.result[2][4]) {
+            //play audio win
+            audioMusic.win.play();
+            // get money
+            this.lineArray.push(this.add.sprite(config.width / 2, config.height / 2,
+                'line', 'payline_5.png'));
+            this.threeMoney(this.result[2][0]);
+        } else if (this.result[2][0] == this.result[1][1] &&
             this.result[1][1] == this.result[0][2] &&
             this.result[0][2] == this.result[1][3]) {
             //play audio win
@@ -464,7 +485,7 @@ class GameScene extends Phaser.Scene {
             // get money
             this.lineArray.push(this.add.sprite(config.width / 2, config.height / 2,
                 'line', 'payline_5.png'));
-            this.fourMoney(this.result[2][0]);
+            this.twoMoney(this.result[2][0]);
         } else if (this.result[2][0] == this.result[1][1] &&
             this.result[1][1] == this.result[0][2]) {
             //play audio win
@@ -472,19 +493,21 @@ class GameScene extends Phaser.Scene {
             // get money
             this.lineArray.push(this.add.sprite(config.width / 2, config.height / 2,
                 'line', 'payline_5.png'));
-            this.threeMoney(this.result[2][0]);
-        } else if (this.result[2][0] == this.result[1][1]) {
-            //play audio win
-            audioMusic.win.play();
-            // get money
-            this.lineArray.push(this.add.sprite(config.width / 2, config.height / 2,
-                'line', 'payline_5.png'));
-            this.twoMoney(this.result[2][0]);
+            this.oneMoney(this.result[2][0]);
         }
     }
 
     getLine6() {
         if (this.result[1][0] == this.result[0][1] &&
+            this.result[0][1] == this.result[0][2] && this.result[0][2] ==
+            this.result[0][3] && this.result[0][3] == this.result[1][4]) {
+            //play audio win
+            audioMusic.win.play();
+            // get money
+            this.lineArray.push(this.add.sprite(config.width / 2, config.height / 2,
+                'line', 'payline_6.png'));
+            this.threeMoney(this.result[1][0]);
+        } else if (this.result[1][0] == this.result[0][1] &&
             this.result[0][1] == this.result[0][2] && this.result[0][2] ==
             this.result[0][3]) {
             //play audio win
@@ -492,7 +515,7 @@ class GameScene extends Phaser.Scene {
             // get money
             this.lineArray.push(this.add.sprite(config.width / 2, config.height / 2,
                 'line', 'payline_6.png'));
-            this.fourMoney(this.result[1][0]);
+            this.twoMoney(this.result[1][0]);
         } else if (this.result[1][0] == this.result[0][1] &&
             this.result[0][1] == this.result[0][2]) {
             //play audio win
@@ -500,19 +523,21 @@ class GameScene extends Phaser.Scene {
             // get money
             this.lineArray.push(this.add.sprite(config.width / 2, config.height / 2,
                 'line', 'payline_6.png'));
-            this.threeMoney(this.result[1][0]);
-        } else if (this.result[1][0] == this.result[0][1]) {
-            //play audio win
-            audioMusic.win.play();
-            // get money
-            this.lineArray.push(this.add.sprite(config.width / 2, config.height / 2,
-                'line', 'payline_6.png'));
-            this.twoMoney(this.result[1][0]);
+            this.oneMoney(this.result[1][0]);
         }
     }
 
     getLine7() {
         if (this.result[1][0] == this.result[2][1] &&
+            this.result[2][1] == this.result[2][2] && this.result[2][2]
+            == this.result[2][3] && this.result[2][3] == this.result[1][4]) {
+            //play audio win
+            audioMusic.win.play();
+            // get money
+            this.lineArray.push(this.add.sprite(config.width / 2, config.height / 2,
+                'line', 'payline_7.png'));
+            this.threeMoney(this.result[1][0]);
+        } else if (this.result[1][0] == this.result[2][1] &&
             this.result[2][1] == this.result[2][2] && this.result[2][2]
             == this.result[2][3]) {
             //play audio win
@@ -520,7 +545,7 @@ class GameScene extends Phaser.Scene {
             // get money
             this.lineArray.push(this.add.sprite(config.width / 2, config.height / 2,
                 'line', 'payline_7.png'));
-            this.fourMoney(this.result[1][0]);
+            this.twoMoney(this.result[1][0]);
         } else if (this.result[1][0] == this.result[2][1] &&
             this.result[2][1] == this.result[2][2]) {
             //play audio win
@@ -528,129 +553,206 @@ class GameScene extends Phaser.Scene {
             // get money
             this.lineArray.push(this.add.sprite(config.width / 2, config.height / 2,
                 'line', 'payline_7.png'));
-            this.threeMoney(this.result[1][0]);
-        } else if (this.result[1][0] == this.result[2][1]) {
-            //play audio win
-            audioMusic.win.play();
-            // get money
-            this.lineArray.push(this.add.sprite(config.width / 2, config.height / 2,
-                'line', 'payline_7.png'));
-            this.twoMoney(this.result[1][0]);
+            this.oneMoney(this.result[1][0]);
         }
     }
 
     getLine8() {
         if (this.result[0][0] == this.result[0][1] &&
-            this.result[0][1] == this.result[1][2] && this.result[1][2] == this.result[2][3]) {
-            //play audio win
-            audioMusic.win.play();
-            // get money
-            this.lineArray.push(this.add.sprite(config.width / 2, config.height / 2,
-                'line', 'payline_8.png'));
-            this.fourMoney(this.result[0][0]);
-        } else if (this.result[0][0] == this.result[0][1] &&
-            this.result[0][1] == this.result[1][2]) {
+            this.result[0][1] == this.result[1][2] && this.result[1][2] == 
+            this.result[2][3] && this.result[2][3] == this.result[2][4]) {
             //play audio win
             audioMusic.win.play();
             // get money
             this.lineArray.push(this.add.sprite(config.width / 2, config.height / 2,
                 'line', 'payline_8.png'));
             this.threeMoney(this.result[0][0]);
+        } else if (this.result[0][0] == this.result[0][1] &&
+            this.result[0][1] == this.result[1][2] && this.result[1][2] == 
+            this.result[2][3]) {
+            //play audio win
+            audioMusic.win.play();
+            // get money
+            this.lineArray.push(this.add.sprite(config.width / 2, config.height / 2,
+                'line', 'payline_8.png'));
+            this.twoMoney(this.result[0][0]);
+        } else if(this.result[0][0] == this.result[0][1] &&
+            this.result[0][1] == this.result[1][2]) {
+            //play audio win
+            audioMusic.win.play();
+            // get money
+            this.lineArray.push(this.add.sprite(config.width / 2, config.height / 2,
+                'line', 'payline_8.png'));
+            this.oneMoney(this.result[0][0]);
         }
     }
 
     getLine9() {
         if (this.result[2][0] == this.result[2][1] &&
-            this.result[2][1] == this.result[1][2] && this.result[1][2] == this.result[0][3]) {
-            //play audio win
-            audioMusic.win.play();
-            // get money
-            this.lineArray.push(this.add.sprite(config.width / 2, config.height / 2,
-                'line', 'payline_9.png'));
-            this.fourMoney(this.result[2][0]);
-        } else if (this.result[2][0] == this.result[2][1] &&
-            this.result[2][1] == this.result[1][2]) {
+            this.result[2][1] == this.result[1][2] && this.result[1][2] == 
+            this.result[0][3] && this.result[0][3] == this.result[0][4]) {
             //play audio win
             audioMusic.win.play();
             // get money
             this.lineArray.push(this.add.sprite(config.width / 2, config.height / 2,
                 'line', 'payline_9.png'));
             this.threeMoney(this.result[2][0]);
+        } else if (this.result[2][0] == this.result[2][1] &&
+            this.result[2][1] == this.result[1][2] && this.result[1][2] == 
+            this.result[0][3]) {
+            //play audio win
+            audioMusic.win.play();
+            // get money
+            this.lineArray.push(this.add.sprite(config.width / 2, config.height / 2,
+                'line', 'payline_9.png'));
+            this.twoMoney(this.result[2][0]);
+        } else if(this.result[2][0] == this.result[2][1] &&
+            this.result[2][1] == this.result[1][2]) {
+            //play audio win
+            audioMusic.win.play();
+            // get money
+            this.lineArray.push(this.add.sprite(config.width / 2, config.height / 2,
+                'line', 'payline_9.png'));
+            this.oneMoney(this.result[2][0]);
         }
     }
 
     getLine10() {
         if (this.result[1][0] == this.result[2][1] &&
-            this.result[2][1] == this.result[1][2] && this.result[1][2] == this.result[0][3]) {
-            //play audio win
-            audioMusic.win.play();
-            // get money
-            this.lineArray.push(this.add.sprite(config.width / 2, config.height / 2,
-                'line', 'payline_10.png'));
-            this.fourMoney(this.result[1][0]);
-        } else if (this.result[1][0] == this.result[2][1] &&
-            this.result[2][1] == this.result[1][2]) {
+            this.result[2][1] == this.result[1][2] && this.result[1][2] == 
+            this.result[0][3] && this.result[0][3] == this.result[1][4]) {
             //play audio win
             audioMusic.win.play();
             // get money
             this.lineArray.push(this.add.sprite(config.width / 2, config.height / 2,
                 'line', 'payline_10.png'));
             this.threeMoney(this.result[1][0]);
+        } else if (this.result[1][0] == this.result[2][1] &&
+            this.result[2][1] == this.result[1][2] && this.result[1][2] == 
+            this.result[0][3]) {
+            //play audio win
+            audioMusic.win.play();
+            // get money
+            this.lineArray.push(this.add.sprite(config.width / 2, config.height / 2,
+                'line', 'payline_10.png'));
+            this.twoMoney(this.result[1][0]);
+        } else if(this.result[1][0] == this.result[2][1] &&
+            this.result[2][1] == this.result[1][2]) {
+            //play audio win
+            audioMusic.win.play();
+            // get money
+            this.lineArray.push(this.add.sprite(config.width / 2, config.height / 2,
+                'line', 'payline_10.png'));
+            this.oneMoney(this.result[1][0]);
         }
     }
 
     //get money
 
-    twoMoney(value) {
+    oneMoney(value) {
         switch (value) {
             case 'symbols_0.png':
-                options.win += (options.payvalues[0][1] *
-                    (options.line * options.coin));
+                options.win += (options.payvalues[0][0] / options.line) * 
+                (options.line * options.coin);
                 this.setTextureWin(options.win);
                 break;
             case 'symbols_1.png':
-                options.win += (options.payvalues[1][1] *
-                    (options.line * options.coin));
+                options.win += (options.payvalues[1][0] / options.line) * 
+                (options.line * options.coin);
                 this.setTextureWin(options.win);
                 break;
             case 'symbols_2.png':
-                options.win += (options.payvalues[2][1] *
-                    (options.line * options.coin));
+                options.win += (options.payvalues[2][0] / options.line)* 
+                (options.line * options.coin);
                 this.setTextureWin(options.win);
                 break;
             case 'symbols_3.png':
-                options.win += (options.payvalues[3][1] *
-                    (options.line * options.coin));
+                options.win += (options.payvalues[3][0] / options.line) * 
+                (options.line * options.coin);
                 this.setTextureWin(options.win);
                 break;
             case 'symbols_4.png':
-                options.win += (options.payvalues[4][1] *
-                    (options.line * options.coin));
+                options.win += (options.payvalues[4][0] / options.line) * 
+                (options.line * options.coin);
                 this.setTextureWin(options.win);
                 break;
             case 'symbols_5.png':
-                options.win += (options.payvalues[5][1] *
-                    (options.line * options.coin));
+                options.win += (options.payvalues[5][0] / options.line) * 
+                (options.line * options.coin);
                 this.setTextureWin(options.win);
                 break;
             case 'symbols_6.png':
-                options.win += (options.payvalues[6][1] *
-                    (options.line * options.coin));
+                options.win += (options.payvalues[6][0] / options.line) * 
+                (options.line * options.coin);
                 this.setTextureWin(options.win);
                 break;
             case 'symbols_7.png':
-                options.win += (options.payvalues[7][1] *
-                    (options.line * options.coin));
+                options.win += (options.payvalues[7][0] / options.line) *
+                    (options.line * options.coin);
                 this.setTextureWin(options.win);
                 break;
             case 'symbols_8.png':
-                options.win += (options.payvalues[8][1] *
-                    (options.line * options.coin));
+                options.win += (options.payvalues[8][0] / options.line) *
+                    (options.line * options.coin);
                 this.setTextureWin(options.win);
                 break;
             default:
-                options.win += (options.payvalues[9][1] *
-                    (options.line * options.coin));
+                options.win += (options.payvalues[9][0] / options.line) *
+                    (options.line * options.coin);
+                this.setTextureWin(options.win);
+        }
+    }
+
+    twoMoney(value) {
+        switch (value) {
+            case 'symbols_0.png':
+                options.win += (options.payvalues[0][1] / options.line) * 
+                    (options.line * options.coin);
+                this.setTextureWin(options.win);
+                break;
+            case 'symbols_1.png':
+                options.win += (options.payvalues[1][1] / options.line) *
+                    (options.line * options.coin);
+                this.setTextureWin(options.win);
+                break;
+            case 'symbols_2.png':
+                options.win += (options.payvalues[2][1] / options.line) *
+                    (options.line * options.coin);
+                this.setTextureWin(options.win);
+                break;
+            case 'symbols_3.png':
+                options.win += (options.payvalues[3][1] / options.line) *
+                    (options.line * options.coin);
+                this.setTextureWin(options.win);
+                break;
+            case 'symbols_4.png':
+                options.win += (options.payvalues[4][1] / options.line) *
+                    (options.line * options.coin);
+                this.setTextureWin(options.win);
+                break;
+            case 'symbols_5.png':
+                options.win += (options.payvalues[5][1] / options.line) *
+                    (options.line * options.coin);
+                this.setTextureWin(options.win);
+                break;
+            case 'symbols_6.png':
+                options.win += (options.payvalues[6][1] / options.line) *
+                    (options.line * options.coin);
+                this.setTextureWin(options.win);
+                break;
+            case 'symbols_7.png':
+                options.win += (options.payvalues[7][1] / options.line) *
+                    (options.line * options.coin);
+                this.setTextureWin(options.win);
+                break;
+            case 'symbols_8.png':
+                options.win += (options.payvalues[8][1] / options.line) *
+                    (options.line * options.coin);
+                this.setTextureWin(options.win);
+                break;
+            default:
+                options.win += (options.payvalues[9][1] / options.line) *
+                    (options.line * options.coin);
                 this.setTextureWin(options.win);
         }
     }
@@ -658,107 +760,53 @@ class GameScene extends Phaser.Scene {
     threeMoney(value) {
         switch (value) {
             case 'symbols_0.png':
-                options.win += (options.payvalues[0][2] *
-                    (options.line * options.coin));
+                options.win += (options.payvalues[0][2] / options.line) *
+                    (options.line * options.coin);
                 this.setTextureWin(options.win);
                 break;
             case 'symbols_1.png':
-                options.win += (options.payvalues[1][2] *
-                    (options.line * options.coin));
+                options.win += (options.payvalues[1][2] / options.line) *
+                    (options.line * options.coin);
                 this.setTextureWin(options.win);
                 break;
             case 'symbols_2.png':
-                options.win += (options.payvalues[2][2] *
-                    (options.line * options.coin));
+                options.win += (options.payvalues[2][2] / options.line) *
+                    (options.line * options.coin);
                 this.setTextureWin(options.win);
                 break;
             case 'symbols_3.png':
-                options.win += (options.payvalues[3][2] *
-                    (options.line * options.coin));
+                options.win += (options.payvalues[3][2] / options.line) *
+                    (options.line * options.coin);
                 this.setTextureWin(options.win);
                 break;
             case 'symbols_4.png':
-                options.win += (options.payvalues[4][2] *
-                    (options.line * options.coin));
+                options.win += (options.payvalues[4][2] / options.line) *
+                    (options.line * options.coin);
                 this.setTextureWin(options.win);
                 break;
             case 'symbols_5.png':
-                options.win += (options.payvalues[5][2] *
-                    (options.line * options.coin));
+                options.win += (options.payvalues[5][2] / options.line) *
+                    (options.line * options.coin);
                 this.setTextureWin(options.win);
                 break;
             case 'symbols_6.png':
-                options.win += (options.payvalues[6][2] *
-                    (options.line * options.coin));
+                options.win += (options.payvalues[6][2] / options.line) *
+                    (options.line * options.coin);
                 this.setTextureWin(options.win);
                 break;
             case 'symbols_7.png':
-                options.win += (options.payvalues[7][2] *
-                    (options.line * options.coin));
+                options.win += (options.payvalues[7][2] / options.line) *
+                    (options.line * options.coin);
                 this.setTextureWin(options.win);
                 break;
             case 'symbols_8.png':
-                options.win += (options.payvalues[8][2] *
-                    (options.line * options.coin));
+                options.win += (options.payvalues[8][2] / options.line) *
+                    (options.line * options.coin);
                 this.setTextureWin(options.win);
                 break;
             default:
-                options.win += (options.payvalues[9][2] *
-                    (options.line * options.coin));
-                this.setTextureWin(options.win);
-        }
-    }
-
-    fourMoney(value) {
-        switch (value) {
-            case 'symbols_0.png':
-                options.win += (options.payvalues[0][3] *
-                    (options.line * options.coin));
-                this.setTextureWin(options.win);
-                break;
-            case 'symbols_1.png':
-                options.win += (options.payvalues[1][3] *
-                    (options.line * options.coin));
-                this.setTextureWin(options.win);
-                break;
-            case 'symbols_2.png':
-                options.win += (options.payvalues[2][3] *
-                    (options.line * options.coin));
-                this.setTextureWin(options.win);
-                break;
-            case 'symbols_3.png':
-                options.win += (options.payvalues[3][3] *
-                    (options.line * options.coin));
-                this.setTextureWin(options.win);
-                break;
-            case 'symbols_4.png':
-                options.win += (options.payvalues[4][3] *
-                    (options.line * options.coin));
-                this.setTextureWin(options.win);
-                break;
-            case 'symbols_5.png':
-                options.win += (options.payvalues[5][3] *
-                    (options.line * options.coin));
-                this.setTextureWin(options.win);
-                break;
-            case 'symbols_6.png':
-                options.win += (options.payvalues[6][3] *
-                    (options.line * options.coin));
-                this.setTextureWin(options.win);
-                break;
-            case 'symbols_7.png':
-                options.win += (options.payvalues[7][3] *
-                    (options.line * options.coin));
-                this.setTextureWin(options.win);
-                break;
-            case 'symbols_8.png':
-                options.win += (options.payvalues[8][3] *
-                    (options.line * options.coin));
-                this.setTextureWin(options.win);
-                break;
-            default:
-                options.win += (options.payvalues[9][3] *
-                    (options.line * options.coin));
+                options.win += (options.payvalues[9][2] / options.line) *
+                    (options.line * options.coin);
                 this.setTextureWin(options.win);
         }
     }
