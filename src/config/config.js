@@ -11,5 +11,9 @@ export const config = {
             debug : false
         }
     },
-    scene: GameScene
+    fps : {
+        min: 30,
+        target: 60
+    },
+    scene : GameScene
 };

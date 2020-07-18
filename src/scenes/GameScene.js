@@ -652,167 +652,114 @@ class GameScene extends Phaser.Scene {
     oneMoney(value) {
         switch (value) {
             case 'symbols_0.png':
-                options.win += (options.payvalues[0][0] / options.line) * 
-                (options.line * options.coin);
-                this.setTextureWin(options.win);
+                this.getMoney(options.payvalues[0][0]);
                 break;
             case 'symbols_1.png':
-                options.win += (options.payvalues[1][0] / options.line) * 
-                (options.line * options.coin);
-                this.setTextureWin(options.win);
+                this.getMoney(options.payvalues[1][0]);
                 break;
             case 'symbols_2.png':
-                options.win += (options.payvalues[2][0] / options.line)* 
-                (options.line * options.coin);
-                this.setTextureWin(options.win);
+                this.getMoney(options.payvalues[2][0]);
                 break;
             case 'symbols_3.png':
-                options.win += (options.payvalues[3][0] / options.line) * 
-                (options.line * options.coin);
-                this.setTextureWin(options.win);
+                this.getMoney(options.payvalues[3][0]);
                 break;
             case 'symbols_4.png':
-                options.win += (options.payvalues[4][0] / options.line) * 
-                (options.line * options.coin);
-                this.setTextureWin(options.win);
+                this.getMoney(options.payvalues[4][0]);
                 break;
             case 'symbols_5.png':
-                options.win += (options.payvalues[5][0] / options.line) * 
-                (options.line * options.coin);
-                this.setTextureWin(options.win);
+                this.getMoney(options.payvalues[5][0]);
                 break;
             case 'symbols_6.png':
-                options.win += (options.payvalues[6][0] / options.line) * 
-                (options.line * options.coin);
-                this.setTextureWin(options.win);
+                this.getMoney(options.payvalues[6][0]);
                 break;
             case 'symbols_7.png':
-                options.win += (options.payvalues[7][0] / options.line) *
-                    (options.line * options.coin);
-                this.setTextureWin(options.win);
+                this.getMoney(options.payvalues[7][0]);
                 break;
             case 'symbols_8.png':
-                options.win += (options.payvalues[8][0] / options.line) *
-                    (options.line * options.coin);
-                this.setTextureWin(options.win);
+                this.getMoney(options.payvalues[8][0]);
                 break;
             default:
-                options.win += (options.payvalues[9][0] / options.line) *
-                    (options.line * options.coin);
-                this.setTextureWin(options.win);
+                this.getMoney(options.payvalues[9][0]);
         }
     }
 
     twoMoney(value) {
         switch (value) {
             case 'symbols_0.png':
-                options.win += (options.payvalues[0][1] / options.line) * 
-                    (options.line * options.coin);
-                this.setTextureWin(options.win);
+                this.getMoney(options.payvalues[0][1]);
                 break;
             case 'symbols_1.png':
-                options.win += (options.payvalues[1][1] / options.line) *
-                    (options.line * options.coin);
-                this.setTextureWin(options.win);
+                this.getMoney(options.payvalues[1][1]);
                 break;
             case 'symbols_2.png':
-                options.win += (options.payvalues[2][1] / options.line) *
-                    (options.line * options.coin);
-                this.setTextureWin(options.win);
+                this.getMoney(options.payvalues[2][1]);
                 break;
             case 'symbols_3.png':
-                options.win += (options.payvalues[3][1] / options.line) *
-                    (options.line * options.coin);
-                this.setTextureWin(options.win);
+                this.getMoney(options.payvalues[3][1]);
                 break;
             case 'symbols_4.png':
-                options.win += (options.payvalues[4][1] / options.line) *
-                    (options.line * options.coin);
-                this.setTextureWin(options.win);
+                this.getMoney(options.payvalues[4][0]);
                 break;
             case 'symbols_5.png':
-                options.win += (options.payvalues[5][1] / options.line) *
-                    (options.line * options.coin);
-                this.setTextureWin(options.win);
+                this.getMoney(options.payvalues[5][1]);
                 break;
             case 'symbols_6.png':
-                options.win += (options.payvalues[6][1] / options.line) *
-                    (options.line * options.coin);
-                this.setTextureWin(options.win);
+                this.getMoney(options.payvalues[6][1]);
                 break;
             case 'symbols_7.png':
-                options.win += (options.payvalues[7][1] / options.line) *
-                    (options.line * options.coin);
-                this.setTextureWin(options.win);
+                this.getMoney(options.payvalues[7][1]);
                 break;
             case 'symbols_8.png':
-                options.win += (options.payvalues[8][1] / options.line) *
-                    (options.line * options.coin);
-                this.setTextureWin(options.win);
+                this.getMoney(options.payvalues[8][1]);
                 break;
             default:
-                options.win += (options.payvalues[9][1] / options.line) *
-                    (options.line * options.coin);
-                this.setTextureWin(options.win);
+                this.getMoney(options.payvalues[9][1]);
         }
     }
 
     threeMoney(value) {
         switch (value) {
             case 'symbols_0.png':
-                options.win += (options.payvalues[0][2] / options.line) *
-                    (options.line * options.coin);
-                this.setTextureWin(options.win);
+                this.getMoney(options.payvalues[0][2]);
                 break;
             case 'symbols_1.png':
-                options.win += (options.payvalues[1][2] / options.line) *
-                    (options.line * options.coin);
-                this.setTextureWin(options.win);
+                this.getMoney(options.payvalues[1][2]);
                 break;
             case 'symbols_2.png':
-                options.win += (options.payvalues[2][2] / options.line) *
-                    (options.line * options.coin);
-                this.setTextureWin(options.win);
+                this.getMoney(options.payvalues[2][2]);
                 break;
             case 'symbols_3.png':
-                options.win += (options.payvalues[3][2] / options.line) *
-                    (options.line * options.coin);
-                this.setTextureWin(options.win);
+                this.getMoney(options.payvalues[3][2]);
                 break;
             case 'symbols_4.png':
-                options.win += (options.payvalues[4][2] / options.line) *
-                    (options.line * options.coin);
-                this.setTextureWin(options.win);
+                this.getMoney(options.payvalues[4][2]);
                 break;
             case 'symbols_5.png':
-                options.win += (options.payvalues[5][2] / options.line) *
-                    (options.line * options.coin);
-                this.setTextureWin(options.win);
+                this.getMoney(options.payvalues[5][2]);
                 break;
             case 'symbols_6.png':
-                options.win += (options.payvalues[6][2] / options.line) *
-                    (options.line * options.coin);
-                this.setTextureWin(options.win);
+                this.getMoney(options.payvalues[6][2]);
                 break;
             case 'symbols_7.png':
-                options.win += (options.payvalues[7][2] / options.line) *
-                    (options.line * options.coin);
-                this.setTextureWin(options.win);
+                this.getMoney(options.payvalues[7][2]);
                 break;
             case 'symbols_8.png':
-                options.win += (options.payvalues[8][2] / options.line) *
-                    (options.line * options.coin);
-                this.setTextureWin(options.win);
+                this.getMoney(options.payvalues[8][2]);
                 break;
             default:
-                options.win += (options.payvalues[9][2] / options.line) *
-                    (options.line * options.coin);
-                this.setTextureWin(options.win);
+                this.getMoney(options.payvalues[9][2]);
         }
     }
 
+    getMoney(money) {
+        let maxBet = options.line * options.coin;
+        let payValue = money / options.line;
+        options.win += (payValue * maxBet);
+        this.setTextureWin(options.win);
+    }
+
     setTextureWin(value) {
-        options.moneyWin += value;
+        options.moneyWin = value;
         this.valueMoney += options.moneyWin;
         if (!this.txtWin) {
             this.txtWin = this.add.text(config.width - 340, config.height - 130, 'WIN: ' + options.moneyWin + ' $ ', style.styleWin);

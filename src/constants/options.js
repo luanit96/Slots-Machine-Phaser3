@@ -1,4 +1,5 @@
 //https://stackoverflow.com/questions/33181356/connect-four-game-checking-for-wins-js
+//https://www.youtube.com/watch?v=LFU5ZlrR21E
 export const options = {
 	money : 10000,
 	txtSpin : 'SPIN',
