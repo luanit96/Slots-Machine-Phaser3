@@ -1,0 +1,104 @@
+{
+	"textures": [
+		{
+			"image": "sound.png",
+			"format": "RGBA8888",
+			"size": {
+				"w": 458,
+				"h": 99
+			},
+			"scale": 1,
+			"frames": [
+				{
+					"filename": "btn_music.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 118,
+						"h": 100
+					},
+					"spriteSourceSize": {
+						"x": 2,
+						"y": 0,
+						"w": 114,
+						"h": 97
+					},
+					"frame": {
+						"x": 1,
+						"y": 1,
+						"w": 114,
+						"h": 97
+					}
+				},
+				{
+					"filename": "btn_music_off.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 118,
+						"h": 100
+					},
+					"spriteSourceSize": {
+						"x": 2,
+						"y": 0,
+						"w": 114,
+						"h": 97
+					},
+					"frame": {
+						"x": 117,
+						"y": 1,
+						"w": 114,
+						"h": 97
+					}
+				},
+				{
+					"filename": "btn_sound.png",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 111,
+						"h": 95
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 111,
+						"h": 95
+					},
+					"frame": {
+						"x": 233,
+						"y": 1,
+						"w": 111,
+						"h": 95
+					}
+				},
+				{
+					"filename": "btn_sound_off.png",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 111,
+						"h": 95
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 111,
+						"h": 95
+					},
+					"frame": {
+						"x": 346,
+						"y": 1,
+						"w": 111,
+						"h": 95
+					}
+				}
+			]
+		}
+	],
+	"meta": {
+		"app": "https://www.codeandweb.com/texturepacker",
+		"version": "3.0",
+		"smartupdate": "$TexturePacker:SmartUpdate:9e1aceb84c41df0d24991a74f91e7394:508dcddde1c1ff31b6a3c2124b2946ff:1bcd72987b0319c1a8fdcd4ef32a9c26$"
+	}
+}
