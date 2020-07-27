@@ -1,4 +1,4 @@
-import GameScene from '../scenes/GameScene';
+import GameScene from '../Scene/GameScene';
 
 export const config = {
     type: Phaser.WEBGL,

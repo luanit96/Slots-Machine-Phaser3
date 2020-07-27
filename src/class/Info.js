@@ -1,6 +1,6 @@
-import { options } from '../constants/options';
-import { style } from '../css/style';
-import { config } from '../config/config'; 
+import { options } from '../Constants/options';
+import { style } from '../Css/style';
+import { config } from '../Config/config'; 
 
 export default class Info extends Phaser.GameObjects.Sprite {
     constructor(scene, x, y, texture, frame) {

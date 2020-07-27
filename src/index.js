@@ -1,5 +1,5 @@
 import Phaser from "phaser";
-import { config } from "./config/config";
+import { config } from "./Config/config";
 
 function resize() {
   let canvas = document.querySelector("canvas");

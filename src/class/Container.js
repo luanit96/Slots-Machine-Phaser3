@@ -1,4 +1,4 @@
-import { options } from '../constants/options';
+import { options } from '../Constants/options';
 
 export default class Container extends Phaser.GameObjects.Container {
     constructor(scene, x, y) {
