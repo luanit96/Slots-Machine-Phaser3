@@ -1,5 +1,5 @@
-export const options = {
-	money : 10000,
+export default {
+	money : 100000,
 	txtSpin : 'SPIN',
 	moneyWin : 0,
 	bet : 10,
@@ -27,14 +27,11 @@ export const options = {
 	symbolHeight : 150,
 	duration : 100,
 	repeat : [10, 15, 20, 25, 30],
+	audioReels : null,
+	audioReelStop : null,
+	audioWin : null,
+	audioButton : null,
+	audioMusicName : null,
+	audioSoundName : null,
     checkClick : false
-};
-
-export const audioMusic = {
-	reels : null,
-	reelStop : null,
-	win : null,
-	button : null,
-	musicName : null,
-	soundName : null
 };

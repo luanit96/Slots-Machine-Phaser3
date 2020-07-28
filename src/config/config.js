@@ -1,6 +1,6 @@
 import GameScene from '../Scene/GameScene';
 
-export const config = {
+export default {
     type: Phaser.WEBGL,
     parent: "slot-game-phaser3",
     width: 1280,

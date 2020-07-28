@@ -1,4 +1,4 @@
-export const style = {
+export default {
     styleButton : {
         fontSize : '35px',
         color : '#fff',

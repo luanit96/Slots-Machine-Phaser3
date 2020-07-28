@@ -1,5 +1,5 @@
 import Phaser from "phaser";
-import { config } from "./Config/config";
+import Config from "./Config/config";
 
 function resize() {
   let canvas = document.querySelector("canvas");
@@ -20,7 +20,7 @@ function resize() {
 var game;
 
 window.onload = () => {
-  game = new Phaser.Game(config);
+  game = new Phaser.Game(Config);
   resize();
   window.addEventListener("resize", resize, false);
 }
