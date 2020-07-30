@@ -11,29 +11,13 @@ export default class GameScene extends Phaser.Scene {
         super({ key: 'GameScene' });
     }
 
-    preload() {
-        //load image
-        this.load.path = '../../assets/jsons/';
-        this.load.atlas('about', 'images/about/about.png', 'images/about/about.json');
-        this.load.atlas('background', 'images/bg/bg.png', 'images/bg/bg.json');
-        this.load.atlas('bgButtons', 'images/buttons/button.png', 'images/buttons/button.json');
-        this.load.atlas('symbols', 'images/symbols/symbols.png', 'images/symbols/symbols.json');
-        this.load.atlas('symbols_blur', 'images/symbols/symbols_blur.png', 'images/symbols/symbols_blur.json');
-        this.load.atlas('line', 'images/lines/line.png', 'images/lines/line.json');
-        this.load.atlas('sound','images/sound/sound.png','images/sound/sound.json');
-        //load audio
-        this.load.audio('reels', 'audio/reels.mp3');
-        this.load.audio('reelStop', 'audio/reel_stop.mp3');
-        this.load.audio('win', 'audio/win.mp3');
-        this.load.audio('button', 'audio/button.mp3');
-    }
-
     create() {
         //add audio
         Options.audioReels = this.sound.add('reels');
         Options.audioReelStop = this.sound.add('reelStop');
         Options.audioWin = this.sound.add('win');
         Options.audioButton = this.sound.add('button');
+        Options.audioLose = this.sound.add('lose', { volume: 2.5 });
         //add bg image
         const bg = new Sprite(this,Config.width / 2, Config.height / 2, 'background', 'bg.jpg');
         //container
@@ -102,8 +86,8 @@ export default class GameScene extends Phaser.Scene {
                 for (let i = 0; i < Options.lineArray.length; i++) {
                     Options.lineArray[i].destroy();
                 }
+                Options.lineArray = [];
             }
-            //lineArray.destroy();
             if (!Options.checkClick && this.valueMoney >=
                 (Options.coin * Options.line)) {
                 //setTint

@@ -33,5 +33,6 @@ export default {
 	audioButton : null,
 	audioMusicName : null,
 	audioSoundName : null,
+	audioLose : null,
     checkClick : false
 };

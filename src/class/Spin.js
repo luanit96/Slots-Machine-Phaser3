@@ -165,6 +165,11 @@ export default class Spin extends Phaser.Scene {
             Options.lineArray.push(this.scene.add.sprite(Config.width / 2, Config.height / 2,
                 'line', 'payline_1.png'));
             this.oneMoney(Options.result[1][0]);
+        } else {
+            if (Options.audioMusicName == 'btn_music.png') {
+                //play audio win
+                Options.audioLose.play();
+            }
         }
     }
 
@@ -202,6 +207,11 @@ export default class Spin extends Phaser.Scene {
                 Config.height / 2,
                 'line', 'payline_2.png'));
             this.oneMoney(Options.result[0][0]);
+        } else {
+            if (Options.audioMusicName == 'btn_music.png') {
+                //play audio win
+                Options.audioLose.play();
+            }
         }
     }
 
@@ -238,6 +248,11 @@ export default class Spin extends Phaser.Scene {
             Options.lineArray.push(this.scene.add.sprite(Config.width / 2, Config.height / 2,
                 'line', 'payline_3.png'));
             this.oneMoney(Options.result[2][0]);
+        } else {
+            if (Options.audioMusicName == 'btn_music.png') {
+                //play audio win
+                Options.audioLose.play();
+            }
         }
     }
     getLine4() {
@@ -273,6 +288,11 @@ export default class Spin extends Phaser.Scene {
             Options.lineArray.push(this.scene.add.sprite(Config.width / 2, Config.height / 2,
                 'line', 'payline_4.png'));
             this.oneMoney(Options.result[0][0]);
+        } else {
+            if (Options.audioMusicName == 'btn_music.png') {
+                //play audio win
+                Options.audioLose.play();
+            }
         }
     }
     getLine5() {
@@ -309,6 +329,11 @@ export default class Spin extends Phaser.Scene {
             Options.lineArray.push(this.scene.add.sprite(Config.width / 2, Config.height / 2,
                 'line', 'payline_5.png'));
             this.oneMoney(Options.result[2][0]);
+        } else {
+            if (Options.audioMusicName == 'btn_music.png') {
+                //play audio win
+                Options.audioLose.play();
+            }
         }
     }
 
@@ -345,6 +370,11 @@ export default class Spin extends Phaser.Scene {
             Options.lineArray.push(this.scene.add.sprite(Config.width / 2, Config.height / 2,
                 'line', 'payline_6.png'));
             this.oneMoney(Options.result[1][0]);
+        } else {
+            if (Options.audioMusicName == 'btn_music.png') {
+                //play audio win
+                Options.audioLose.play();
+            }
         }
     }
 
@@ -381,6 +411,11 @@ export default class Spin extends Phaser.Scene {
             Options.lineArray.push(this.scene.add.sprite(Config.width / 2, Config.height / 2,
                 'line', 'payline_7.png'));
             this.oneMoney(Options.result[1][0]);
+        } else {
+            if (Options.audioMusicName == 'btn_music.png') {
+                //play audio win
+                Options.audioLose.play();
+            }
         }
     }
 
@@ -417,6 +452,11 @@ export default class Spin extends Phaser.Scene {
             Options.lineArray.push(this.scene.add.sprite(Config.width / 2, Config.height / 2,
                 'line', 'payline_8.png'));
             this.oneMoney(Options.result[0][0]);
+        } else {
+            if (Options.audioMusicName == 'btn_music.png') {
+                //play audio win
+                Options.audioLose.play();
+            }
         }
     }
 
@@ -453,6 +493,11 @@ export default class Spin extends Phaser.Scene {
             Options.lineArray.push(this.scene.add.sprite(Config.width / 2, Config.height / 2,
                 'line', 'payline_9.png'));
             this.oneMoney(Options.result[2][0]);
+        } else {
+            if (Options.audioMusicName == 'btn_music.png') {
+                //play audio win
+                Options.audioLose.play();
+            }
         }
     }
 
@@ -489,6 +534,11 @@ export default class Spin extends Phaser.Scene {
             Options.lineArray.push(this.scene.add.sprite(Config.width / 2, Config.height / 2,
                 'line', 'payline_10.png'));
             this.oneMoney(Options.result[1][0]);
+        } else {
+            if (Options.audioMusicName == 'btn_music.png') {
+                //play audio win
+                Options.audioLose.play();
+            }
         }
     }
 
@@ -524,7 +574,7 @@ export default class Spin extends Phaser.Scene {
                 break;
             default:
                 this.getMoney(Options.payvalues[9][0]);
-        }
+        } 
     }
 
     twoMoney(value) {

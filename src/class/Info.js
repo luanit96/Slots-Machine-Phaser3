@@ -11,12 +11,14 @@ export default class Info extends Phaser.GameObjects.Sprite {
         this.on('pointerover', this.pointerOver, this);
         this.on('pointerout', this.pointerOut, this);
     }
+
     pointerOver() {
         if (!Options.checkClick) {
             this.paytable = this.scene.add.sprite(Config.width / 2, Config.height / 2,
                 'about', 'paytable.png');
         }
     }
+    
     pointerOut() {
         if (this.paytable) {
             this.paytable.destroy();

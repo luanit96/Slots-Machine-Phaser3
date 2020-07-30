@@ -1,3 +1,5 @@
+import PreloadScene from '../Scene/PreloadScene';
+import BootScene from '../Scene/BootScene';
 import GameScene from '../Scene/GameScene';
 
 export default {
@@ -15,5 +17,5 @@ export default {
         min: 30,
         target: 60
     },
-    scene : GameScene
+    scene : [PreloadScene, BootScene, GameScene]
 };
