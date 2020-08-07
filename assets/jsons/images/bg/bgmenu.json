@@ -1,0 +1,41 @@
+{
+	"textures": [
+		{
+			"image": "bgmenu.png",
+			"format": "RGBA8888",
+			"size": {
+				"w": 1282,
+				"h": 722
+			},
+			"scale": 1,
+			"frames": [
+				{
+					"filename": "bg_menu.png",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 1280,
+						"h": 720
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 1280,
+						"h": 720
+					},
+					"frame": {
+						"x": 1,
+						"y": 1,
+						"w": 1280,
+						"h": 720
+					}
+				}
+			]
+		}
+	],
+	"meta": {
+		"app": "https://www.codeandweb.com/texturepacker",
+		"version": "3.0",
+		"smartupdate": "$TexturePacker:SmartUpdate:34aa5533614ad1e7748a7f6c45390e0d:cc5c57ff5df7f104b60e139ca77eb323:c7f22c0a2a5a6217dd1ba2ad06a00f34$"
+	}
+}

@@ -9,6 +9,7 @@ import Spin from '../Class/Spin';
 export default class GameScene extends Phaser.Scene {
     constructor() {
         super({ key: 'GameScene' });
+        this.youWin;
     }
 
     create() {
@@ -31,6 +32,7 @@ export default class GameScene extends Phaser.Scene {
         this.valueMoney = localStorage.getItem('money') ? localStorage.getItem('money') :
             Options.money;
         this.txtMoney = this.add.text(Config.width - 1050, Config.height - 695, this.valueMoney + '$', Style.styleTextPoint);
+        this.setTextX(this.valueMoney);
         this.credits = new Sprite(this, Config.width - 235, Config.height - 680,
             'about', 'btn-credits.png').setScale(0.7);
         this.credits.on('pointerover', () => {
@@ -90,6 +92,11 @@ export default class GameScene extends Phaser.Scene {
             }
             if (!Options.checkClick && this.valueMoney >=
                 (Options.coin * Options.line)) {
+                //remove graphics
+                if(this.youWin) {
+                    this.anims.remove(Options.graphics.key);
+                    this.youWin.destroy(true);
+                }
                 //setTint
                 this.setColor();
                 Options.checkClick = true;
@@ -253,7 +260,30 @@ export default class GameScene extends Phaser.Scene {
             localStorage.setItem('money', this.valueMoney);
         }
         localStorage.setItem('money', this.valueMoney);
+        this.setTextX(this.valueMoney);
         this.txtMoney.setText(this.valueMoney + '$');
+    }
+
+    setTextX(value) {
+        if(value >= 100000000) {
+            this.txtMoney.x = 217;
+        } else if(value >= 10000000) {
+            this.txtMoney.x = 220;
+        } else if(value >= 1000000) {
+            this.txtMoney.x = 230;
+        } else if(value >= 100000) {
+            this.txtMoney.x = 240;
+        } else if(value >= 10000) {
+            this.txtMoney.x = 240;
+        } else if(value >= 1000) {
+            this.txtMoney.x = 250;
+        } else if(value >= 100) {
+            this.txtMoney.x = 260;
+        } else if(value >= 10) {
+            this.txtMoney.x = 270;
+        } else {
+            this.txtMoney.x = 280;
+        }
     }
 
     spin() {

@@ -364,7 +364,7 @@ export default class Spin extends Phaser.Scene {
             Options.result[0][1] == Options.result[0][2]) {
             if (Options.audioMusicName == 'btn_music.png') {
                 //play audio win
-                Options.Win.play();
+                Options.audioWin.play();
             }
             // get money
             Options.lineArray.push(this.scene.add.sprite(Config.width / 2, Config.height / 2,
@@ -655,13 +655,40 @@ export default class Spin extends Phaser.Scene {
     setTextureWin(value) {
         Options.moneyWin = value;
         this.scene.valueMoney += Options.moneyWin;
+        if(Options.moneyWin >= 5000) {
+            this.addGraphyics();
+        }
+        var width;
+        if(Options.moneyWin >= 100000) {
+            width = Config.width - 322;
+        } else if(Options.moneyWin >= 10000) {
+            width = Config.width - 325;
+        } else if(Options.moneyWin >= 1000) {
+            width = Config.width - 327;
+        } else if(Options.moneyWin >= 100) {
+            width = Config.width - 322;
+        } else {
+            width = Config.width - 340;
+        }
         if (!this.scene.txtWin) {
-            this.scene.txtWin = this.scene.add.text(Config.width - 340, Config.height - 130, 'WIN: ' + Options.moneyWin + ' $ ', Style.styleWin);
+            this.scene.txtWin = this.scene.add.text(width, Config.height - 130, 'WIN: ' + Options.moneyWin + ' $ ', Style.styleWin);
         } else {
             this.scene.txtWin.destroy();
-            this.scene.txtWin = this.scene.add.text(Config.width - 340, Config.height - 130, 'WIN: ' + Options.moneyWin + ' $ ', Style.styleWin);
+            this.scene.txtWin = this.scene.add.text(width, Config.height - 130, 'WIN: ' + Options.moneyWin + ' $ ', Style.styleWin);
         }
         //save localStorage
         this.scene.saveLocalStorage();
+    }
+
+    addGraphyics() {
+        //add effect
+        this.scene.anims.create({
+            key: Options.graphics.key,
+            frames: this.scene.anims.generateFrameNumbers('effect', { frames: Options.graphics.frames }),
+            frameRate: Options.graphics.frameRate,
+            repeatDelay : Options.graphics.repeatDelay,
+            repeat: Options.graphics.repeat
+        });
+        this.scene.youWin = this.scene.add.sprite(Config.width / 2, Config.height / 2, 'effect').play(Options.graphics.key);
     }
 }
