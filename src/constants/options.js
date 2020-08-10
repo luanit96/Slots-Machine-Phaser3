@@ -44,7 +44,7 @@ export default {
 		frames : [0, 1, 2, 3, 4],
 		frameRate : 20,
 		repeatDelay : 500,
-		repeat : -1
+		repeat : 5
 	},
 	audioReels : null,
 	audioReelStop : null,

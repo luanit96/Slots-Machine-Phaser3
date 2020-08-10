@@ -27,11 +27,11 @@ export default class PreloadScene extends Phaser.Scene {
         this.progressBar = this.add.graphics();
         this.progressBox = this.add.graphics();
         this.progressBox.fillStyle(0x222222, 0.8);
-        this.progressBox.fillRect(240, 270, 900, 50);
+        this.progressBox.fillRect(180, 270, 900, 50);
         this.load.on('progress', (value) => {
             this.progressBar.clear();
             this.progressBar.fillStyle(0xffffff, 1);
-            this.progressBar.fillRect(250, 280, 880 * value, 30);
+            this.progressBar.fillRect(190, 280, 880 * value, 30);
         });
         this.load.on('complete', this.onComplete, this);
         for(let i = 0; i < 100; i++) {
