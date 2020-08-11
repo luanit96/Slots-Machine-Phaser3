@@ -24,7 +24,7 @@ export default {
 		[5,10,20],
 		[3,8,18]
 	],
-	payLine: [
+	payLines: [
 		[[1,0],[1,1],[1,2],[1,3],[1,4]],
 		[[0,0],[0,1],[0,2],[0,3],[0,4]],
 		[[2,0],[2,1],[2,2],[2,3],[2,4]],
@@ -45,13 +45,5 @@ export default {
 		frameRate : 20,
 		repeatDelay : 500,
 		repeat : 5
-	},
-	audioReels : null,
-	audioReelStop : null,
-	audioWin : null,
-	audioButton : null,
-	audioMusicName : null,
-	audioSoundName : null,
-	audioLose : null,
-    checkClick : false
+	}
 };

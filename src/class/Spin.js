@@ -132,75 +132,75 @@ export default class Spin extends Phaser.Scene {
     }
 
     getLine1() {
-        if (Options.result[1][0] == Options.result[1][1] &&
-            Options.result[1][1] == Options.result[1][2] &&
-            Options.result[1][2] == Options.result[1][3] &&
-            Options.result[1][3] == Options.result[1][4]) {
-            if (Options.audioMusicName == 'btn_music.png') {
+        if (Options.result[1][0] === Options.result[1][1] &&
+            Options.result[1][1] === Options.result[1][2] &&
+            Options.result[1][2] === Options.result[1][3] &&
+            Options.result[1][3] === Options.result[1][4]) {
+            if (this.scene.audioMusicName === 'btn_music.png') {
                 //play audio win
-                Options.audioWin.play();
+                this.scene.audioWin.play();
             }
             //get money
             Options.lineArray.push(this.scene.add.sprite(Config.width / 2, Config.height / 2,
                 'line', 'payline_1.png'));
             this.threeMoney(Options.result[1][0]);
-        } else if (Options.result[1][0] == Options.result[1][1] &&
-            Options.result[1][1] == Options.result[1][2] && Options.result[1][2]
-            == Options.result[1][3]) {
-            if (Options.audioMusicName == 'btn_music.png') {
+        } else if (Options.result[1][0] === Options.result[1][1] &&
+            Options.result[1][1] === Options.result[1][2] && Options.result[1][2]
+            === Options.result[1][3]) {
+            if (this.scene.audioMusicName === 'btn_music.png') {
                 //play audio win
-                Options.audioWin.play();
+                this.scene.audioWin.play();
             }
             //get money
             Options.lineArray.push(this.scene.add.sprite(Config.width / 2, Config.height / 2,
                 'line', 'payline_1.png'));
             this.twoMoney(Options.result[1][0]);
-        } else if (Options.result[1][0] == Options.result[1][1] && Options.result[1][1]
-            == Options.result[1][2]) {
-            if (Options.audioMusicName == 'btn_music.png') {
+        } else if (Options.result[1][0] === Options.result[1][1] && Options.result[1][1]
+            === Options.result[1][2]) {
+            if (this.scene.audioMusicName === 'btn_music.png') {
                 //play audio win
-                Options.audioWin.play();
+                this.scene.audioWin.play();
             }
             //get money 
             Options.lineArray.push(this.scene.add.sprite(Config.width / 2, Config.height / 2,
                 'line', 'payline_1.png'));
             this.oneMoney(Options.result[1][0]);
         } else {
-            if (Options.audioMusicName == 'btn_music.png') {
+            if (this.scene.audioMusicName === 'btn_music.png') {
                 //play audio win
-                Options.audioLose.play();
+                this.scene.audioLose.play();
             }
         }
     }
 
     getLine2() {
-        if (Options.result[0][0] == Options.result[0][1] &&
-            Options.result[0][1] == Options.result[0][2] && Options.result[0][2]
-            == Options.result[0][3] && Options.result[0][3] == Options.result[0][4]) {
-            if (Options.audioMusicName == 'btn_music.png') {
+        if (Options.result[0][0] === Options.result[0][1] &&
+            Options.result[0][1] === Options.result[0][2] && Options.result[0][2]
+            === Options.result[0][3] && Options.result[0][3] === Options.result[0][4]) {
+            if (this.scene.audioMusicName === 'btn_music.png') {
                 //play audio win
-                Options.audioWin.play();
+                this.scene.audioWin.play();
             }
             // get money
             Options.lineArray.push(this.scene.add.sprite(Config.width / 2, Config.height / 2,
                 'line', 'payline_2.png'));
             this.threeMoney(Options.result[0][0]);
-        } else if (Options.result[0][0] == Options.result[0][1] &&
-            Options.result[0][1] == Options.result[0][2] && Options.result[0][2] ==
-            Options.result[0][3]) {
-            if (Options.audioMusicName == 'btn_music.png') {
+        } else if (Options.result[0][0] === Options.result[0][1] &&
+            Options.result[0][1] === Options.result[0][2] && 
+            Options.result[0][2] === Options.result[0][3]) {
+            if (this.scene.audioMusicName === 'btn_music.png') {
                 //play audio win
-                Options.audioWin.play();
+                this.scene.audioWin.play();
             }
             // get money
             Options.lineArray.push(this.scene.add.sprite(Config.width / 2, Config.height / 2,
                 'line', 'payline_2.png'));
             this.twoMoney(Options.result[0][0]);
-        } else if (Options.result[0][0] == Options.result[0][1] && Options.result[0][1]
-            == Options.result[0][2]) {
-            if (Options.audioMusicName == 'btn_music.png') {
+        } else if (Options.result[0][0] === Options.result[0][1] && Options.result[0][1]
+            === Options.result[0][2]) {
+            if (this.scene.audioMusicName === 'btn_music.png') {
                 //play audio win
-                Options.audioWin.play();
+                this.scene.audioWin.play();
             }
             // get money
             Options.lineArray.push(this.scene.add.sprite(Config.width / 2,
@@ -208,336 +208,336 @@ export default class Spin extends Phaser.Scene {
                 'line', 'payline_2.png'));
             this.oneMoney(Options.result[0][0]);
         } else {
-            if (Options.audioMusicName == 'btn_music.png') {
-                //play audio win
-                Options.audioLose.play();
+            if (this.scene.audioMusicName === 'btn_music.png') {
+                //play audio lose
+                this.scene.audioLose.play();
             }
         }
     }
 
     getLine3() {
-        if (Options.result[2][0] == Options.result[2][1] &&
-            Options.result[2][1] == Options.result[2][2] && Options.result[2][2]
-            == Options.result[2][3] && Options.result[2][3] == Options.result[2][4]) {
-            if (Options.audioMusicName == 'btn_music.png') {
+        if (Options.result[2][0] === Options.result[2][1] &&
+            Options.result[2][1] === Options.result[2][2] && Options.result[2][2]
+            === Options.result[2][3] && Options.result[2][3] === Options.result[2][4]) {
+            if (this.scene.audioMusicName === 'btn_music.png') {
                 //play audio win
-                audioMusic.audioWin.play();
+                this.scene.audioWin.play();
             }
             //get money
             Options.lineArray.push(this.scene.add.sprite(Config.width / 2, Config.height / 2,
                 'line', 'payline_3.png'));
             this.threeMoney(Options.result[2][0]);
-        } else if (Options.result[2][0] == Options.result[2][1] &&
-            Options.result[2][1] == Options.result[2][2] && Options.result[2][2]
-            == Options.result[2][3]) {
-            if (Options.audioMusicName == 'btn_music.png') {
+        } else if (Options.result[2][0] === Options.result[2][1] &&
+            Options.result[2][1] === Options.result[2][2] && Options.result[2][2]
+            === Options.result[2][3]) {
+            if (this.scene.audioMusicName === 'btn_music.png') {
                 //play audio win
-                Options.audioWin.play();
+                this.scene.audioWin.play();
             }
             //get money
             Options.lineArray.push(this.scene.add.sprite(Config.width / 2, Config.height / 2,
                 'line', 'payline_3.png'));
             this.twoMoney(Options.result[2][0]);
-        } else if (Options.result[2][0] == Options.result[2][1] && Options.result[2][1]
-            == Options.result[2][2]) {
-            if (Options.audioMusicName == 'btn_music.png') {
+        } else if (Options.result[2][0] === Options.result[2][1] && Options.result[2][1]
+            === Options.result[2][2]) {
+            if (this.scene.audioMusicName === 'btn_music.png') {
                 //play audio win
-                Options.audioWin.play();
+                this.scene.audioWin.play();
             }
             //get money
             Options.lineArray.push(this.scene.add.sprite(Config.width / 2, Config.height / 2,
                 'line', 'payline_3.png'));
             this.oneMoney(Options.result[2][0]);
         } else {
-            if (Options.audioMusicName == 'btn_music.png') {
-                //play audio win
-                Options.audioLose.play();
+            if (this.scene.audioMusicName === 'btn_music.png') {
+                //play audio lose
+                this.scene.audioLose.play();
             }
         }
     }
     getLine4() {
-        if (Options.result[0][0] == Options.result[1][1] &&
-            Options.result[1][1] == Options.result[2][2] && Options.result[2][2] ==
-            Options.result[1][3] && Options.result[1][3] == Options.result[0][4]) {
-            if (Options.audioMusicName == 'btn_music.png') {
+        if (Options.result[0][0] === Options.result[1][1] &&
+            Options.result[1][1] === Options.result[2][2] && Options.result[2][2] ===
+            Options.result[1][3] && Options.result[1][3] === Options.result[0][4]) {
+            if (this.scene.audioMusicName === 'btn_music.png') {
                 //play audio win
-                Options.audioWin.play();
+                this.scene.audioWin.play();
             }
             // get money
             Options.lineArray.push(this.scene.add.sprite(Config.width / 2, Config.height / 2,
                 'line', 'payline_4.png'));
             this.threeMoney(Options.result[0][0]);
-        } else if (Options.result[0][0] == Options.result[1][1] &&
-            Options.result[1][1] == Options.result[2][2] && Options.result[2][2] ==
+        } else if (Options.result[0][0] === Options.result[1][1] &&
+            Options.result[1][1] === Options.result[2][2] && Options.result[2][2] ===
             Options.result[1][3]) {
-            if (Options.audioMusicName == 'btn_music.png') {
+            if (this.scene.audioMusicName === 'btn_music.png') {
                 //play audio win
-                Options.audioWin.play();
+                this.scene.audioWin.play();
             }
             // get money
             Options.lineArray.push(this.scene.add.sprite(Config.width / 2, Config.height / 2,
                 'line', 'payline_4.png'));
             this.twoMoney(Options.result[0][0]);
-        } else if (Options.result[0][0] == Options.result[1][1] &&
-            Options.result[1][1] == Options.result[2][2]) {
-            if (Options.audioMusicName == 'btn_music.png') {
+        } else if (Options.result[0][0] === Options.result[1][1] &&
+            Options.result[1][1] === Options.result[2][2]) {
+            if (this.scene.audioMusicName === 'btn_music.png') {
                 //play audio win
-                Options.audioWin.play();
+                this.scene.audioWin.play();
             }
             // get money
             Options.lineArray.push(this.scene.add.sprite(Config.width / 2, Config.height / 2,
                 'line', 'payline_4.png'));
             this.oneMoney(Options.result[0][0]);
         } else {
-            if (Options.audioMusicName == 'btn_music.png') {
-                //play audio win
-                Options.audioLose.play();
+            if (this.scene.audioMusicName == 'btn_music.png') {
+                //play audio lose
+                this.scene.audioLose.play();
             }
         }
     }
     getLine5() {
-        if (Options.result[2][0] == Options.result[1][1] &&
-            Options.result[1][1] == Options.result[0][2] &&
-            Options.result[0][2] == Options.result[1][3] && Options.result[1][3]
-            == Options.result[2][4]) {
-            if (Options.audioMusicName == 'btn_music.png') {
+        if (Options.result[2][0] === Options.result[1][1] &&
+            Options.result[1][1] === Options.result[0][2] &&
+            Options.result[0][2] === Options.result[1][3] && Options.result[1][3]
+            === Options.result[2][4]) {
+            if (this.scene.audioMusicName === 'btn_music.png') {
                 //play audio win
-                Options.audioWin.play();
+                this.scene.audioWin.play();
             }
             // get money
             Options.lineArray.push(this.scene.add.sprite(Config.width / 2, config.height / 2,
                 'line', 'payline_5.png'));
             this.threeMoney(Options.result[2][0]);
-        } else if (Options.result[2][0] == Options.result[1][1] &&
-            Options.result[1][1] == Options.result[0][2] &&
-            Options.result[0][2] == Options.result[1][3]) {
-            if (Options.audioMusicName == 'btn_music.png') {
+        } else if (Options.result[2][0] === Options.result[1][1] &&
+            Options.result[1][1] === Options.result[0][2] &&
+            Options.result[0][2] === Options.result[1][3]) {
+            if (this.scene.audioMusicName === 'btn_music.png') {
                 //play audio win
-                Options.audioWin.play();
+                this.scene.audioWin.play();
             }
             // get money
             Options.lineArray.push(this.scene.add.sprite(Config.width / 2, Config.height / 2,
                 'line', 'payline_5.png'));
             this.twoMoney(Options.result[2][0]);
-        } else if (Options.result[2][0] == Options.result[1][1] &&
-            Options.result[1][1] == Options.result[0][2]) {
-            if (Options.audioMusicName == 'btn_music.png') {
+        } else if (Options.result[2][0] === Options.result[1][1] &&
+            Options.result[1][1] === Options.result[0][2]) {
+            if (this.scene.audioMusicName === 'btn_music.png') {
                 //play audio win
-                Options.audioWin.play();
+                this.scene.audioWin.play();
             }
             // get money
             Options.lineArray.push(this.scene.add.sprite(Config.width / 2, Config.height / 2,
                 'line', 'payline_5.png'));
             this.oneMoney(Options.result[2][0]);
         } else {
-            if (Options.audioMusicName == 'btn_music.png') {
-                //play audio win
-                Options.audioLose.play();
+            if (this.scene.audioMusicName === 'btn_music.png') {
+                //play audio lose
+                this.scene.audioLose.play();
             }
         }
     }
 
     getLine6() {
-        if (Options.result[1][0] == Options.result[0][1] &&
-            Options.result[0][1] == Options.result[0][2] && Options.result[0][2] ==
-            Options.result[0][3] && Options.result[0][3] == Options.result[1][4]) {
-            if (Options.audioMusicName == 'btn_music.png') {
+        if (Options.result[1][0] === Options.result[0][1] &&
+            Options.result[0][1] === Options.result[0][2] && Options.result[0][2] ===
+            Options.result[0][3] && Options.result[0][3] === Options.result[1][4]) {
+            if (this.scene.audioMusicName === 'btn_music.png') {
                 //play audio win
-                Options.audioWin.play();
+                this.scene.audioWin.play();
             }
             // get money
             Options.lineArray.push(this.scene.add.sprite(Config.width / 2, Config.height / 2,
                 'line', 'payline_6.png'));
             this.threeMoney(Options.result[1][0]);
-        } else if (Options.result[1][0] == Options.result[0][1] &&
-            Options.result[0][1] == Options.result[0][2] && Options.result[0][2] ==
+        } else if (Options.result[1][0] === Options.result[0][1] &&
+            Options.result[0][1] === Options.result[0][2] && Options.result[0][2] ===
             Options.result[0][3]) {
-            if (Options.audioMusicName == 'btn_music.png') {
+            if (this.scene.audioMusicName === 'btn_music.png') {
                 //play audio win
-                Options.audioWin.play();
+                this.scene.audioWin.play();
             }
             // get money
             Options.lineArray.push(this.scene.add.sprite(Config.width / 2, Config.height / 2,
                 'line', 'payline_6.png'));
             this.twoMoney(Options.result[1][0]);
-        } else if (Options.result[1][0] == Options.result[0][1] &&
-            Options.result[0][1] == Options.result[0][2]) {
-            if (Options.audioMusicName == 'btn_music.png') {
+        } else if (Options.result[1][0] === Options.result[0][1] &&
+            Options.result[0][1] === Options.result[0][2]) {
+            if (this.scene.audioMusicName === 'btn_music.png') {
                 //play audio win
-                Options.audioWin.play();
+                this.scene.audioWin.play();
             }
             // get money
             Options.lineArray.push(this.scene.add.sprite(Config.width / 2, Config.height / 2,
                 'line', 'payline_6.png'));
             this.oneMoney(Options.result[1][0]);
         } else {
-            if (Options.audioMusicName == 'btn_music.png') {
-                //play audio win
-                Options.audioLose.play();
+            if (this.scene.audioMusicName === 'btn_music.png') {
+                //play audio lose
+                this.scene.audioLose.play();
             }
         }
     }
 
     getLine7() {
-        if (Options.result[1][0] == Options.result[2][1] &&
-            Options.result[2][1] == Options.result[2][2] && Options.result[2][2]
-            == Options.result[2][3] && Options.result[2][3] == Options.result[1][4]) {
-            if (Options.audioMusicName == 'btn_music.png') {
+        if (Options.result[1][0] === Options.result[2][1] &&
+            Options.result[2][1] === Options.result[2][2] && Options.result[2][2]
+            === Options.result[2][3] && Options.result[2][3] === Options.result[1][4]) {
+            if (this.scene.audioMusicName === 'btn_music.png') {
                 //play audio win
-                Options.audioWin.play();
+                this.scene.audioWin.play();
             }
             // get money
             Options.lineArray.push(this.scene.add.sprite(Config.width / 2, Config.height / 2,
                 'line', 'payline_7.png'));
             this.threeMoney(Options.result[1][0]);
-        } else if (Options.result[1][0] == Options.result[2][1] &&
-            Options.result[2][1] == Options.result[2][2] && Options.result[2][2]
-            == Options.result[2][3]) {
-            if (Options.audioMusicName == 'btn_music.png') {
+        } else if (Options.result[1][0] === Options.result[2][1] &&
+            Options.result[2][1] === Options.result[2][2] && Options.result[2][2]
+            === Options.result[2][3]) {
+            if (this.scene.audioMusicName === 'btn_music.png') {
                 //play audio win
-                Options.audioWin.play();
+                this.scene.audioWin.play();
             }
             // get money
             Options.lineArray.push(this.scene.add.sprite(Config.width / 2, Config.height / 2,
                 'line', 'payline_7.png'));
             this.twoMoney(Options.result[1][0]);
-        } else if (Options.result[1][0] == Options.result[2][1] &&
-            Options.result[2][1] == Options.result[2][2]) {
-            if (Options.audioMusicName == 'btn_music.png') {
+        } else if (Options.result[1][0] === Options.result[2][1] &&
+            Options.result[2][1] === Options.result[2][2]) {
+            if (this.scene.audioMusicName === 'btn_music.png') {
                 //play audio win
-                Options.audioWin.play();
+                this.scene.audioWin.play();
             }
             // get money
             Options.lineArray.push(this.scene.add.sprite(Config.width / 2, Config.height / 2,
                 'line', 'payline_7.png'));
             this.oneMoney(Options.result[1][0]);
         } else {
-            if (Options.audioMusicName == 'btn_music.png') {
-                //play audio win
-                Options.audioLose.play();
+            if (this.scene.audioMusicName === 'btn_music.png') {
+                //play audio lose
+                this.scene.audioLose.play();
             }
         }
     }
 
     getLine8() {
-        if (Options.result[0][0] == Options.result[0][1] &&
-            Options.result[0][1] == Options.result[1][2] && Options.result[1][2] ==
-            Options.result[2][3] && Options.result[2][3] == Options.result[2][4]) {
-            if (Options.audioMusicName == 'btn_music.png') {
+        if (Options.result[0][0] === Options.result[0][1] &&
+            Options.result[0][1] === Options.result[1][2] && Options.result[1][2] ===
+            Options.result[2][3] && Options.result[2][3] === Options.result[2][4]) {
+            if (this.scene.audioMusicName === 'btn_music.png') {
                 //play audio win
-                Options.audioWin.play();
+                this.scene.audioWin.play();
             }
             // get money
             Options.lineArray.push(this.scene.add.sprite(Config.width / 2, Config.height / 2,
                 'line', 'payline_8.png'));
             this.threeMoney(Options.result[0][0]);
-        } else if (Options.result[0][0] == Options.result[0][1] &&
-            Options.result[0][1] == Options.result[1][2] && Options.result[1][2] ==
+        } else if (Options.result[0][0] === Options.result[0][1] &&
+            Options.result[0][1] === Options.result[1][2] && Options.result[1][2] ===
             Options.result[2][3]) {
-            if (Options.audioMusicName == 'btn_music.png') {
+            if (this.scene.audioMusicName === 'btn_music.png') {
                 //play audio win
-                Options.audioWin.play();
+                this.scene.audioWin.play();
             }
             // get money
             Options.lineArray.push(this.scene.add.sprite(Config.width / 2, Config.height / 2,
                 'line', 'payline_8.png'));
             this.twoMoney(Options.result[0][0]);
-        } else if (Options.result[0][0] == Options.result[0][1] &&
-            Options.result[0][1] == Options.result[1][2]) {
-            if (Options.audioMusicName == 'btn_music.png') {
+        } else if (Options.result[0][0] === Options.result[0][1] &&
+            Options.result[0][1] === Options.result[1][2]) {
+            if (this.scene.audioMusicName === 'btn_music.png') {
                 //play audio win
-                Options.audioWin.play();
+                this.scene.audioWin.play();
             }
             // get money
             Options.lineArray.push(this.scene.add.sprite(Config.width / 2, Config.height / 2,
                 'line', 'payline_8.png'));
             this.oneMoney(Options.result[0][0]);
         } else {
-            if (Options.audioMusicName == 'btn_music.png') {
-                //play audio win
-                Options.audioLose.play();
+            if (this.scene.audioMusicName === 'btn_music.png') {
+                //play audio lose
+                this.scene.audioLose.play();
             }
         }
     }
 
     getLine9() {
-        if (Options.result[2][0] == Options.result[2][1] &&
-            Options.result[2][1] == Options.result[1][2] && Options.result[1][2] ==
-            Options.result[0][3] && Options.result[0][3] == Options.result[0][4]) {
-            if (Options.audioMusicName == 'btn_music.png') {
+        if (Options.result[2][0] === Options.result[2][1] &&
+            Options.result[2][1] === Options.result[1][2] && Options.result[1][2] ===
+            Options.result[0][3] && Options.result[0][3] === Options.result[0][4]) {
+            if (this.scene.audioMusicName === 'btn_music.png') {
                 //play audio win
-                Options.audioWin.play();
+                this.scene.audioWin.play();
             }
             // get money
             Options.lineArray.push(this.scene.add.sprite(Config.width / 2, Config.height / 2,
                 'line', 'payline_9.png'));
             this.threeMoney(Options.result[2][0]);
-        } else if (Options.result[2][0] == Options.result[2][1] &&
-            Options.result[2][1] == Options.result[1][2] && Options.result[1][2] ==
+        } else if (Options.result[2][0] === Options.result[2][1] &&
+            Options.result[2][1] === Options.result[1][2] && Options.result[1][2] ===
             Options.result[0][3]) {
-            if (Options.audioMusicName == 'btn_music.png') {
+            if (this.scene.audioMusicName === 'btn_music.png') {
                 //play audio win
-                Options.audioWin.play();
+                this.scene.audioWin.play();
             }
             // get money
             Options.lineArray.push(this.scene.add.sprite(Config.width / 2, Config.height / 2,
                 'line', 'payline_9.png'));
             this.twoMoney(Options.result[2][0]);
-        } else if (Options.result[2][0] == Options.result[2][1] &&
-            Options.result[2][1] == Options.result[1][2]) {
-            if (Options.audioMusicName == 'btn_music.png') {
+        } else if (Options.result[2][0] === Options.result[2][1] &&
+            Options.result[2][1] === Options.result[1][2]) {
+            if (this.scene.audioMusicName === 'btn_music.png') {
                 //play audio win
-                Options.audioWin.play();
+                this.scene.audioWin.play();
             }
             // get money
             Options.lineArray.push(this.scene.add.sprite(Config.width / 2, Config.height / 2,
                 'line', 'payline_9.png'));
             this.oneMoney(Options.result[2][0]);
         } else {
-            if (Options.audioMusicName == 'btn_music.png') {
-                //play audio win
-                Options.audioLose.play();
+            if (this.scene.audioMusicName === 'btn_music.png') {
+                //play audio lose
+                this.scene.audioLose.play();
             }
         }
     }
 
     getLine10() {
-        if (Options.result[1][0] == Options.result[2][1] &&
-            Options.result[2][1] == Options.result[1][2] && Options.result[1][2] ==
-            Options.result[0][3] && Options.result[0][3] == Options.result[1][4]) {
-            if (Options.audioMusicName == 'btn_music.png') {
+        if (Options.result[1][0] === Options.result[2][1] &&
+            Options.result[2][1] === Options.result[1][2] && Options.result[1][2] ===
+            Options.result[0][3] && Options.result[0][3] === Options.result[1][4]) {
+            if (this.scene.audioMusicName === 'btn_music.png') {
                 //play audio win
-                Options.audioWin.play();
+                this.scene.audioWin.play();
             }
             // get money
             Options.lineArray.push(this.scene.add.sprite(Config.width / 2, Config.height / 2,
                 'line', 'payline_10.png'));
             this.threeMoney(Options.result[1][0]);
-        } else if (Options.result[1][0] == Options.result[2][1] &&
-            Options.result[2][1] == Options.result[1][2] && Options.result[1][2] ==
+        } else if (Options.result[1][0] === Options.result[2][1] &&
+            Options.result[2][1] === Options.result[1][2] && Options.result[1][2] ===
             Options.result[0][3]) {
-            if (Options.audioMusicName == 'btn_music.png') {
+            if (this.scene.audioMusicName === 'btn_music.png') {
                 //play audio win
-                Options.audioWin.play();
+                this.scene.audioWin.play();
             }
             // get money
             Options.lineArray.push(this.scene.add.sprite(Config.width / 2, Config.height / 2,
                 'line', 'payline_10.png'));
             this.twoMoney(Options.result[1][0]);
-        } else if (Options.result[1][0] == Options.result[2][1] &&
-            Options.result[2][1] == Options.result[1][2]) {
-            if (Options.audioMusicName == 'btn_music.png') {
+        } else if (Options.result[1][0] === Options.result[2][1] &&
+            Options.result[2][1] === Options.result[1][2]) {
+            if (this.scene.audioMusicName === 'btn_music.png') {
                 //play audio win
-                Options.audioWin.play();
+                this.scene.audioWin.play();
             }
             // get money
             Options.lineArray.push(this.scene.add.sprite(Config.width / 2, Config.height / 2,
                 'line', 'payline_10.png'));
             this.oneMoney(Options.result[1][0]);
         } else {
-            if (Options.audioMusicName == 'btn_music.png') {
-                //play audio win
-                Options.audioLose.play();
+            if (this.scene.audioMusicName === 'btn_music.png') {
+                //play audio lose
+                this.scene.audioLose.play();
             }
         }
     }
@@ -612,7 +612,7 @@ export default class Spin extends Phaser.Scene {
     }
 
     threeMoney(value) {
-        switch (value) {
+        switch(value) {
             case 'symbols_0.png':
                 this.getMoney(Options.payvalues[0][2]);
                 break;
