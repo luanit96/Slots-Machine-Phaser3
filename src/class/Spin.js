@@ -1,6 +1,8 @@
 import Config from '../Config/config';
 import Options from '../Constants/options';
 import Style from '../Css/style';
+import gameOptions from '../Constants/gameOptions';
+import FreeSpin from '../Class/FreeSpin/FreeSpin';
 
 export default class Spin extends Phaser.Scene {
     constructor(scene) {
@@ -9,17 +11,18 @@ export default class Spin extends Phaser.Scene {
         this.scene = scene;
         this.printResult();
         this.setColor();
+        this.time = 0;
     }
 
     setColor() {
-        this.scene.bgSpin.setTint(0xffffff);
-        this.scene.maxBet.setTint(0xffffff);
-        this.scene.coin.setTint(0xffffff);
-        this.scene.btnLine.setTint(0xffffff);
-        this.scene.info.setTint(0xffffff);
-        this.scene.credits.setTint(0xffffff);
-        this.scene.btnMusic.setTint(0xffffff);
-        this.scene.btnSound.setTint(0xffffff);
+        this.scene.bgSpin.clearTint();
+        this.scene.maxBet.clearTint();
+        this.scene.coin.clearTint();
+        this.scene.btnLine.clearTint();
+        this.scene.info.clearTint();
+        this.scene.credits.clearTint();
+        this.scene.btnMusic.clearTint();
+        this.scene.btnSound.clearTint();
     }
 
     printResult() {
@@ -650,19 +653,26 @@ export default class Spin extends Phaser.Scene {
         let payValue = money / Options.line;
         Options.win += (payValue * maxBet);
         this.setTextureWin(Options.win);
+        //free spin
+        gameOptions.countFree++;
+        //count free >= 5 
+        if(gameOptions.countFree >= 5) {
+            this.classFreeSpin = new FreeSpin(this.scene);
+        }
     }
 
     setTextureWin(value) {
         Options.moneyWin = value;
         this.scene.valueMoney += Options.moneyWin;
-        if(Options.moneyWin >= 5000) {
-            this.addGraphyics();
+        //count money win >= 2000
+        if(Options.moneyWin >= 2000) {
+            this.bigWin();
         }
         var width;
         if(Options.moneyWin >= 100000) {
             width = Config.width - 322;
         } else if(Options.moneyWin >= 10000) {
-            width = Config.width - 325;
+            width = Config.width - 328;
         } else if(Options.moneyWin >= 1000) {
             width = Config.width - 327;
         } else if(Options.moneyWin >= 100) {
@@ -680,15 +690,65 @@ export default class Spin extends Phaser.Scene {
         this.scene.saveLocalStorage();
     }
 
-    addGraphyics() {
-        //add effect
-        this.scene.anims.create({
-            key: Options.graphics.key,
-            frames: this.scene.anims.generateFrameNumbers('effect', { frames: Options.graphics.frames }),
-            frameRate: Options.graphics.frameRate,
-            repeatDelay : Options.graphics.repeatDelay,
-            repeat: Options.graphics.repeat
+    bigWin() {
+        if(this.scene.audioMusicName === 'btn_music.png') {
+            this.scene.audioBigWin.play(); 
+        }
+        //add effect win
+        this.youWin = this.scene.add.sprite(Config.width / 2, Config.height / 2, 'youwin', 'win.png').setInteractive();
+        this.timeWin = Options.moneyWin;
+        this.timeMoneyWin = this.scene.add.text(Config.width / 2 - 50, Config.height / 2 - 50, 0, Style.styleTimeMoney);
+        this.txtDollars = this.scene.add.text(Config.width / 2 + 70, Config.height / 2 - 50, '$', Style.styleDollar);
+        
+        //time event loop
+        this.timer = this.scene.time.addEvent({
+            delay: 0,
+            callback: function() {
+                this.time ++;
+                if(this.time <= this.timeWin) {
+                    this.timeMoneyWin.setText(this.time);
+                    if(this.time >= 100000) {
+                        this.timeMoneyWin.x = 515;
+                        this.txtDollars.x = 785;
+                    } else if(this.time >= 10000) {
+                        this.timeMoneyWin.x = 520;
+                        this.txtDollars.x = 770;
+                    } else if(this.time >= 1000) {
+                        this.timeMoneyWin.x = 530;
+                        this.txtDollars.x = 760;
+                    } else if(this.time >= 100) {
+                        this.timeMoneyWin.x = 560;
+                        this.txtDollars.x = 740;
+                    } else {
+                        this.timeMoneyWin.x = 580;
+                        this.txtDollars.x = 710;
+                    }
+                } else {
+                    this.timer.remove();
+                    //clear color button
+                    this.setColor();
+                    //stop audio
+                    this.scene.audioBigWin.stop();
+                    this.scene.audioWin.stop();
+                }
+            },
+            callbackScope: this,
+            loop: true
         });
-        this.scene.youWin = this.scene.add.sprite(Config.width / 2, Config.height / 2, 'effect').play(Options.graphics.key);
+        //time event
+        if(typeof this.timer === 'object') {
+            this.youWin.on('pointerdown', () => {
+                //clear color button
+                this.setColor();
+                this.timer.remove();
+                //stop audio
+                this.scene.audioBigWin.stop();
+                if(this.youWin && this.timeMoneyWin && this.txtDollars) {
+                    this.youWin.destroy();
+                    this.timeMoneyWin.destroy();
+                    this.txtDollars.destroy();;
+                }
+            });
+        }
     }
 }

@@ -18,5 +18,15 @@ export default {
         fontSize : '20px',
         color : '#25a028',
         fontFamily : 'PT Serif'
+    }, 
+    styleTimeMoney :  {
+        fontSize : '100px',
+        color : '#ffd130',
+        fontFamily : 'Luckiest Guy'
+    },
+    styleDollar : {
+        fontSize : '105px',
+        color : '#ffd130',
+        fontFamily : 'Luckiest Guy'
     }
 };

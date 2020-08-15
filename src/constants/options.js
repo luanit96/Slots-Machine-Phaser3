@@ -36,14 +36,8 @@ export default {
 		[[2,0],[2,1],[1,2],[0,3],[0,4]],
 		[[1,0],[2,1],[1,2],[0,3],[1,4]]
 	],
+	checkClick : false,
 	symbolHeight : 150,
 	duration : 100,
-	repeat : [10, 15, 20, 25, 30],
-	graphics : {
-		key : 'effectWin',
-		frames : [0, 1, 2, 3, 4],
-		frameRate : 20,
-		repeatDelay : 500,
-		repeat : 5
-	}
+	repeat : [10, 15, 20, 25, 30]
 };

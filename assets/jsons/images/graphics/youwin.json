@@ -1,0 +1,41 @@
+{
+	"textures": [
+		{
+			"image": "youwin.png",
+			"format": "RGBA8888",
+			"size": {
+				"w": 1202,
+				"h": 722
+			},
+			"scale": 1,
+			"frames": [
+				{
+					"filename": "win.png",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 1200,
+						"h": 720
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 1200,
+						"h": 720
+					},
+					"frame": {
+						"x": 1,
+						"y": 1,
+						"w": 1200,
+						"h": 720
+					}
+				}
+			]
+		}
+	],
+	"meta": {
+		"app": "https://www.codeandweb.com/texturepacker",
+		"version": "3.0",
+		"smartupdate": "$TexturePacker:SmartUpdate:f793d6ca9d4f201d226107982dd2b030:87e64d8793d7c66d47b48919fbcf4136:6ec225909c8f641fbaa9aebf4587303f$"
+	}
+}
