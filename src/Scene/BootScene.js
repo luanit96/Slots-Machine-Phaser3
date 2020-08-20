@@ -3,14 +3,14 @@ import Config from '../Config/config';
 
 export default class BootScene extends Phaser.Scene {
     constructor() {
-        super({ key : 'BootScene' });
+        super({ key: 'BootScene' });
     }
 
     create() {
         //add music audio
         this.musicBackgroundDefault = this.sound.add('backgroundDefault', {
-            loop : true,
-            volume : 2.5
+            loop: true,
+            volume: 1.5
         });
         this.musicBackgroundDefault.play();
         const bgloading = new Sprite(this, Config.width / 2, Config.height / 2, 'bgPreload', 'bg_menu.png');

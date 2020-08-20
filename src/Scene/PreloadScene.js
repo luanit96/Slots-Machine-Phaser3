@@ -29,6 +29,7 @@ export default class PreloadScene extends Phaser.Scene {
         this.load.audio('button', 'audio/button.mp3');
         this.load.audio('lose', 'audio/lose.mp3');
         this.load.audio('bigwin', 'audio/big_win.mp3');
+        this.load.audio('freeSpin', 'audio/freespin.mp3');
 
         this.progressBar = this.add.graphics();
         this.progressBox = this.add.graphics();

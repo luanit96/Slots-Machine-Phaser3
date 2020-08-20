@@ -28,5 +28,6 @@ export default {
         fontSize : '105px',
         color : '#ffd130',
         fontFamily : 'Luckiest Guy'
-    }
+    },
+    fontSize : 38
 };

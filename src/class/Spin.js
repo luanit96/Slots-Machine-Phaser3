@@ -666,6 +666,8 @@ export default class Spin extends Phaser.Scene {
         this.scene.valueMoney += Options.moneyWin;
         //count money win >= 2000
         if(Options.moneyWin >= 2000) {
+            //set check click = true
+            Options.checkClick = true;
             this.bigWin();
         }
         var width;
@@ -692,6 +694,7 @@ export default class Spin extends Phaser.Scene {
 
     bigWin() {
         if(this.scene.audioMusicName === 'btn_music.png') {
+            this.scene.musicDefault.stop();
             this.scene.audioBigWin.play(); 
         }
         //add effect win
@@ -725,30 +728,27 @@ export default class Spin extends Phaser.Scene {
                     }
                 } else {
                     this.timer.remove();
-                    //clear color button
-                    this.setColor();
-                    //stop audio
-                    this.scene.audioBigWin.stop();
-                    this.scene.audioWin.stop();
+                    if(this.scene.audioMusicName === 'btn_music.png') {
+                        //stop audio
+                        this.scene.audioBigWin.stop();
+                        this.scene.audioWin.stop();
+                        //play audio default
+                        this.scene.musicDefault.play();
+                    }
+                    //reset check click
+                    Options.checkClick = false;
+                    //remove image and text
+                    this.youWin.on('pointerdown', () => {
+                        if(this.youWin && this.timeMoneyWin && this.txtDollars) {
+                            this.youWin.destroy();
+                            this.timeMoneyWin.destroy();
+                            this.txtDollars.destroy();;
+                        }
+                    });
                 }
             },
             callbackScope: this,
             loop: true
         });
-        //time event
-        if(typeof this.timer === 'object') {
-            this.youWin.on('pointerdown', () => {
-                //clear color button
-                this.setColor();
-                this.timer.remove();
-                //stop audio
-                this.scene.audioBigWin.stop();
-                if(this.youWin && this.timeMoneyWin && this.txtDollars) {
-                    this.youWin.destroy();
-                    this.timeMoneyWin.destroy();
-                    this.txtDollars.destroy();;
-                }
-            });
-        }
     }
 }

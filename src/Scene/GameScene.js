@@ -11,6 +11,11 @@ export default class GameScene extends Phaser.Scene {
         super({ key: 'GameScene' });
     }
 
+    preload() {
+        this.load.path = '../../assets/fonts/bitmap/';
+        this.load.bitmapFont('txt_bitmap', 'text_slot_machine.png', 'text_slot_machine.xml');
+    }
+
     create() {
         //add audio
         this.audioReels = this.sound.add('reels');
@@ -18,7 +23,14 @@ export default class GameScene extends Phaser.Scene {
         this.audioWin = this.sound.add('win', { loop : true });
         this.audioButton = this.sound.add('button');
         this.audioLose = this.sound.add('lose', { volume: 2.5 });
-        this.audioBigWin = this.sound.add('bigwin', { loop : true });
+        this.audioBigWin = this.sound.add('bigwin', { loop : true, volume : 2.5 });
+        this.freeSpin = this.sound.add('freeSpin', { volume: 2.5 });
+        this.musicDefault = this.sound.add('backgroundDefault', {
+            loop: true,
+            volume: 2
+        });
+        // bitmap
+        Options.hsv = Phaser.Display.Color.HSVColorWheel();
         //add bg image
         const bg = new Sprite(this,Config.width / 2, Config.height / 2, 'background', 'bg.jpg');
         //container
@@ -62,7 +74,8 @@ export default class GameScene extends Phaser.Scene {
             if(!Options.checkClick) {
                 if(this.audioMusicName === 'btn_music.png') {
                     this.audioMusicName = 'btn_music_off.png';
-                    //audio play
+                    //audio stop
+                    this.musicDefault.stop();
                     this.audioReels.stop();
                     this.audioReelStop.stop();
                     this.audioWin.stop();
@@ -74,6 +87,8 @@ export default class GameScene extends Phaser.Scene {
                     if(this.audioSoundName === 'btn_sound.png') {
                         this.audioButton.play();
                     }
+                    //audio play
+                    this.musicDefault.play();
                 }
                 //save localstorage
                 if(localStorage.getItem('musics')) {
@@ -103,10 +118,14 @@ export default class GameScene extends Phaser.Scene {
                 this.btnSound.setTexture('sound', this.audioSoundName);
             }
         });
+        //audio default
+        if(this.audioMusicName === 'btn_music.png') {
+            this.musicDefault.play();
+        }
         //add image buttons
-        this.bgMaxBet();
         this.bgCoin();
         this.bgLine();
+        this.bgMaxBet();
         //class info
         this.info = new Info(this, Config.width - 1020, Config.height - 50, 'bgButtons', 'btn-info.png');
         this.spin();
@@ -314,35 +333,14 @@ export default class GameScene extends Phaser.Scene {
     spin() {
         this.bgSpin = new Sprite(this, Config.width - 275, Config.height - 50, 'bgButtons', 'btn-spin.png');
         //text spin
-        this.txtSpin = this.add.text(Config.width - 310, Config.height - 70, Options.txtSpin, Style.styleButton);
-    }
-
-    bgMaxBet() {
-        this.maxBet = new Sprite(this, Config.width - 477, Config.height - 50, 'bgButtons', 'btn-maxbet.png');
-        this.txtMaxBet = this.add.text(Config.width - 550, Config.height - 70, Options.txtMaxBet, Style.styleButton);
-        this.txtCountMaxBet = this.add.text(Config.width - 550, Config.height - 140, 'BET: ' + Options.bet, Style.styleButton);
-        //pointer down
-        this.maxBet.on('pointerdown', () => {
-            if (!Options.checkClick) {
-                this.maxBet.setScale(0.9);
-                if(this.audioSoundName === 'btn_sound.png') {
-                    //audio play
-                    this.audioButton.play();
-                }
-                Options.line = 10;
-                this.txtCountLine.setText(Options.line);
-                Options.coin = 50;
-                this.txtCountCoin.setText(Options.coin);
-                this.txtCountMaxBet.setText('BET: ' + Options.line * Options.coin);
-            }
-        });
-        //pointer up
-        this.maxBet.on('pointerup', () => this.maxBet.setScale(1));
+        this.txtSpin = this.add.dynamicBitmapText(Config.width - 315, Config.height - 70, 'txt_bitmap', Options.txtSpin, Style.fontSize);
+        this.txtSpin.setDisplayCallback(this.textCallback);
     }
 
     bgCoin() {
         this.coin = new Sprite(this, Config.width - 678, Config.height - 50, 'bgButtons', 'btn-coin.png');
-        this.txtCoin = this.add.text(Config.width - 720, Config.height - 70, Options.txtCoin, Style.styleButton);
+        this.txtCoin = this.txtSpin = this.add.dynamicBitmapText(Config.width - 720, Config.height - 70, 'txt_bitmap', Options.txtCoin, Style.fontSize);
+        this.txtCoin.setDisplayCallback(this.textCallback);
         this.txtCountCoin = this.add.text(Config.width - 700, Config.height - 140, Options.coin, Style.styleButton);
         //pointer down
         this.coin.on('pointerdown', () => {
@@ -369,7 +367,8 @@ export default class GameScene extends Phaser.Scene {
 
     bgLine() {
         this.btnLine = new Sprite(this, Config.width - 865, Config.height - 50, 'bgButtons', 'btn-line.png');
-        this.txtLine = this.add.text(Config.width - 915, Config.height - 70, Options.txtLine, Style.styleButton);
+        this.txtLine = this.txtCoin = this.txtSpin = this.add.dynamicBitmapText(Config.width - 915, Config.height - 70, 'txt_bitmap', Options.txtLine, Style.fontSize);
+        this.txtLine.setDisplayCallback(this.textCallback);
         this.txtCountLine = this.add.text(Config.width - 880, Config.height - 140, Options.line, Style.styleButton);
         //pointer down
         this.btnLine.on('pointerdown', () => {
@@ -392,6 +391,46 @@ export default class GameScene extends Phaser.Scene {
         });
         //pointer up
         this.btnLine.on('pointerup', () => this.btnLine.setScale(1));
+    }
+
+    bgMaxBet() {
+        this.maxBet = new Sprite(this, Config.width - 477, Config.height - 50, 'bgButtons', 'btn-maxbet.png');
+        this.txtMaxBet = this.add.dynamicBitmapText(Config.width - 550, Config.height - 70, 'txt_bitmap', Options.txtMaxBet, Style.fontSize);
+        this.txtMaxBet.setDisplayCallback(this.textCallback);
+        this.txtCountMaxBet = this.add.text(Config.width - 550, Config.height - 140, 'BET: ' + Options.coin * Options.line, Style.styleButton);
+        //pointer down
+        this.maxBet.on('pointerdown', () => {
+            if (!Options.checkClick) {
+                this.maxBet.setScale(0.9);
+                if(this.audioSoundName === 'btn_sound.png') {
+                    //audio play
+                    this.audioButton.play();
+                }
+                Options.line = 10;
+                this.txtCountLine.setText(Options.line);
+                Options.coin = 50;
+                this.txtCountCoin.setText(Options.coin);
+                this.txtCountMaxBet.setText('BET: ' + Options.line * Options.coin);
+            }
+        });
+        //pointer up
+        this.maxBet.on('pointerup', () => this.maxBet.setScale(1));
+    }
+
+    textCallback(data) {
+        data.tint.topLeft = Options.hsv[Math.floor(Options.i)].color;
+        data.tint.topRight = Options.hsv[359 - Math.floor(Options.i)].color;
+        data.tint.bottomLeft = Options.hsv[359 - Math.floor(Options.i)].color;
+        data.tint.bottomRight = Options.hsv[Math.floor(Options.i)].color;
+    
+        Options.i += 0.05;
+    
+        if (Options.i >= Options.hsv.length)
+        {
+            Options.i = 0;
+        }
+    
+        return data;
     }
 
     update() { }

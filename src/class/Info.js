@@ -8,7 +8,8 @@ export default class Info extends Phaser.GameObjects.Sprite {
         this.game = scene;
         scene.add.existing(this);
         this.setInteractive();
-        const txtInfo = scene.add.text(Config.width - 1060, Config.height - 70, Options.txtInfo, Style.styleButton);
+        const txtInfo = scene.add.dynamicBitmapText(Config.width - 1060, Config.height - 70, 'txt_bitmap', Options.txtInfo, Style.fontSize);
+        txtInfo.setDisplayCallback(scene.textCallback);
         this.on('pointerdown', this.showPayTable, this);
     }
 
