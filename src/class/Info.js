@@ -21,6 +21,9 @@ export default class Info extends Phaser.GameObjects.Sprite {
             this.paytable = this.scene.add.sprite(Config.width / 2, Config.height / 2,
                 'about', 'paytable.png').setInteractive();
             this.paytable.on('pointerdown', () => {
+                if(this.scene.audioSoundName === 'btn_sound.png') {
+                    this.scene.audioButton.play();
+                }
                 this.paytable.destroy();
             });
         }

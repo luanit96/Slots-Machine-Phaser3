@@ -732,8 +732,6 @@ export default class Spin extends Phaser.Scene {
                         //stop audio
                         this.scene.audioBigWin.stop();
                         this.scene.audioWin.stop();
-                        //play audio default
-                        this.scene.musicDefault.play();
                     }
                     //reset check click
                     Options.checkClick = false;
@@ -742,7 +740,11 @@ export default class Spin extends Phaser.Scene {
                         if(this.youWin && this.timeMoneyWin && this.txtDollars) {
                             this.youWin.destroy();
                             this.timeMoneyWin.destroy();
-                            this.txtDollars.destroy();;
+                            this.txtDollars.destroy();
+                            if(this.scene.audioMusicName === 'btn_music.png') {
+                                //play audio default
+                                this.scene.musicDefault.play();
+                            }
                         }
                     });
                 }

@@ -1,9 +1,10 @@
 import Sprite from '../Class/Sprite';
+import Key from '../Key/keyScene';
 import Config from '../Config/config';
 
 export default class BootScene extends Phaser.Scene {
     constructor() {
-        super({ key: 'BootScene' });
+        super({ key: Key.boot });
     }
 
     create() {
@@ -20,7 +21,7 @@ export default class BootScene extends Phaser.Scene {
             //stop audio background Default
             this.musicBackgroundDefault.stop();
             this.btn.setScale(0.5);
-            this.scene.start('GameScene');
+            this.scene.start(Key.game);
         });
         this.btn.on('pointerup', () => this.btn.setScale(0.9));
     }

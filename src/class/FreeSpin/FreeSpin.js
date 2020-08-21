@@ -1,5 +1,7 @@
 import gameOptions from '../../Constants/gameOptions';
 import Config from '../../Config/config';
+import Style from '../../Css/style';
+import Key from '../../Key/keyScene';
 
 export default class FreeSpin extends Phaser.Scene {
     constructor(scene) {
@@ -44,13 +46,9 @@ export default class FreeSpin extends Phaser.Scene {
             if(this.game.audioMusicName === 'btn_music.png') {
                 this.game.audioWin.stop();
             }
-            this.game.scene.start('GameScene');
+            this.game.scene.start(Key.game);
         });
-        this.prizeText = this.game.add.text(Config.width / 2, Config.height - 40, "FREE ONE SPIN", {
-            font: "bold 32px PT Serif",
-            align: "center",
-            color: "white"
-        }).setDepth(1);
+        this.prizeText = this.game.add.text(Config.width / 2, Config.height - 40, "FREE ONE SPIN", Style.prizeText).setDepth(1);
         this.prizeText.setOrigin(0.5);
         this.pin.on("pointerdown", this.spinWheel, this);
         this.pin.on('pointerup', () => this.pin.setScale(1));
@@ -60,6 +58,8 @@ export default class FreeSpin extends Phaser.Scene {
         if(!this.click) {
             if(this.game.audioSoundName === 'btn_sound.png') {
                 this.game.audioButton.play();
+            }
+            if(this.game.audioMusicName === 'btn_music.png') {
                 this.game.audioReels.play();
             }
             this.click = true;

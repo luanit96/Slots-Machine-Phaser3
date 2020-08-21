@@ -40,5 +40,5 @@ export default {
 	checkClick: false,
 	symbolHeight: 150,
 	duration: 100,
-	repeat: [10, 15, 20, 25, 30]
+	repeat: [5, 10, 15, 20, 25]
 };

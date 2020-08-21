@@ -1,8 +1,9 @@
 import Config from '../Config/config';
+import Key from '../Key/keyScene';
 
 export default class PreloadScene extends Phaser.Scene {
     constructor() {
-        super({ key : 'PreloadScene' });
+        super({ key : Key.preload });
     }
 
     preload() {
@@ -30,6 +31,7 @@ export default class PreloadScene extends Phaser.Scene {
         this.load.audio('lose', 'audio/lose.mp3');
         this.load.audio('bigwin', 'audio/big_win.mp3');
         this.load.audio('freeSpin', 'audio/freespin.mp3');
+        this.load.audio('musicDefault', 'audio/music_default.mp3');
 
         this.progressBar = this.add.graphics();
         this.progressBox = this.add.graphics();
@@ -65,6 +67,6 @@ export default class PreloadScene extends Phaser.Scene {
     }
 
     create() {
-        this.scene.start('BootScene');
+        this.scene.start(Key.boot);
     }
 }

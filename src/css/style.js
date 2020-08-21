@@ -29,5 +29,15 @@ export default {
         color : '#ffd130',
         fontFamily : 'Luckiest Guy'
     },
+    prizeText : {
+        font: "bold 32px PT Serif",
+        align: "center",
+        color: "white"
+    },
+    styleTime : {
+        fontSize : '20px',
+        color : '#ffffff',
+        fontFamily : 'PT Serif'
+    },
     fontSize : 38
 };

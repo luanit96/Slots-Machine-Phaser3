@@ -1,4 +1,5 @@
 import Config from '../Config/config';
+import Key from '../Key/keyScene';
 import Options from '../Constants/options';
 import Style from '../Css/style';
 import Sprite from '../Class/Sprite';
@@ -8,7 +9,7 @@ import Spin from '../Class/Spin';
 
 export default class GameScene extends Phaser.Scene {
     constructor() {
-        super({ key: 'GameScene' });
+        super({ key: Key.game });
     }
 
     preload() {
@@ -25,7 +26,7 @@ export default class GameScene extends Phaser.Scene {
         this.audioLose = this.sound.add('lose', { volume: 2.5 });
         this.audioBigWin = this.sound.add('bigwin', { loop : true, volume : 2.5 });
         this.freeSpin = this.sound.add('freeSpin', { volume: 2.5 });
-        this.musicDefault = this.sound.add('backgroundDefault', {
+        this.musicDefault = this.sound.add('musicDefault', {
             loop: true,
             volume: 2
         });
@@ -45,6 +46,26 @@ export default class GameScene extends Phaser.Scene {
             Options.money;
         this.txtMoney = this.add.text(Config.width - 1050, Config.height - 695, this.valueMoney + '$', Style.styleTextPoint);
         this.setTextX(this.valueMoney);
+        this.txtTime = this.add.text(Config.width - 1260, Config.height - 700, '', Style.styleTime);
+        
+        var timeClock = this.time.addEvent({
+            delay: 1000,
+            callback: function() {
+                //get clock
+                const d = new Date();
+                let hours = d.getHours();
+                hours = hours >= 10 ?  hours : '0' + hours;  
+                let minutes = d.getMinutes();
+                minutes = minutes >= 10 ? minutes : '0' + minutes;
+                let seconds = d.getSeconds();
+                seconds = seconds >= 10 ? seconds : '0' + seconds;
+                const time = hours + ':' + minutes + ':' + seconds;
+                this.txtTime.setText(time);
+            },
+            callbackScope: this,
+            loop: true
+        });
+
         this.credits = new Sprite(this, Config.width - 235, Config.height - 680,
             'about', 'btn-credits.png').setScale(0.7);
         this.credits.on('pointerdown', () => {
@@ -56,18 +77,21 @@ export default class GameScene extends Phaser.Scene {
                 this.paylines = new Sprite(this,Config.width / 2, Config.height / 2,
                     'about', 'palines.png').setInteractive();
                 this.paylines.on('pointerdown', () => {
+                    if(this.audioSoundName === 'btn_sound.png') {
+                        this.audioButton.play();
+                    }
                     this.paylines.destroy();
                     this.credits.setScale(0.7);
                 });
             }
         });
         //add sound image
-        this.musicName = localStorage.getItem('music') ? localStorage.getItem('music')
+        const musicName = localStorage.getItem('music') ? localStorage.getItem('music')
          : 'btn_music_off.png';
-        this.soundName = localStorage.getItem('sound') ? localStorage.getItem('sound')
+        const soundName = localStorage.getItem('sound') ? localStorage.getItem('sound')
          : 'btn_sound_off.png';
-        this.btnMusic = new Sprite(this, Config.width - 310, Config.height - 675, 'sound', this.musicName).setScale(0.6);
-        this.btnSound = new Sprite(this, Config.width - 390, Config.height - 675, 'sound', this.soundName).setScale(0.6);
+        this.btnMusic = new Sprite(this, Config.width - 310, Config.height - 675, 'sound', musicName).setScale(0.6);
+        this.btnSound = new Sprite(this, Config.width - 390, Config.height - 675, 'sound', soundName).setScale(0.6);
         this.audioMusicName = this.btnMusic.frame.name;
         this.audioSoundName = this.btnSound.frame.name;
         this.btnMusic.on('pointerdown', () => {
@@ -76,12 +100,7 @@ export default class GameScene extends Phaser.Scene {
                     this.audioMusicName = 'btn_music_off.png';
                     //audio stop
                     this.musicDefault.stop();
-                    this.audioReels.stop();
-                    this.audioReelStop.stop();
                     this.audioWin.stop();
-                    this.audioButton.stop();
-                    this.audioLose.stop();
-                    this.audioBigWin.stop();
                 } else {
                     this.audioMusicName = 'btn_music.png';
                     if(this.audioSoundName === 'btn_sound.png') {
@@ -89,6 +108,7 @@ export default class GameScene extends Phaser.Scene {
                     }
                     //audio play
                     this.musicDefault.play();
+                    this.audioWin.play();
                 }
                 //save localstorage
                 if(localStorage.getItem('musics')) {
