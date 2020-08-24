@@ -672,11 +672,11 @@ export default class Spin extends Phaser.Scene {
         }
         var width;
         if(Options.moneyWin >= 100000) {
-            width = Config.width - 322;
+            width = Config.width - 340;
         } else if(Options.moneyWin >= 10000) {
-            width = Config.width - 328;
+            width = Config.width - 335;
         } else if(Options.moneyWin >= 1000) {
-            width = Config.width - 327;
+            width = Config.width - 330;
         } else if(Options.moneyWin >= 100) {
             width = Config.width - 322;
         } else {

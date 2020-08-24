@@ -35,19 +35,6 @@ export default class FreeSpin extends Phaser.Scene {
         this.game.add.sprite(Config.width / 2, Config.height / 2, 'bgPreload', 'bg_menu.png').setDepth(1);
         this.wheel = this.game.add.sprite(Config.width / 2, Config.height / 2, 'freepin', 'wheel.png').setDepth(1);
         this.pin = this.game.add.sprite(Config.width / 2, Config.height / 2, 'freepin', 'pin.png').setInteractive().setDepth(1);
-        this.back = this.game.add.sprite(Config.width - 1200, Config.height - 680,
-            'freepin', 'btn_back.png').setInteractive().setDepth(1).setScale(1.5);
-        //back game
-        this.back.on('pointerdown', () => {
-            if(this.game.audioSoundName === 'btn_sound.png') {
-                this.game.audioButton.play();
-            }
-            //stop play
-            if(this.game.audioMusicName === 'btn_music.png') {
-                this.game.audioWin.stop();
-            }
-            this.game.scene.start(Key.game);
-        });
         this.prizeText = this.game.add.text(Config.width / 2, Config.height - 40, "FREE ONE SPIN", Style.prizeText).setDepth(1);
         this.prizeText.setOrigin(0.5);
         this.pin.on("pointerdown", this.spinWheel, this);
@@ -101,6 +88,20 @@ export default class FreeSpin extends Phaser.Scene {
                     }
                     //set countFree = 0 
                     gameOptions.countFree = 0;
+                    //timer start game
+                    this.timerStart = this.game.time.addEvent({
+                        delay: 3000, 
+                        callback: function() {
+                            this.timerStart.remove();
+                            //stop audio
+                            if(this.game.audioMusicName === 'btn_music.png') {
+                                this.game.audioWin.stop();
+                            }
+                            this.game.scene.start(Key.game);
+                        },
+                        callbackScope: this,
+                        loop: true
+                    });
                 }
             });
         }
