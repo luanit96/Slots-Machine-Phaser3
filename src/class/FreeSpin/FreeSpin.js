@@ -2,39 +2,38 @@ import gameOptions from '../../Constants/gameOptions';
 import Config from '../../Config/config';
 import Style from '../../Css/style';
 import Key from '../../Key/keyScene';
+import Sprite from '../Sprite';
 
-export default class FreeSpin extends Phaser.Scene {
-    constructor(scene) {
-        super(scene);
+export default class FreeSpin {
+    constructor(scene, keyFreeSpin = Key.freeSpin) {
         this.game = scene;
-        scene.add.existing(this);
         this.click = false;
         this.addSpin();
     }
 
     addSpin() {
         //destroy sprite
-        this.game.bgSpin.destroy();
-        this.game.maxBet.destroy();
-        this.game.coin.destroy();
-        this.game.btnLine.destroy();
-        this.game.info.destroy();
-        this.game.credits.destroy();
+        this.game.baseSpin.bgSpin.destroy();
+        this.game.maxBet.maxBet.destroy();
+        this.game.coin.coin.destroy();
+        this.game.btnLine.btnLine.destroy();
+        this.game.info.info.destroy();
+        this.game.credits.credits.destroy();
         this.game.btnMusic.destroy();
         this.game.btnSound.destroy();
         //stop audio win
         if(this.game.audioMusicName === 'btn_music.png') {
-            this.game.musicDefault.stop();
-            this.game.audioWin.stop();
-            this.game.audioBigWin.stop();
+            this.game.audioObject.musicDefault.stop();
+            this.game.audioObject.audioWin.stop();
+            this.game.audioObject.audioBigWin.stop();
         }
         //play audio free spin
         if(this.game.audioMusicName === 'btn_music.png') {
-            this.game.freeSpin.play();
+            this.game.audioObject.freeSpin.play();
         }
-        this.game.add.sprite(Config.width / 2, Config.height / 2, 'bgPreload', 'bg_menu.png').setDepth(1);
-        this.wheel = this.game.add.sprite(Config.width / 2, Config.height / 2, 'freepin', 'wheel.png').setDepth(1);
-        this.pin = this.game.add.sprite(Config.width / 2, Config.height / 2, 'freepin', 'pin.png').setInteractive().setDepth(1);
+        const bgMenu = new Sprite(this.game, Config.width / 2, Config.height / 2, 'bgPreload', 'bg_menu.png').setDepth(1);
+        this.wheel = new Sprite(this.game, Config.width / 2, Config.height / 2, 'freepin', 'wheel.png').setDepth(1);
+        this.pin = new Sprite(this.game, Config.width / 2, Config.height / 2, 'freepin', 'pin.png').setDepth(1);
         this.prizeText = this.game.add.text(Config.width / 2, Config.height - 40, "FREE ONE SPIN", Style.prizeText).setDepth(1);
         this.prizeText.setOrigin(0.5);
         this.pin.on("pointerdown", this.spinWheel, this);
@@ -44,10 +43,10 @@ export default class FreeSpin extends Phaser.Scene {
     spinWheel() {
         if(!this.click) {
             if(this.game.audioSoundName === 'btn_sound.png') {
-                this.game.audioButton.play();
+                this.game.audioObject.audioButton.play();
             }
             if(this.game.audioMusicName === 'btn_music.png') {
-                this.game.audioReels.play();
+                this.game.audioObject.audioReels.play();
             }
             this.click = true;
             this.pin.setScale(0.9);
@@ -66,16 +65,16 @@ export default class FreeSpin extends Phaser.Scene {
                     if(gameOptions.slicePrizes[prize] === 'Better Luck Next Time'
                     || gameOptions.slicePrizes[prize] === 'NONE') {
                         if(this.game.audioMusicName === 'btn_music.png') {
-                            this.game.audioReels.stop();
-                            this.game.audioLose.play();
+                            this.game.audioObject.audioReels.stop();
+                            this.game.audioObject.audioLose.play();
                         }
                         this.prizeText.setText(gameOptions.slicePrizes[prize]).setDepth(1);
                     } else {
                         this.prizeText.setText('WIN : ' + gameOptions.slicePrizes[prize] + '$').setDepth(1);
                         //audio play
                         if(this.game.audioMusicName === 'btn_music.png') {
-                            this.game.audioReels.stop();
-                            this.game.audioWin.play();
+                            this.game.audioObject.audioReels.stop();
+                            this.game.audioObject.audioWin.play();
                         }
                         //save money from localStorage
                         this.game.valueMoney += gameOptions.slicePrizes[prize];
@@ -95,7 +94,7 @@ export default class FreeSpin extends Phaser.Scene {
                             this.timerStart.remove();
                             //stop audio
                             if(this.game.audioMusicName === 'btn_music.png') {
-                                this.game.audioWin.stop();
+                                this.game.audioObject.audioWin.stop();
                             }
                             this.game.scene.start(Key.game);
                         },

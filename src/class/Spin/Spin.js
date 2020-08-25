@@ -1,13 +1,12 @@
-import Config from '../Config/config';
-import Options from '../Constants/options';
-import Style from '../Css/style';
-import gameOptions from '../Constants/gameOptions';
-import FreeSpin from '../Class/FreeSpin/FreeSpin';
+import Key from '../../Key/keyScene';
+import Config from '../../Config/config';
+import Options from '../../Constants/options';
+import Style from '../../Css/style';
+import gameOptions from '../../Constants/gameOptions';
+import FreeSpin from '../FreeSpin/FreeSpin';
 
-export default class Spin extends Phaser.Scene {
-    constructor(scene) {
-        super(scene);
-        scene.add.existing(this);
+export default class Spin {
+    constructor(scene, keySpin = Key.spin) {
         this.scene = scene;
         this.printResult();
         this.setColor();
@@ -15,22 +14,22 @@ export default class Spin extends Phaser.Scene {
     }
 
     setColor() {
-        this.scene.bgSpin.clearTint();
-        this.scene.maxBet.clearTint();
-        this.scene.coin.clearTint();
-        this.scene.btnLine.clearTint();
-        this.scene.info.clearTint();
-        this.scene.credits.clearTint();
+        this.scene.baseSpin.bgSpin.clearTint();
+        this.scene.maxBet.maxBet.clearTint();
+        this.scene.coin.coin.clearTint();
+        this.scene.btnLine.btnLine.clearTint();
+        this.scene.info.info.clearTint();
+        this.scene.credits.credits.clearTint();
         this.scene.btnMusic.clearTint();
         this.scene.btnSound.clearTint();
     }
 
     printResult() {
-        const s1 = this.scene.columnTween1.targets[0];
-        const s2 = this.scene.columnTween2.targets[0];
-        const s3 = this.scene.columnTween3.targets[0];
-        const s4 = this.scene.columnTween4.targets[0];
-        const s5 = this.scene.columnTween5.targets[0];
+        const s1 = this.scene.baseSpin.columnTween1.targets[0];
+        const s2 = this.scene.baseSpin.columnTween2.targets[0];
+        const s3 = this.scene.baseSpin.columnTween3.targets[0];
+        const s4 = this.scene.baseSpin.columnTween4.targets[0];
+        const s5 = this.scene.baseSpin.columnTween5.targets[0];
         Options.result.push([s1.list[3].frame.name, s2.list[3].frame.name, s3.list[3].
             frame.name, s4.list[3].frame.name, s5.list[3].frame.name], [s1.list[2].frame.name, s2.list[2].frame.name,
             s3.list[2].frame.name, s4.list[2].frame.name, s5.list[2].frame.name], [s1.list[1].frame.name, s2.list[1].frame.name,
@@ -141,7 +140,7 @@ export default class Spin extends Phaser.Scene {
             Options.result[1][3] === Options.result[1][4]) {
             if (this.scene.audioMusicName === 'btn_music.png') {
                 //play audio win
-                this.scene.audioWin.play();
+                this.scene.audioObject.audioWin.play();
             }
             //get money
             Options.lineArray.push(this.scene.add.sprite(Config.width / 2, Config.height / 2,
@@ -152,7 +151,7 @@ export default class Spin extends Phaser.Scene {
             === Options.result[1][3]) {
             if (this.scene.audioMusicName === 'btn_music.png') {
                 //play audio win
-                this.scene.audioWin.play();
+                this.scene.audioObject.audioWin.play();
             }
             //get money
             Options.lineArray.push(this.scene.add.sprite(Config.width / 2, Config.height / 2,
@@ -162,7 +161,7 @@ export default class Spin extends Phaser.Scene {
             === Options.result[1][2]) {
             if (this.scene.audioMusicName === 'btn_music.png') {
                 //play audio win
-                this.scene.audioWin.play();
+                this.scene.audioObject.audioWin.play();
             }
             //get money 
             Options.lineArray.push(this.scene.add.sprite(Config.width / 2, Config.height / 2,
@@ -170,8 +169,8 @@ export default class Spin extends Phaser.Scene {
             this.oneMoney(Options.result[1][0]);
         } else {
             if (this.scene.audioMusicName === 'btn_music.png') {
-                //play audio win
-                this.scene.audioLose.play();
+                //play audio lose
+                this.scene.audioObject.audioLose.play();
             }
         }
     }
@@ -182,7 +181,7 @@ export default class Spin extends Phaser.Scene {
             === Options.result[0][3] && Options.result[0][3] === Options.result[0][4]) {
             if (this.scene.audioMusicName === 'btn_music.png') {
                 //play audio win
-                this.scene.audioWin.play();
+                this.scene.audioObject.audioWin.play();
             }
             // get money
             Options.lineArray.push(this.scene.add.sprite(Config.width / 2, Config.height / 2,
@@ -193,7 +192,7 @@ export default class Spin extends Phaser.Scene {
             Options.result[0][2] === Options.result[0][3]) {
             if (this.scene.audioMusicName === 'btn_music.png') {
                 //play audio win
-                this.scene.audioWin.play();
+                this.scene.audioObject.audioWin.play();
             }
             // get money
             Options.lineArray.push(this.scene.add.sprite(Config.width / 2, Config.height / 2,
@@ -203,7 +202,7 @@ export default class Spin extends Phaser.Scene {
             === Options.result[0][2]) {
             if (this.scene.audioMusicName === 'btn_music.png') {
                 //play audio win
-                this.scene.audioWin.play();
+                this.scene.audioObject.audioWin.play();
             }
             // get money
             Options.lineArray.push(this.scene.add.sprite(Config.width / 2,
@@ -213,7 +212,7 @@ export default class Spin extends Phaser.Scene {
         } else {
             if (this.scene.audioMusicName === 'btn_music.png') {
                 //play audio lose
-                this.scene.audioLose.play();
+                this.scene.audioObject.audioLose.play();
             }
         }
     }
@@ -224,7 +223,7 @@ export default class Spin extends Phaser.Scene {
             === Options.result[2][3] && Options.result[2][3] === Options.result[2][4]) {
             if (this.scene.audioMusicName === 'btn_music.png') {
                 //play audio win
-                this.scene.audioWin.play();
+                this.scene.audioObject.audioWin.play();
             }
             //get money
             Options.lineArray.push(this.scene.add.sprite(Config.width / 2, Config.height / 2,
@@ -235,7 +234,7 @@ export default class Spin extends Phaser.Scene {
             === Options.result[2][3]) {
             if (this.scene.audioMusicName === 'btn_music.png') {
                 //play audio win
-                this.scene.audioWin.play();
+                this.scene.audioObject.audioWin.play();
             }
             //get money
             Options.lineArray.push(this.scene.add.sprite(Config.width / 2, Config.height / 2,
@@ -245,7 +244,7 @@ export default class Spin extends Phaser.Scene {
             === Options.result[2][2]) {
             if (this.scene.audioMusicName === 'btn_music.png') {
                 //play audio win
-                this.scene.audioWin.play();
+                this.scene.audioObject.audioWin.play();
             }
             //get money
             Options.lineArray.push(this.scene.add.sprite(Config.width / 2, Config.height / 2,
@@ -254,7 +253,7 @@ export default class Spin extends Phaser.Scene {
         } else {
             if (this.scene.audioMusicName === 'btn_music.png') {
                 //play audio lose
-                this.scene.audioLose.play();
+                this.scene.audioObject.audioLose.play();
             }
         }
     }
@@ -264,7 +263,7 @@ export default class Spin extends Phaser.Scene {
             Options.result[1][3] && Options.result[1][3] === Options.result[0][4]) {
             if (this.scene.audioMusicName === 'btn_music.png') {
                 //play audio win
-                this.scene.audioWin.play();
+                this.scene.audioObject.audioWin.play();
             }
             // get money
             Options.lineArray.push(this.scene.add.sprite(Config.width / 2, Config.height / 2,
@@ -275,7 +274,7 @@ export default class Spin extends Phaser.Scene {
             Options.result[1][3]) {
             if (this.scene.audioMusicName === 'btn_music.png') {
                 //play audio win
-                this.scene.audioWin.play();
+                this.scene.audioObject.audioWin.play();
             }
             // get money
             Options.lineArray.push(this.scene.add.sprite(Config.width / 2, Config.height / 2,
@@ -285,7 +284,7 @@ export default class Spin extends Phaser.Scene {
             Options.result[1][1] === Options.result[2][2]) {
             if (this.scene.audioMusicName === 'btn_music.png') {
                 //play audio win
-                this.scene.audioWin.play();
+                this.scene.audioObject.audioWin.play();
             }
             // get money
             Options.lineArray.push(this.scene.add.sprite(Config.width / 2, Config.height / 2,
@@ -294,7 +293,7 @@ export default class Spin extends Phaser.Scene {
         } else {
             if (this.scene.audioMusicName == 'btn_music.png') {
                 //play audio lose
-                this.scene.audioLose.play();
+                this.scene.audioObject.audioLose.play();
             }
         }
     }
@@ -305,7 +304,7 @@ export default class Spin extends Phaser.Scene {
             === Options.result[2][4]) {
             if (this.scene.audioMusicName === 'btn_music.png') {
                 //play audio win
-                this.scene.audioWin.play();
+                this.scene.audioObject.audioWin.play();
             }
             // get money
             Options.lineArray.push(this.scene.add.sprite(Config.width / 2, config.height / 2,
@@ -316,7 +315,7 @@ export default class Spin extends Phaser.Scene {
             Options.result[0][2] === Options.result[1][3]) {
             if (this.scene.audioMusicName === 'btn_music.png') {
                 //play audio win
-                this.scene.audioWin.play();
+                this.scene.audioObject.audioWin.play();
             }
             // get money
             Options.lineArray.push(this.scene.add.sprite(Config.width / 2, Config.height / 2,
@@ -326,7 +325,7 @@ export default class Spin extends Phaser.Scene {
             Options.result[1][1] === Options.result[0][2]) {
             if (this.scene.audioMusicName === 'btn_music.png') {
                 //play audio win
-                this.scene.audioWin.play();
+                this.scene.audioObject.audioWin.play();
             }
             // get money
             Options.lineArray.push(this.scene.add.sprite(Config.width / 2, Config.height / 2,
@@ -335,7 +334,7 @@ export default class Spin extends Phaser.Scene {
         } else {
             if (this.scene.audioMusicName === 'btn_music.png') {
                 //play audio lose
-                this.scene.audioLose.play();
+                this.scene.audioObject.audioLose.play();
             }
         }
     }
@@ -346,7 +345,7 @@ export default class Spin extends Phaser.Scene {
             Options.result[0][3] && Options.result[0][3] === Options.result[1][4]) {
             if (this.scene.audioMusicName === 'btn_music.png') {
                 //play audio win
-                this.scene.audioWin.play();
+                this.scene.audioObject.audioWin.play();
             }
             // get money
             Options.lineArray.push(this.scene.add.sprite(Config.width / 2, Config.height / 2,
@@ -357,7 +356,7 @@ export default class Spin extends Phaser.Scene {
             Options.result[0][3]) {
             if (this.scene.audioMusicName === 'btn_music.png') {
                 //play audio win
-                this.scene.audioWin.play();
+                this.scene.audioObject.audioWin.play();
             }
             // get money
             Options.lineArray.push(this.scene.add.sprite(Config.width / 2, Config.height / 2,
@@ -367,7 +366,7 @@ export default class Spin extends Phaser.Scene {
             Options.result[0][1] === Options.result[0][2]) {
             if (this.scene.audioMusicName === 'btn_music.png') {
                 //play audio win
-                this.scene.audioWin.play();
+                this.scene.audioObject.audioWin.play();
             }
             // get money
             Options.lineArray.push(this.scene.add.sprite(Config.width / 2, Config.height / 2,
@@ -376,7 +375,7 @@ export default class Spin extends Phaser.Scene {
         } else {
             if (this.scene.audioMusicName === 'btn_music.png') {
                 //play audio lose
-                this.scene.audioLose.play();
+                this.scene.audioObject.audioLose.play();
             }
         }
     }
@@ -387,7 +386,7 @@ export default class Spin extends Phaser.Scene {
             === Options.result[2][3] && Options.result[2][3] === Options.result[1][4]) {
             if (this.scene.audioMusicName === 'btn_music.png') {
                 //play audio win
-                this.scene.audioWin.play();
+                this.scene.audioObject.audioWin.play();
             }
             // get money
             Options.lineArray.push(this.scene.add.sprite(Config.width / 2, Config.height / 2,
@@ -398,7 +397,7 @@ export default class Spin extends Phaser.Scene {
             === Options.result[2][3]) {
             if (this.scene.audioMusicName === 'btn_music.png') {
                 //play audio win
-                this.scene.audioWin.play();
+                this.scene.audioObject.audioWin.play();
             }
             // get money
             Options.lineArray.push(this.scene.add.sprite(Config.width / 2, Config.height / 2,
@@ -408,7 +407,7 @@ export default class Spin extends Phaser.Scene {
             Options.result[2][1] === Options.result[2][2]) {
             if (this.scene.audioMusicName === 'btn_music.png') {
                 //play audio win
-                this.scene.audioWin.play();
+                this.scene.audioObject.audioWin.play();
             }
             // get money
             Options.lineArray.push(this.scene.add.sprite(Config.width / 2, Config.height / 2,
@@ -417,7 +416,7 @@ export default class Spin extends Phaser.Scene {
         } else {
             if (this.scene.audioMusicName === 'btn_music.png') {
                 //play audio lose
-                this.scene.audioLose.play();
+                this.scene.audioObject.audioLose.play();
             }
         }
     }
@@ -428,7 +427,7 @@ export default class Spin extends Phaser.Scene {
             Options.result[2][3] && Options.result[2][3] === Options.result[2][4]) {
             if (this.scene.audioMusicName === 'btn_music.png') {
                 //play audio win
-                this.scene.audioWin.play();
+                this.scene.audioObject.audioWin.play();
             }
             // get money
             Options.lineArray.push(this.scene.add.sprite(Config.width / 2, Config.height / 2,
@@ -439,7 +438,7 @@ export default class Spin extends Phaser.Scene {
             Options.result[2][3]) {
             if (this.scene.audioMusicName === 'btn_music.png') {
                 //play audio win
-                this.scene.audioWin.play();
+                this.scene.audioObject.audioWin.play();
             }
             // get money
             Options.lineArray.push(this.scene.add.sprite(Config.width / 2, Config.height / 2,
@@ -449,7 +448,7 @@ export default class Spin extends Phaser.Scene {
             Options.result[0][1] === Options.result[1][2]) {
             if (this.scene.audioMusicName === 'btn_music.png') {
                 //play audio win
-                this.scene.audioWin.play();
+                this.scene.audioObject.audioWin.play();
             }
             // get money
             Options.lineArray.push(this.scene.add.sprite(Config.width / 2, Config.height / 2,
@@ -458,7 +457,7 @@ export default class Spin extends Phaser.Scene {
         } else {
             if (this.scene.audioMusicName === 'btn_music.png') {
                 //play audio lose
-                this.scene.audioLose.play();
+                this.scene.audioObject.audioLose.play();
             }
         }
     }
@@ -469,7 +468,7 @@ export default class Spin extends Phaser.Scene {
             Options.result[0][3] && Options.result[0][3] === Options.result[0][4]) {
             if (this.scene.audioMusicName === 'btn_music.png') {
                 //play audio win
-                this.scene.audioWin.play();
+                this.scene.audioObject.audioWin.play();
             }
             // get money
             Options.lineArray.push(this.scene.add.sprite(Config.width / 2, Config.height / 2,
@@ -480,7 +479,7 @@ export default class Spin extends Phaser.Scene {
             Options.result[0][3]) {
             if (this.scene.audioMusicName === 'btn_music.png') {
                 //play audio win
-                this.scene.audioWin.play();
+                this.scene.audioObject.audioWin.play();
             }
             // get money
             Options.lineArray.push(this.scene.add.sprite(Config.width / 2, Config.height / 2,
@@ -490,7 +489,7 @@ export default class Spin extends Phaser.Scene {
             Options.result[2][1] === Options.result[1][2]) {
             if (this.scene.audioMusicName === 'btn_music.png') {
                 //play audio win
-                this.scene.audioWin.play();
+                this.scene.audioObject.audioWin.play();
             }
             // get money
             Options.lineArray.push(this.scene.add.sprite(Config.width / 2, Config.height / 2,
@@ -499,7 +498,7 @@ export default class Spin extends Phaser.Scene {
         } else {
             if (this.scene.audioMusicName === 'btn_music.png') {
                 //play audio lose
-                this.scene.audioLose.play();
+                this.scene.audioObject.audioLose.play();
             }
         }
     }
@@ -510,7 +509,7 @@ export default class Spin extends Phaser.Scene {
             Options.result[0][3] && Options.result[0][3] === Options.result[1][4]) {
             if (this.scene.audioMusicName === 'btn_music.png') {
                 //play audio win
-                this.scene.audioWin.play();
+                this.scene.audioObject.audioWin.play();
             }
             // get money
             Options.lineArray.push(this.scene.add.sprite(Config.width / 2, Config.height / 2,
@@ -521,7 +520,7 @@ export default class Spin extends Phaser.Scene {
             Options.result[0][3]) {
             if (this.scene.audioMusicName === 'btn_music.png') {
                 //play audio win
-                this.scene.audioWin.play();
+                this.scene.audioObject.audioWin.play();
             }
             // get money
             Options.lineArray.push(this.scene.add.sprite(Config.width / 2, Config.height / 2,
@@ -531,7 +530,7 @@ export default class Spin extends Phaser.Scene {
             Options.result[2][1] === Options.result[1][2]) {
             if (this.scene.audioMusicName === 'btn_music.png') {
                 //play audio win
-                this.scene.audioWin.play();
+                this.scene.audioObject.audioWin.play();
             }
             // get money
             Options.lineArray.push(this.scene.add.sprite(Config.width / 2, Config.height / 2,
@@ -540,7 +539,7 @@ export default class Spin extends Phaser.Scene {
         } else {
             if (this.scene.audioMusicName === 'btn_music.png') {
                 //play audio lose
-                this.scene.audioLose.play();
+                this.scene.audioObject.audioLose.play();
             }
         }
     }
@@ -657,7 +656,7 @@ export default class Spin extends Phaser.Scene {
         gameOptions.countFree++;
         //count free >= 5 
         if(gameOptions.countFree >= 5) {
-            this.classFreeSpin = new FreeSpin(this.scene);
+            this.classFreeSpin = new FreeSpin(this.scene, Key.FreeSpin);
         }
     }
 
@@ -689,13 +688,13 @@ export default class Spin extends Phaser.Scene {
             this.scene.txtWin = this.scene.add.text(width, Config.height - 130, 'WIN: ' + Options.moneyWin + ' $ ', Style.styleWin);
         }
         //save localStorage
-        this.scene.saveLocalStorage();
+        this.scene.baseSpin.saveLocalStorage();
     }
 
     bigWin() {
         if(this.scene.audioMusicName === 'btn_music.png') {
-            this.scene.musicDefault.stop();
-            this.scene.audioBigWin.play(); 
+            this.scene.audioObject.musicDefault.stop();
+            this.scene.audioObject.audioBigWin.play(); 
         }
         //add effect win
         this.youWin = this.scene.add.sprite(Config.width / 2, Config.height / 2, 'youwin', 'win.png').setInteractive();
@@ -730,8 +729,8 @@ export default class Spin extends Phaser.Scene {
                     this.timer.remove();
                     if(this.scene.audioMusicName === 'btn_music.png') {
                         //stop audio
-                        this.scene.audioBigWin.stop();
-                        this.scene.audioWin.stop();
+                        this.scene.audioObject.audioBigWin.stop();
+                        this.scene.audioObject.audioWin.stop();
                     }
                     //reset check click
                     Options.checkClick = false;
@@ -743,7 +742,7 @@ export default class Spin extends Phaser.Scene {
                             this.txtDollars.destroy();
                             if(this.scene.audioMusicName === 'btn_music.png') {
                                 //play audio default
-                                this.scene.musicDefault.play();
+                                this.scene.audioObject.musicDefault.play();
                             }
                         }
                     });
