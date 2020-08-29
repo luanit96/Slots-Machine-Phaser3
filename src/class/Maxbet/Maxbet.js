@@ -17,12 +17,12 @@ export default class Maxbet {
         this.txtCountMaxBet = this.scene.add.text(Config.width - 550, Config.height - 140, 'BET: ' + Options.coin * Options.line, Style.styleButton);
         //pointer down
         this.maxBet.on('pointerdown', () => {
-            if (!Options.checkClick) {
+            if (!Options.checkClick && Options.line * Options.coin
+                < 500 && Options.txtAutoSpin === 'AUTO') {
                 this.maxBet.setScale(0.9);
-                if(this.scene.audioSoundName === 'btn_sound.png') {
-                    //audio play
-                    this.scene.audioObject.audioButton.play();
-                }
+                //play audio button
+                this.scene.audioPlayButton();
+            
                 Options.line = 10;
                 this.scene.btnLine.txtCountLine.setText(Options.line);
                 Options.coin = 50;
@@ -33,4 +33,6 @@ export default class Maxbet {
         //pointer up
         this.maxBet.on('pointerup', () => this.maxBet.setScale(1));
     }
+
+    /*end function*/
 }

@@ -39,5 +39,11 @@ export default {
         color : '#ffffff',
         fontFamily : 'PT Serif'
     },
+    styleValueTable : {
+        fontSize : '25px',
+        color : '#640166',
+        fontFamily : 'Luckiest Guy'
+    },
+    fontSizeSpeed : 80,
     fontSize : 38
 };

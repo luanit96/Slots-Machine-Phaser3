@@ -21,6 +21,7 @@ export default class PreloadScene extends Phaser.Scene {
         this.load.atlas('line', 'images/lines/line.png', 'images/lines/line.json');
         this.load.atlas('sound', 'images/sound/sound.png','images/sound/sound.json');
         this.load.atlas('freepin', 'images/freeSpin/freePin.png','images/freeSpin/freePin.json');
+        this.load.atlas('autoSpin', 'images/autoSpin/auto.png','images/autoSpin/auto.json');
 
         //load audio
         this.load.audio('backgroundDefault', 'audio/background-default.mp3');
@@ -50,7 +51,7 @@ export default class PreloadScene extends Phaser.Scene {
         this.loadingText.setOrigin(0.5, 0.5);
         this.load.on('progress', (value) => {
             this.progressBar.clear();
-            this.progressBar.fillStyle(0xffffff, 1);
+            this.progressBar.fillStyle(0xff00ff, 1);
             this.progressBar.fillRect(Config.width / 2 - 450, Config.height / 2 - 80, 880 * value, 30);
             this.loadingText.setText(parseInt(value * 100) + '%');
         });
@@ -60,13 +61,19 @@ export default class PreloadScene extends Phaser.Scene {
         }
     }
 
+    /*end function*/
+
+    create() {
+        this.scene.start(Key.boot);
+    }
+
+    /*end function*/
+
     onComplete() {
         this.progressBar.destroy();
         this.progressBox.destroy();
         this.loadingText.destroy();
     }
-
-    create() {
-        this.scene.start(Key.boot);
-    }
+    
+    /*end function*/
 }

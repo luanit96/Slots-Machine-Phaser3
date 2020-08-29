@@ -23,4 +23,5 @@ export default class Audio {
             volume: 2
         });
     }
+    /*end function*/
 }

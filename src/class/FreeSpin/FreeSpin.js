@@ -8,19 +8,25 @@ export default class FreeSpin {
     constructor(scene, keyFreeSpin = Key.freeSpin) {
         this.game = scene;
         this.click = false;
+        this.pause();
         this.addSpin();
+    }
+
+    pause() {
+        //pause class autospin
+        this.game.scene.pause(Key.autoSpin);
     }
 
     addSpin() {
         //destroy sprite
-        this.game.baseSpin.bgSpin.destroy();
-        this.game.maxBet.maxBet.destroy();
-        this.game.coin.coin.destroy();
-        this.game.btnLine.btnLine.destroy();
-        this.game.info.info.destroy();
-        this.game.credits.credits.destroy();
-        this.game.btnMusic.destroy();
-        this.game.btnSound.destroy();
+        // this.game.baseSpin.bgSpin.destroy();
+        // this.game.maxBet.maxBet.destroy();
+        // this.game.coin.coin.destroy();
+        // this.game.btnLine.btnLine.destroy();
+        // this.game.info.info.destroy();
+        // this.game.credits.credits.destroy();
+        // this.game.btnMusic.destroy();
+        // this.game.btnSound.destroy();
         //stop audio win
         if(this.game.audioMusicName === 'btn_music.png') {
             this.game.audioObject.musicDefault.stop();
@@ -40,11 +46,13 @@ export default class FreeSpin {
         this.pin.on('pointerup', () => this.pin.setScale(1));
     }
 
+    /*end function*/
+
     spinWheel() {
         if(!this.click) {
-            if(this.game.audioSoundName === 'btn_sound.png') {
-                this.game.audioObject.audioButton.play();
-            }
+            //play audio button
+            //this.scene.audioPlayButton();
+            
             if(this.game.audioMusicName === 'btn_music.png') {
                 this.game.audioObject.audioReels.play();
             }
@@ -96,6 +104,7 @@ export default class FreeSpin {
                             if(this.game.audioMusicName === 'btn_music.png') {
                                 this.game.audioObject.audioWin.stop();
                             }
+                            //run class autoSpin
                             this.game.scene.start(Key.game);
                         },
                         callbackScope: this,
@@ -105,4 +114,6 @@ export default class FreeSpin {
             });
         }
     }
+
+    /*end function*/
 }

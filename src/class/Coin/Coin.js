@@ -16,25 +16,27 @@ export default class Coin {
         this.txtCoin.setDisplayCallback(this.scene.textCallback);
         this.txtCountCoin = this.scene.add.text(Config.width - 700, Config.height - 140, Options.coin, Style.styleButton);
         //pointer down
-        this.coin.on('pointerdown', () => {
-            if (!Options.checkClick) {
-                this.coin.setScale(0.9);
-                if(this.scene.audioSoundName === 'btn_sound.png') {
-                    //audio play
-                    this.scene.audioObject.audioButton.play();
-                }
-                if (Options.coin < 50) {
-                    Options.coin += 10;
-                    this.txtCountCoin.setText(Options.coin);
-                    this.scene.maxBet.txtCountMaxBet.setText('BET: ' + Options.coin * Options.line);
-                } else {
-                    Options.coin = 10;
-                    this.txtCountCoin.setText(Options.coin);
-                    this.scene.maxBet.txtCountMaxBet.setText('BET: ' + Options.coin * Options.line);
-                }
-            }
-        });
+        this.coin.on('pointerdown', () => this.buttonCoin());
         //pointer up
         this.coin.on('pointerup', () => this.coin.setScale(1));
+    }
+
+    /*end function*/
+
+    buttonCoin() {
+        if (!Options.checkClick && Options.txtAutoSpin === 'AUTO') {
+            this.coin.setScale(0.9);
+            //play audio button
+            this.scene.audioPlayButton();
+            if (Options.coin < 50) {
+                Options.coin += 10;
+                this.txtCountCoin.setText(Options.coin);
+                this.scene.maxBet.txtCountMaxBet.setText('BET: ' + Options.coin * Options.line);
+            } else {
+                Options.coin = 10;
+                this.txtCountCoin.setText(Options.coin);
+                this.scene.maxBet.txtCountMaxBet.setText('BET: ' + Options.coin * Options.line);
+            }
+        }
     }
 }

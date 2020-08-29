@@ -18,9 +18,10 @@ export default class BootScene extends Phaser.Scene {
         this.btn.on('pointerdown', () => {
             //stop audio background Default
             this.audioObject.musicBackgroundDefault.stop();
-            this.btn.setScale(0.5);
+            //play audio button
+            this.audioObject.audioButton.play();
             this.scene.start(Key.game);
         });
-        this.btn.on('pointerup', () => this.btn.setScale(0.9));
     }
+    /*end function*/
 }

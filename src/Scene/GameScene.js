@@ -12,6 +12,7 @@ import Coin from '../Class/Coin/Coin';
 import Line from '../Class/Line/Line';
 import Maxbet from '../Class/Maxbet/Maxbet';
 import BaseSpin from '../Class/Spin/BaseSpin';
+import AutoSpin from '../Class/Spin/AutoSpin';
 
 export default class GameScene extends Phaser.Scene {
     constructor() {
@@ -23,10 +24,12 @@ export default class GameScene extends Phaser.Scene {
         this.load.bitmapFont('txt_bitmap', 'text_slot_machine.png', 'text_slot_machine.xml');
     }
 
+    /*end function*/
+
     create() {
         //Class Audio
         this.audioObject = new Audio(this, Key.audio);
-        // bitmap
+        // bitmap text
         Options.hsv = Phaser.Display.Color.HSVColorWheel();
         //add bg image
         const bg = new Sprite(this, Config.width / 2, Config.height / 2, 'background', 'bg.jpg');
@@ -46,7 +49,7 @@ export default class GameScene extends Phaser.Scene {
         this.times = new Time(this, Key.time);
         //Class Credit
         this.credits = new Credit(this, Key.credit);
-        //add sound image
+        //Add sound image
         const musicName = localStorage.getItem('music') ? localStorage.getItem('music')
          : 'btn_music_off.png';
         const soundName = localStorage.getItem('sound') ? localStorage.getItem('sound')
@@ -64,9 +67,7 @@ export default class GameScene extends Phaser.Scene {
                     this.audioObject.audioWin.stop();
                 } else {
                     this.audioMusicName = 'btn_music.png';
-                    if(this.audioSoundName === 'btn_sound.png') {
-                        this.audioObject.audioButton.play();
-                    }
+                    this.audioPlayButton();
                     //audio play
                     this.audioObject.musicDefault.play();
                 }
@@ -110,9 +111,21 @@ export default class GameScene extends Phaser.Scene {
         this.maxBet = new Maxbet(this, Key.maxBet);
         //Class Info
         this.info = new Info(this, Key.info);
+        //Class AutoSpin
+        this.autoSpin = new AutoSpin(this, Key.autoSpin);
         //Class BaseSpin
         this.baseSpin = new BaseSpin(this, Key.baseSpin);
     }
+
+    /*end function*/
+
+    audioPlayButton() {
+        if(this.audioSoundName === 'btn_sound.png') {
+            this.audioObject.audioButton.play();
+        }
+    }
+
+    /*end function*/
 
     setTextX(value) {
         if(value >= 100000000) {
@@ -136,6 +149,8 @@ export default class GameScene extends Phaser.Scene {
         }
     }
 
+    /*end function*/
+
     textCallback(data) {
         data.tint.topLeft = Options.hsv[Math.floor(Options.i)].color;
         data.tint.topRight = Options.hsv[359 - Math.floor(Options.i)].color;
@@ -151,6 +166,7 @@ export default class GameScene extends Phaser.Scene {
     
         return data;
     }
+    /*end function*/
 
     update() { }
 }

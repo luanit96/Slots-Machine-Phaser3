@@ -1,6 +1,8 @@
 export default {
 	money: 100000,
 	txtSpin: 'SPIN',
+	txtAutoSpin: 'AUTO',
+	txtAuto : 5,
 	moneyWin: 0,
 	txtMaxBet: 'MAXBET',
 	coin: 10,

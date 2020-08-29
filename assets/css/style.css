@@ -1,0 +1,22 @@
+@font-face {
+    font-family: 'PT Serif';
+    src: url(../fonts/PTSerif-Regular.ttf);
+    font-weight: bold;
+}
+
+@font-face {
+    font-family: 'Luckiest Guy';
+    src: url(../fonts/LuckiestGuy-Regular.ttf);
+    font-weight: bold;
+}
+
+body {
+    background-color: #000000;
+    margin: 0;
+    padding: 0;
+}
+
+canvas {
+    display: block;
+    margin: 0 auto;
+}
