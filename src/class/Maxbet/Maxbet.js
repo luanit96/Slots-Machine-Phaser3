@@ -18,12 +18,12 @@ export default class Maxbet {
         //pointer down
         this.maxBet.on('pointerdown', () => {
             if (!Options.checkClick && Options.line * Options.coin
-                < 500 && Options.txtAutoSpin === 'AUTO') {
+                < 900 && Options.txtAutoSpin === 'AUTO') {
                 this.maxBet.setScale(0.9);
                 //play audio button
                 this.scene.audioPlayButton();
             
-                Options.line = 10;
+                Options.line = 18;
                 this.scene.btnLine.txtCountLine.setText(Options.line);
                 Options.coin = 50;
                 this.scene.coin.txtCountCoin.setText(Options.coin);

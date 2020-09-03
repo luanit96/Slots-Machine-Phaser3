@@ -23,7 +23,6 @@ export default class BaseSpin {
     /*end function*/
 
     playTweens() {
-        //console.log(Options.checkClick);
         if (!Options.checkClick && this.scene.valueMoney >=
             (Options.coin * Options.line) && Options.txtAutoSpin === 'AUTO') {
             //detroy line array

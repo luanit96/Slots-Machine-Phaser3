@@ -20,8 +20,6 @@ export default class Spin {
         this.scene.maxBet.maxBet.clearTint();
         this.scene.coin.coin.clearTint();
         this.scene.btnLine.btnLine.clearTint();
-        //this.scene.info.info.clearTint();
-        //this.scene.credits.credits.clearTint();
         this.scene.btnMusic.clearTint();
         this.scene.btnSound.clearTint();
     }
@@ -43,102 +41,74 @@ export default class Spin {
             s4 = this.scene.autoSpin.tweens.columnTween4.targets[0];
             s5 = this.scene.autoSpin.tweens.columnTween5.targets[0];
         }
-        Options.result.push([s1.list[3].frame.name, s2.list[3].frame.name, s3.list[3].
-            frame.name, s4.list[3].frame.name, s5.list[3].frame.name], [s1.list[2].frame.name, s2.list[2].frame.name,
-            s3.list[2].frame.name, s4.list[2].frame.name, s5.list[2].frame.name], [s1.list[1].frame.name, s2.list[1].frame.name,
-            s3.list[1].frame.name, s4.list[1].frame.name, s5.list[1].frame.name]);
-        this.getvalues();
+
+        Options.result.push([s1.list[3].frame.name, s1.list[2].frame.name,s1.list[1].frame.name],
+        [s2.list[3].frame.name, s2.list[2].frame.name,s2.list[1].frame.name],
+        [s3.list[3].frame.name, s3.list[2].frame.name,s3.list[1].frame.name],
+        [s4.list[3].frame.name, s4.list[2].frame.name,s4.list[1].frame.name],
+        [s5.list[3].frame.name, s5.list[2].frame.name,s5.list[1].frame.name]);
+        this.getvaluesResults();
     }
 
     /*end function*/
 
-    getvalues() {
-        switch (Options.line) {
-            case 1:
-                this.getLine1();
-                this.resetOptions();
-                break;
-            case 2:
-                this.getLine1();
-                this.getLine2();
-                this.resetOptions();
-                break;
-            case 3:
-                this.getLine1();
-                this.getLine2();
-                this.getLine3();
-                this.resetOptions();
-                break;
-            case 4:
-                this.getLine1();
-                this.getLine2();
-                this.getLine3();
-                this.getLine4();
-                this.resetOptions();
-                break;
-            case 5:
-                this.getLine1();
-                this.getLine2();
-                this.getLine3();
-                this.getLine4();
-                this.getLine5();
-                this.resetOptions();
-                break;
-            case 6:
-                this.getLine1();
-                this.getLine2();
-                this.getLine3();
-                this.getLine4();
-                this.getLine5();
-                this.getLine6();
-                this.resetOptions();
-                break;
-            case 7:
-                this.getLine1();
-                this.getLine2();
-                this.getLine3();
-                this.getLine4();
-                this.getLine5();
-                this.getLine6();
-                this.getLine7();
-                this.resetOptions();
-                break;
-            case 8:
-                this.getLine1();
-                this.getLine2();
-                this.getLine3();
-                this.getLine4();
-                this.getLine5();
-                this.getLine6();
-                this.getLine7();
-                this.getLine8();
-                this.resetOptions();
-                break;
-            case 9:
-                this.getLine1();
-                this.getLine2();
-                this.getLine3();
-                this.getLine4();
-                this.getLine5();
-                this.getLine6();
-                this.getLine7();
-                this.getLine8();
-                this.getLine9();
-                this.resetOptions();
-                break;
-            default:
-                this.getLine1();
-                this.getLine2();
-                this.getLine3();
-                this.getLine4();
-                this.getLine5();
-                this.getLine6();
-                this.getLine7();
-                this.getLine8();
-                this.getLine9();
-                this.getLine10();
-                this.resetOptions();
+    getvaluesResults() {
+        for(let lineIndx = 0; lineIndx < Options.line; 
+            lineIndx ++) {
+            let streak = 0;
+            let currentkind = null;
+            for(let coordIndx = 0; coordIndx < Options.payLines[lineIndx].
+                length; coordIndx ++) {
+                let coords = Options.payLines[lineIndx][coordIndx];
+                let symbolAtCoords = Options.result[coords[0]][coords[1]];
+                if(coordIndx === 0) {
+                    currentkind = symbolAtCoords;
+                    streak = 1;
+                } else {
+                    if(symbolAtCoords != currentkind) {
+                        break;
+                    }
+                    streak += 1;
+                }
+            }
+
+            if(streak >= 3) {
+                Options.winningLines.push(lineIndx);
+                //audio win
+                this.audioPlayWin();
+                //function math money
+                this.mathMoney(currentkind, streak);
+            }
+            //audio lose
+            this.audioPlayLose();
         }
+        //get line array
+        this.getLineArray(Options.winningLines); 
+        //reset Options
+        this.resetOptions();
+    }
+
+    /*end function*/
+
+    getLineArray(lineArr) {
+        if(!lineArr.length) {
+            return;
+        }
+        for(let i= 0; i < lineArr.length; i++) {
+            Options.lineArray.push(new Sprite(this.scene, Config.width / 2, 
+            Config.height / 2, 'line', 'payline_' + lineArr[i] +'.png'));
+        }
+    }
+
+    /*end function*/
+
+    mathMoney(symbolName, streak) {
+        if(streak === 3)
+            this.symbolValue(symbolName, 0); 
+        else if(streak === 4) 
+            this.symbolValue(symbolName, 1);
+        else 
+            this.symbolValue(symbolName, 2);
     }
 
     /*end function*/
@@ -148,358 +118,44 @@ export default class Spin {
         Options.win = 0;
         Options.moneyWin = 0;
         Options.result = [];
+        Options.winningLines = [];
     }
 
     /*end function*/
 
-    getLine1() {
-        if (Options.result[1][0] === Options.result[1][1] &&
-            Options.result[1][1] === Options.result[1][2] &&
-            Options.result[1][2] === Options.result[1][3] &&
-            Options.result[1][3] === Options.result[1][4]) {
-            //play audio
-            this.audioPlayWin();
-            //get money
-            Options.lineArray.push(new Sprite(this.scene, Config.width / 2, Config.height / 2,
-                'line', 'payline_1.png'));
-            this.threeMoney(Options.result[1][0]);
-        } else if (Options.result[1][0] === Options.result[1][1] &&
-            Options.result[1][1] === Options.result[1][2] && Options.result[1][2]
-            === Options.result[1][3]) {
-            //play audio
-            this.audioPlayWin();
-            //get money
-            Options.lineArray.push(new Sprite(this.scene, Config.width / 2, Config.height / 2,
-                'line', 'payline_1.png'));
-            this.twoMoney(Options.result[1][0]);
-        } else if (Options.result[1][0] === Options.result[1][1] && Options.result[1][1]
-            === Options.result[1][2]) {
-            //play audio
-            this.audioPlayWin();
-            //get money 
-            Options.lineArray.push(new Sprite(this.scene, Config.width / 2, Config.height / 2,
-                'line', 'payline_1.png'));
-            this.oneMoney(Options.result[1][0]);
-        } else {
-            //play audio
-            this.audioPlayLose();
-        }
-    }
-
-    /*end function*/
-
-    getLine2() {
-        if (Options.result[0][0] === Options.result[0][1] &&
-            Options.result[0][1] === Options.result[0][2] && Options.result[0][2]
-            === Options.result[0][3] && Options.result[0][3] === Options.result[0][4]) {
-            //play audio
-            this.audioPlayWin();
-            // get money
-            Options.lineArray.push(new Sprite(this.scene, Config.width / 2, Config.height / 2,
-                'line', 'payline_2.png'));
-            this.threeMoney(Options.result[0][0]);
-        } else if (Options.result[0][0] === Options.result[0][1] &&
-            Options.result[0][1] === Options.result[0][2] && 
-            Options.result[0][2] === Options.result[0][3]) {
-            //play audio
-            this.audioPlayWin();
-            // get money
-            Options.lineArray.push(new Sprite(this.scene, Config.width / 2, Config.height / 2,
-                'line', 'payline_2.png'));
-            this.twoMoney(Options.result[0][0]);
-        } else if (Options.result[0][0] === Options.result[0][1] && Options.result[0][1]
-            === Options.result[0][2]) {
-            //play audio
-            this.audioPlayWin();
-            // get money
-            Options.lineArray.push(new Sprite(this.scene, Config.width / 2,
-                Config.height / 2,
-                'line', 'payline_2.png'));
-            this.oneMoney(Options.result[0][0]);
-        } else {
-            //play audio
-            this.audioPlayLose();
-        }
-    }
-
-    /*end function*/
-
-    getLine3() {
-        if (Options.result[2][0] === Options.result[2][1] &&
-            Options.result[2][1] === Options.result[2][2] && Options.result[2][2]
-            === Options.result[2][3] && Options.result[2][3] === Options.result[2][4]) {
-            //play audio
-            this.audioPlayWin();
-            //get money
-            Options.lineArray.push(new Sprite(this.scene, Config.width / 2, Config.height / 2,
-                'line', 'payline_3.png'));
-            this.threeMoney(Options.result[2][0]);
-        } else if (Options.result[2][0] === Options.result[2][1] &&
-            Options.result[2][1] === Options.result[2][2] && Options.result[2][2]
-            === Options.result[2][3]) {
-            //play audio
-            this.audioPlayWin();
-            //get money
-            Options.lineArray.push(new Sprite(this.scene, Config.width / 2, Config.height / 2,
-                'line', 'payline_3.png'));
-            this.twoMoney(Options.result[2][0]);
-        } else if (Options.result[2][0] === Options.result[2][1] && Options.result[2][1]
-            === Options.result[2][2]) {
-            //play audio
-            this.audioPlayWin();
-            //get money
-            Options.lineArray.push(new Sprite(this.scene, Config.width / 2, Config.height / 2,
-                'line', 'payline_3.png'));
-            this.oneMoney(Options.result[2][0]);
-        } else {
-            //play audio
-            this.audioPlayLose();
-        }
-    }
-
-    /*end function*/
-
-    getLine4() {
-        if (Options.result[0][0] === Options.result[1][1] &&
-            Options.result[1][1] === Options.result[2][2] && Options.result[2][2] ===
-            Options.result[1][3] && Options.result[1][3] === Options.result[0][4]) {
-            //play audio
-            this.audioPlayWin();
-            // get money
-            Options.lineArray.push(new Sprite(this.scene, Config.width / 2, Config.height / 2,
-                'line', 'payline_4.png'));
-            this.threeMoney(Options.result[0][0]);
-        } else if (Options.result[0][0] === Options.result[1][1] &&
-            Options.result[1][1] === Options.result[2][2] && Options.result[2][2] ===
-            Options.result[1][3]) {
-            //play audio
-            this.audioPlayWin();
-            // get money
-            Options.lineArray.push(new Sprite(this.scene, Config.width / 2, Config.height / 2,
-                'line', 'payline_4.png'));
-            this.twoMoney(Options.result[0][0]);
-        } else if (Options.result[0][0] === Options.result[1][1] &&
-            Options.result[1][1] === Options.result[2][2]) {
-            //play audio
-            this.audioPlayWin();
-            // get money
-            Options.lineArray.push(new Sprite(this.scene, Config.width / 2, Config.height / 2,
-                'line', 'payline_4.png'));
-            this.oneMoney(Options.result[0][0]);
-        } else {
-            //play audio
-            this.audioPlayLose();
-        }
-    }
-
-    /*end function*/
-
-    getLine5() {
-        if (Options.result[2][0] === Options.result[1][1] &&
-            Options.result[1][1] === Options.result[0][2] &&
-            Options.result[0][2] === Options.result[1][3] && Options.result[1][3]
-            === Options.result[2][4]) {
-            //play audio
-            this.audioPlayWin();
-            // get money
-            Options.lineArray.push(new Sprite(this.scene, Config.width / 2, Config.height / 2,
-                'line', 'payline_5.png'));
-            this.threeMoney(Options.result[2][0]);
-        } else if (Options.result[2][0] === Options.result[1][1] &&
-            Options.result[1][1] === Options.result[0][2] &&
-            Options.result[0][2] === Options.result[1][3]) {
-            //play audio
-            this.audioPlayWin();
-            // get money
-            Options.lineArray.push(new Sprite(this.scene,Config.width / 2, Config.height / 2,
-                'line', 'payline_5.png'));
-            this.twoMoney(Options.result[2][0]);
-        } else if (Options.result[2][0] === Options.result[1][1] &&
-            Options.result[1][1] === Options.result[0][2]) {
-            //play audio
-            this.audioPlayWin();
-            // get money
-            Options.lineArray.push(new Sprite(this.scene, Config.width / 2, Config.height / 2,
-                'line', 'payline_5.png'));
-            this.oneMoney(Options.result[2][0]);
-        } else {
-            //play audio
-            this.audioPlayLose();
-        }
-    }
-
-    /*end function*/
-
-    getLine6() {
-        if (Options.result[1][0] === Options.result[0][1] &&
-            Options.result[0][1] === Options.result[0][2] && Options.result[0][2] ===
-            Options.result[0][3] && Options.result[0][3] === Options.result[1][4]) {
-            //play audio
-            this.audioPlayWin();
-            // get money
-            Options.lineArray.push(new Sprite(this.scene, Config.width / 2, Config.height / 2,
-                'line', 'payline_6.png'));
-            this.threeMoney(Options.result[1][0]);
-        } else if (Options.result[1][0] === Options.result[0][1] &&
-            Options.result[0][1] === Options.result[0][2] && Options.result[0][2] ===
-            Options.result[0][3]) {
-            //play audio
-            this.audioPlayWin();
-            // get money
-            Options.lineArray.push(new Sprite(this.scene, Config.width / 2, Config.height / 2,
-                'line', 'payline_6.png'));
-            this.twoMoney(Options.result[1][0]);
-        } else if (Options.result[1][0] === Options.result[0][1] &&
-            Options.result[0][1] === Options.result[0][2]) {
-            //play audio
-            this.audioPlayWin();
-            // get money
-            Options.lineArray.push(new Sprite(this.scene, Config.width / 2, Config.height / 2,
-                'line', 'payline_6.png'));
-            this.oneMoney(Options.result[1][0]);
-        } else {
-           //play audio
-           this.audioPlayLose();
-        }
-    }
-
-    /*end function*/
-
-    getLine7() {
-        if (Options.result[1][0] === Options.result[2][1] &&
-            Options.result[2][1] === Options.result[2][2] && Options.result[2][2]
-            === Options.result[2][3] && Options.result[2][3] === Options.result[1][4]) {
-           //play audio
-           this.audioPlayWin();
-            // get money
-            Options.lineArray.push(new Sprite(this.scene, Config.width / 2, Config.height / 2,
-                'line', 'payline_7.png'));
-            this.threeMoney(Options.result[1][0]);
-        } else if (Options.result[1][0] === Options.result[2][1] &&
-            Options.result[2][1] === Options.result[2][2] && Options.result[2][2]
-            === Options.result[2][3]) {
-            //play audio
-            this.audioPlayWin();
-            // get money
-            Options.lineArray.push(new Sprite(this.scene, Config.width / 2, Config.height / 2,
-                'line', 'payline_7.png'));
-            this.twoMoney(Options.result[1][0]);
-        } else if (Options.result[1][0] === Options.result[2][1] &&
-            Options.result[2][1] === Options.result[2][2]) {
-            //play audio
-            this.audioPlayWin();
-            // get money
-            Options.lineArray.push(new Sprite(this.scene, Config.width / 2, Config.height / 2,
-                'line', 'payline_7.png'));
-            this.oneMoney(Options.result[1][0]);
-        } else {
-            //play audio
-            this.audioPlayLose();
-        }
-    }
-
-    /*end function*/
-
-    getLine8() {
-        if (Options.result[0][0] === Options.result[0][1] &&
-            Options.result[0][1] === Options.result[1][2] && Options.result[1][2] ===
-            Options.result[2][3] && Options.result[2][3] === Options.result[2][4]) {
-            //play audio
-            this.audioPlayWin();
-            // get money
-            Options.lineArray.push(new Sprite(this.scene, Config.width / 2, Config.height / 2,
-                'line', 'payline_8.png'));
-            this.threeMoney(Options.result[0][0]);
-        } else if (Options.result[0][0] === Options.result[0][1] &&
-            Options.result[0][1] === Options.result[1][2] && Options.result[1][2] ===
-            Options.result[2][3]) {
-            //play audio
-            this.audioPlayWin();
-            // get money
-            Options.lineArray.push(new Sprite(this.scene, Config.width / 2, Config.height / 2,
-                'line', 'payline_8.png'));
-            this.twoMoney(Options.result[0][0]);
-        } else if (Options.result[0][0] === Options.result[0][1] &&
-            Options.result[0][1] === Options.result[1][2]) {
-            //play audio
-            this.audioPlayWin();
-            // get money
-            Options.lineArray.push(new Sprite(this.scene, Config.width / 2, Config.height / 2,
-                'line', 'payline_8.png'));
-            this.oneMoney(Options.result[0][0]);
-        } else {
-           //play audio
-           this.audioPlayLose();
-        }
-    }
-
-    /*end function*/
-
-    getLine9() {
-        if (Options.result[2][0] === Options.result[2][1] &&
-            Options.result[2][1] === Options.result[1][2] && Options.result[1][2] ===
-            Options.result[0][3] && Options.result[0][3] === Options.result[0][4]) {
-            //play audio
-            this.audioPlayWin();
-            // get money
-            Options.lineArray.push(new Sprite(this.scene, Config.width / 2, Config.height / 2,
-                'line', 'payline_9.png'));
-            this.threeMoney(Options.result[2][0]);
-        } else if (Options.result[2][0] === Options.result[2][1] &&
-            Options.result[2][1] === Options.result[1][2] && Options.result[1][2] ===
-            Options.result[0][3]) {
-            //play audio
-            this.audioPlayWin();
-            // get money
-            Options.lineArray.push(new Sprite(this.scene, Config.width / 2, Config.height / 2,
-                'line', 'payline_9.png'));
-            this.twoMoney(Options.result[2][0]);
-        } else if (Options.result[2][0] === Options.result[2][1] &&
-            Options.result[2][1] === Options.result[1][2]) {
-            //play audio
-            this.audioPlayWin();
-            // get money
-            Options.lineArray.push(new Sprite(this.scene, Config.width / 2, Config.height / 2,
-                'line', 'payline_9.png'));
-            this.oneMoney(Options.result[2][0]);
-        } else {
-            //play audio
-            this.audioPlayLose();
-        }
-    }
-
-    /*end function*/
-
-    getLine10() {
-        if (Options.result[1][0] === Options.result[2][1] &&
-            Options.result[2][1] === Options.result[1][2] && Options.result[1][2] ===
-            Options.result[0][3] && Options.result[0][3] === Options.result[1][4]) {
-            //play audio
-            this.audioPlayWin();
-            // get money
-            Options.lineArray.push(new Sprite(this.scene, Config.width / 2, Config.height / 2,
-                'line', 'payline_10.png'));
-            this.threeMoney(Options.result[1][0]);
-        } else if (Options.result[1][0] === Options.result[2][1] &&
-            Options.result[2][1] === Options.result[1][2] && Options.result[1][2] ===
-            Options.result[0][3]) {
-            //play audio
-            this.audioPlayWin();
-            // get money
-            Options.lineArray.push(new Sprite(this.scene, Config.width / 2, Config.height / 2,
-                'line', 'payline_10.png'));
-            this.twoMoney(Options.result[1][0]);
-        } else if (Options.result[1][0] === Options.result[2][1] &&
-            Options.result[2][1] === Options.result[1][2]) {
-            //play audio
-            this.audioPlayWin();
-            //get money
-            Options.lineArray.push(new Sprite(this.scene, Config.width / 2, Config.height / 2,
-                'line', 'payline_10.png'));
-            this.oneMoney(Options.result[1][0]);
-        } else {
-            this.audioPlayLose();
-        }
+    symbolValue(symbolName, index) {
+        switch(symbolName) {
+            case 'symbols_0.png':
+                this.getMoney(Options.payvalues[0][index]);
+                break;
+            case 'symbols_1.png':
+                this.getMoney(Options.payvalues[1][index]);
+                break;
+            case 'symbols_2.png':
+                this.getMoney(Options.payvalues[2][index]);
+                break;
+            case 'symbols_3.png':
+                this.getMoney(Options.payvalues[3][index]);
+                break;
+            case 'symbols_4.png':
+                this.getMoney(Options.payvalues[4][index]);
+                break;
+            case 'symbols_5.png':
+                this.getMoney(Options.payvalues[5][index]);
+                break;
+            case 'symbols_6.png':
+                this.getMoney(Options.payvalues[6][index]);
+                break;
+            case 'symbols_7.png':
+                this.getMoney(Options.payvalues[7][index]);
+                break;
+            case 'symbols_8.png':
+                this.getMoney(Options.payvalues[8][index]);
+                break;
+            default:
+                this.getMoney(Options.payvalues[9][index]);
+                break;
+        } 
     }
 
     /*end function*/
@@ -517,115 +173,6 @@ export default class Spin {
         if (this.scene.audioMusicName === 'btn_music.png') {
             //play audio lose
             this.scene.audioObject.audioLose.play();
-        }
-    }
-
-    /*end function*/
-
-    //get money
-    oneMoney(value) {
-        switch (value) {
-            case 'symbols_0.png':
-                this.getMoney(Options.payvalues[0][0]);
-                break;
-            case 'symbols_1.png':
-                this.getMoney(Options.payvalues[1][0]);
-                break;
-            case 'symbols_2.png':
-                this.getMoney(Options.payvalues[2][0]);
-                break;
-            case 'symbols_3.png':
-                this.getMoney(Options.payvalues[3][0]);
-                break;
-            case 'symbols_4.png':
-                this.getMoney(Options.payvalues[4][0]);
-                break;
-            case 'symbols_5.png':
-                this.getMoney(Options.payvalues[5][0]);
-                break;
-            case 'symbols_6.png':
-                this.getMoney(Options.payvalues[6][0]);
-                break;
-            case 'symbols_7.png':
-                this.getMoney(Options.payvalues[7][0]);
-                break;
-            case 'symbols_8.png':
-                this.getMoney(Options.payvalues[8][0]);
-                break;
-            default:
-                this.getMoney(Options.payvalues[9][0]);
-        } 
-    }
-
-    /*end function*/
-
-    twoMoney(value) {
-        switch (value) {
-            case 'symbols_0.png':
-                this.getMoney(Options.payvalues[0][1]);
-                break;
-            case 'symbols_1.png':
-                this.getMoney(Options.payvalues[1][1]);
-                break;
-            case 'symbols_2.png':
-                this.getMoney(Options.payvalues[2][1]);
-                break;
-            case 'symbols_3.png':
-                this.getMoney(Options.payvalues[3][1]);
-                break;
-            case 'symbols_4.png':
-                this.getMoney(Options.payvalues[4][0]);
-                break;
-            case 'symbols_5.png':
-                this.getMoney(Options.payvalues[5][1]);
-                break;
-            case 'symbols_6.png':
-                this.getMoney(Options.payvalues[6][1]);
-                break;
-            case 'symbols_7.png':
-                this.getMoney(Options.payvalues[7][1]);
-                break;
-            case 'symbols_8.png':
-                this.getMoney(Options.payvalues[8][1]);
-                break;
-            default:
-                this.getMoney(Options.payvalues[9][1]);
-        }
-    }
-
-    /*end function*/
-
-    threeMoney(value) {
-        switch(value) {
-            case 'symbols_0.png':
-                this.getMoney(Options.payvalues[0][2]);
-                break;
-            case 'symbols_1.png':
-                this.getMoney(Options.payvalues[1][2]);
-                break;
-            case 'symbols_2.png':
-                this.getMoney(Options.payvalues[2][2]);
-                break;
-            case 'symbols_3.png':
-                this.getMoney(Options.payvalues[3][2]);
-                break;
-            case 'symbols_4.png':
-                this.getMoney(Options.payvalues[4][2]);
-                break;
-            case 'symbols_5.png':
-                this.getMoney(Options.payvalues[5][2]);
-                break;
-            case 'symbols_6.png':
-                this.getMoney(Options.payvalues[6][2]);
-                break;
-            case 'symbols_7.png':
-                this.getMoney(Options.payvalues[7][2]);
-                break;
-            case 'symbols_8.png':
-                this.getMoney(Options.payvalues[8][2]);
-                break;
-            default:
-                this.getMoney(Options.payvalues[9][2]);
         }
     }
 
@@ -741,6 +288,7 @@ export default class Spin {
             loop: true
         });
     }
+
     /*end function */
 
     setTextX(value) {
@@ -761,4 +309,5 @@ export default class Spin {
             this.txtDollars.x = 710;
         }
     }
+     /*end function*/
 }

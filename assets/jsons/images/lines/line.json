@@ -4,368 +4,11 @@
 			"image": "line.png",
 			"format": "RGBA8888",
 			"size": {
-				"w": 2047,
-				"h": 1616
+				"w": 1492,
+				"h": 2023
 			},
 			"scale": 1,
 			"frames": [
-				{
-					"filename": "payline_18.png",
-					"rotated": false,
-					"trimmed": true,
-					"sourceSize": {
-						"w": 1500,
-						"h": 640
-					},
-					"spriteSourceSize": {
-						"x": 378,
-						"y": 112,
-						"w": 744,
-						"h": 371
-					},
-					"frame": {
-						"x": 1,
-						"y": 1,
-						"w": 744,
-						"h": 371
-					}
-				},
-				{
-					"filename": "payline_19.png",
-					"rotated": false,
-					"trimmed": true,
-					"sourceSize": {
-						"w": 1500,
-						"h": 640
-					},
-					"spriteSourceSize": {
-						"x": 378,
-						"y": 106,
-						"w": 744,
-						"h": 371
-					},
-					"frame": {
-						"x": 1,
-						"y": 374,
-						"w": 744,
-						"h": 371
-					}
-				},
-				{
-					"filename": "payline_4.png",
-					"rotated": false,
-					"trimmed": true,
-					"sourceSize": {
-						"w": 1500,
-						"h": 640
-					},
-					"spriteSourceSize": {
-						"x": 378,
-						"y": 98,
-						"w": 744,
-						"h": 346
-					},
-					"frame": {
-						"x": 747,
-						"y": 1,
-						"w": 744,
-						"h": 346
-					}
-				},
-				{
-					"filename": "payline_5.png",
-					"rotated": false,
-					"trimmed": true,
-					"sourceSize": {
-						"w": 1500,
-						"h": 640
-					},
-					"spriteSourceSize": {
-						"x": 378,
-						"y": 150,
-						"w": 744,
-						"h": 346
-					},
-					"frame": {
-						"x": 1,
-						"y": 747,
-						"w": 744,
-						"h": 346
-					}
-				},
-				{
-					"filename": "payline_8.png",
-					"rotated": false,
-					"trimmed": true,
-					"sourceSize": {
-						"w": 1500,
-						"h": 640
-					},
-					"spriteSourceSize": {
-						"x": 378,
-						"y": 162,
-						"w": 744,
-						"h": 332
-					},
-					"frame": {
-						"x": 747,
-						"y": 349,
-						"w": 744,
-						"h": 332
-					}
-				},
-				{
-					"filename": "payline_9.png",
-					"rotated": false,
-					"trimmed": true,
-					"sourceSize": {
-						"w": 1500,
-						"h": 640
-					},
-					"spriteSourceSize": {
-						"x": 378,
-						"y": 94,
-						"w": 744,
-						"h": 332
-					},
-					"frame": {
-						"x": 1,
-						"y": 1095,
-						"w": 744,
-						"h": 332
-					}
-				},
-				{
-					"filename": "payline_10.png",
-					"rotated": false,
-					"trimmed": true,
-					"sourceSize": {
-						"w": 1500,
-						"h": 640
-					},
-					"spriteSourceSize": {
-						"x": 378,
-						"y": 158,
-						"w": 744,
-						"h": 286
-					},
-					"frame": {
-						"x": 747,
-						"y": 683,
-						"w": 744,
-						"h": 286
-					}
-				},
-				{
-					"filename": "payline_11.png",
-					"rotated": true,
-					"trimmed": true,
-					"sourceSize": {
-						"w": 1500,
-						"h": 640
-					},
-					"spriteSourceSize": {
-						"x": 378,
-						"y": 175,
-						"w": 744,
-						"h": 286
-					},
-					"frame": {
-						"x": 1493,
-						"y": 1,
-						"w": 744,
-						"h": 286
-					}
-				},
-				{
-					"filename": "payline_20.png",
-					"rotated": true,
-					"trimmed": true,
-					"sourceSize": {
-						"w": 1500,
-						"h": 640
-					},
-					"spriteSourceSize": {
-						"x": 378,
-						"y": 181,
-						"w": 744,
-						"h": 265
-					},
-					"frame": {
-						"x": 1781,
-						"y": 1,
-						"w": 744,
-						"h": 265
-					}
-				},
-				{
-					"filename": "payline_14.png",
-					"rotated": false,
-					"trimmed": true,
-					"sourceSize": {
-						"w": 1500,
-						"h": 640
-					},
-					"spriteSourceSize": {
-						"x": 378,
-						"y": 90,
-						"w": 744,
-						"h": 196
-					},
-					"frame": {
-						"x": 747,
-						"y": 971,
-						"w": 744,
-						"h": 196
-					}
-				},
-				{
-					"filename": "payline_15.png",
-					"rotated": false,
-					"trimmed": true,
-					"sourceSize": {
-						"w": 1500,
-						"h": 640
-					},
-					"spriteSourceSize": {
-						"x": 378,
-						"y": 305,
-						"w": 744,
-						"h": 196
-					},
-					"frame": {
-						"x": 747,
-						"y": 1169,
-						"w": 744,
-						"h": 196
-					}
-				},
-				{
-					"filename": "payline_6.png",
-					"rotated": false,
-					"trimmed": true,
-					"sourceSize": {
-						"w": 1500,
-						"h": 640
-					},
-					"spriteSourceSize": {
-						"x": 378,
-						"y": 100,
-						"w": 744,
-						"h": 186
-					},
-					"frame": {
-						"x": 1,
-						"y": 1429,
-						"w": 744,
-						"h": 186
-					}
-				},
-				{
-					"filename": "payline_7.png",
-					"rotated": false,
-					"trimmed": true,
-					"sourceSize": {
-						"w": 1500,
-						"h": 640
-					},
-					"spriteSourceSize": {
-						"x": 378,
-						"y": 303,
-						"w": 744,
-						"h": 186
-					},
-					"frame": {
-						"x": 747,
-						"y": 1367,
-						"w": 744,
-						"h": 186
-					}
-				},
-				{
-					"filename": "payline_13.png",
-					"rotated": true,
-					"trimmed": true,
-					"sourceSize": {
-						"w": 1500,
-						"h": 640
-					},
-					"spriteSourceSize": {
-						"x": 378,
-						"y": 288,
-						"w": 744,
-						"h": 157
-					},
-					"frame": {
-						"x": 1493,
-						"y": 747,
-						"w": 744,
-						"h": 157
-					}
-				},
-				{
-					"filename": "payline_12.png",
-					"rotated": true,
-					"trimmed": true,
-					"sourceSize": {
-						"w": 1500,
-						"h": 640
-					},
-					"spriteSourceSize": {
-						"x": 378,
-						"y": 127,
-						"w": 744,
-						"h": 156
-					},
-					"frame": {
-						"x": 1652,
-						"y": 747,
-						"w": 744,
-						"h": 156
-					}
-				},
-				{
-					"filename": "payline_17.png",
-					"rotated": true,
-					"trimmed": true,
-					"sourceSize": {
-						"w": 1500,
-						"h": 640
-					},
-					"spriteSourceSize": {
-						"x": 378,
-						"y": 329,
-						"w": 744,
-						"h": 117
-					},
-					"frame": {
-						"x": 1810,
-						"y": 747,
-						"w": 744,
-						"h": 117
-					}
-				},
-				{
-					"filename": "payline_16.png",
-					"rotated": true,
-					"trimmed": true,
-					"sourceSize": {
-						"w": 1500,
-						"h": 640
-					},
-					"spriteSourceSize": {
-						"x": 378,
-						"y": 178,
-						"w": 744,
-						"h": 116
-					},
-					"frame": {
-						"x": 1929,
-						"y": 747,
-						"w": 744,
-						"h": 116
-					}
-				},
 				{
 					"filename": "payline_1.png",
 					"rotated": false,
@@ -376,19 +19,19 @@
 					},
 					"spriteSourceSize": {
 						"x": 378,
-						"y": 316,
+						"y": 142,
 						"w": 744,
-						"h": 16
+						"h": 15
 					},
 					"frame": {
-						"x": 747,
-						"y": 1555,
+						"x": 1,
+						"y": 1,
 						"w": 744,
-						"h": 16
+						"h": 15
 					}
 				},
 				{
-					"filename": "payline_3.png",
+					"filename": "payline_2.png",
 					"rotated": false,
 					"trimmed": true,
 					"sourceSize": {
@@ -403,13 +46,13 @@
 					},
 					"frame": {
 						"x": 747,
-						"y": 1573,
+						"y": 1,
 						"w": 744,
 						"h": 16
 					}
 				},
 				{
-					"filename": "payline_2.png",
+					"filename": "payline_0.png",
 					"rotated": false,
 					"trimmed": true,
 					"sourceSize": {
@@ -418,15 +61,330 @@
 					},
 					"spriteSourceSize": {
 						"x": 378,
-						"y": 142,
+						"y": 316,
 						"w": 744,
-						"h": 15
+						"h": 16
+					},
+					"frame": {
+						"x": 1,
+						"y": 19,
+						"w": 744,
+						"h": 16
+					}
+				},
+				{
+					"filename": "payline_15.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 1500,
+						"h": 640
+					},
+					"spriteSourceSize": {
+						"x": 378,
+						"y": 178,
+						"w": 744,
+						"h": 116
 					},
 					"frame": {
 						"x": 747,
-						"y": 1591,
+						"y": 19,
 						"w": 744,
-						"h": 15
+						"h": 116
+					}
+				},
+				{
+					"filename": "payline_16.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 1500,
+						"h": 640
+					},
+					"spriteSourceSize": {
+						"x": 378,
+						"y": 329,
+						"w": 744,
+						"h": 117
+					},
+					"frame": {
+						"x": 1,
+						"y": 137,
+						"w": 744,
+						"h": 117
+					}
+				},
+				{
+					"filename": "payline_11.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 1500,
+						"h": 640
+					},
+					"spriteSourceSize": {
+						"x": 378,
+						"y": 127,
+						"w": 744,
+						"h": 156
+					},
+					"frame": {
+						"x": 747,
+						"y": 137,
+						"w": 744,
+						"h": 156
+					}
+				},
+				{
+					"filename": "payline_12.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 1500,
+						"h": 640
+					},
+					"spriteSourceSize": {
+						"x": 378,
+						"y": 288,
+						"w": 744,
+						"h": 157
+					},
+					"frame": {
+						"x": 1,
+						"y": 295,
+						"w": 744,
+						"h": 157
+					}
+				},
+				{
+					"filename": "payline_5.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 1500,
+						"h": 640
+					},
+					"spriteSourceSize": {
+						"x": 378,
+						"y": 100,
+						"w": 744,
+						"h": 186
+					},
+					"frame": {
+						"x": 747,
+						"y": 295,
+						"w": 744,
+						"h": 186
+					}
+				},
+				{
+					"filename": "payline_6.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 1500,
+						"h": 640
+					},
+					"spriteSourceSize": {
+						"x": 378,
+						"y": 303,
+						"w": 744,
+						"h": 186
+					},
+					"frame": {
+						"x": 1,
+						"y": 483,
+						"w": 744,
+						"h": 186
+					}
+				},
+				{
+					"filename": "payline_13.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 1500,
+						"h": 640
+					},
+					"spriteSourceSize": {
+						"x": 378,
+						"y": 90,
+						"w": 744,
+						"h": 196
+					},
+					"frame": {
+						"x": 747,
+						"y": 483,
+						"w": 744,
+						"h": 196
+					}
+				},
+				{
+					"filename": "payline_14.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 1500,
+						"h": 640
+					},
+					"spriteSourceSize": {
+						"x": 378,
+						"y": 305,
+						"w": 744,
+						"h": 196
+					},
+					"frame": {
+						"x": 1,
+						"y": 681,
+						"w": 744,
+						"h": 196
+					}
+				},
+				{
+					"filename": "payline_9.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 1500,
+						"h": 640
+					},
+					"spriteSourceSize": {
+						"x": 378,
+						"y": 158,
+						"w": 744,
+						"h": 286
+					},
+					"frame": {
+						"x": 747,
+						"y": 681,
+						"w": 744,
+						"h": 286
+					}
+				},
+				{
+					"filename": "payline_10.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 1500,
+						"h": 640
+					},
+					"spriteSourceSize": {
+						"x": 378,
+						"y": 175,
+						"w": 744,
+						"h": 286
+					},
+					"frame": {
+						"x": 1,
+						"y": 969,
+						"w": 744,
+						"h": 286
+					}
+				},
+				{
+					"filename": "payline_8.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 1500,
+						"h": 640
+					},
+					"spriteSourceSize": {
+						"x": 378,
+						"y": 94,
+						"w": 744,
+						"h": 332
+					},
+					"frame": {
+						"x": 747,
+						"y": 969,
+						"w": 744,
+						"h": 332
+					}
+				},
+				{
+					"filename": "payline_7.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 1500,
+						"h": 640
+					},
+					"spriteSourceSize": {
+						"x": 378,
+						"y": 162,
+						"w": 744,
+						"h": 332
+					},
+					"frame": {
+						"x": 1,
+						"y": 1303,
+						"w": 744,
+						"h": 332
+					}
+				},
+				{
+					"filename": "payline_4.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 1500,
+						"h": 640
+					},
+					"spriteSourceSize": {
+						"x": 378,
+						"y": 150,
+						"w": 744,
+						"h": 346
+					},
+					"frame": {
+						"x": 747,
+						"y": 1303,
+						"w": 744,
+						"h": 346
+					}
+				},
+				{
+					"filename": "payline_3.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 1500,
+						"h": 640
+					},
+					"spriteSourceSize": {
+						"x": 378,
+						"y": 98,
+						"w": 744,
+						"h": 346
+					},
+					"frame": {
+						"x": 1,
+						"y": 1651,
+						"w": 744,
+						"h": 346
+					}
+				},
+				{
+					"filename": "payline_17.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 1500,
+						"h": 640
+					},
+					"spriteSourceSize": {
+						"x": 378,
+						"y": 112,
+						"w": 744,
+						"h": 371
+					},
+					"frame": {
+						"x": 747,
+						"y": 1651,
+						"w": 744,
+						"h": 371
 					}
 				}
 			]
@@ -435,6 +393,6 @@
 	"meta": {
 		"app": "https://www.codeandweb.com/texturepacker",
 		"version": "3.0",
-		"smartupdate": "$TexturePacker:SmartUpdate:5be0211fca2ac916be1af1da61e7b311:76eb3829095fad5dbde400b1b0532e2f:ca61dc92ab21230526bd23bd5d66ffbb$"
+		"smartupdate": "$TexturePacker:SmartUpdate:066a6c3a907b340aa250b3cd2760e550:3bd80af58db3854e40d54e448801898c:ca61dc92ab21230526bd23bd5d66ffbb$"
 	}
 }

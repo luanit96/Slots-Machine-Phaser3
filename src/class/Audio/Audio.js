@@ -3,10 +3,10 @@ import Key from '../../Key/keyScene';
 export default class Audio {
     constructor(scene, keyAudio = Key.audio) {
         this.scene = scene;
-        this.addAudio();
+        this.loadAudio();
     }
 
-    addAudio() {
+    loadAudio() {
         this.musicBackgroundDefault = this.scene.sound.add('backgroundDefault', {
             loop: true,
             volume: 1.5
