@@ -1,4 +1,4 @@
-/* export key */
+//Key
 export default {
     preload : 'Preload',
     boot : 'Boot',

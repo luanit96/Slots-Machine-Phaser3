@@ -1,6 +1,6 @@
 import Config from '../Config/config';
 import Key from '../Key/keyScene';
-
+//Scene Preload
 export default class PreloadScene extends Phaser.Scene {
     constructor() {
         super({ key : Key.preload });
@@ -61,13 +61,13 @@ export default class PreloadScene extends Phaser.Scene {
         }
     }
 
-    /*end function*/
+    /*end function preload*/
 
     create() {
         this.scene.start(Key.boot);
     }
 
-    /*end function*/
+    /*end function create*/
 
     onComplete() {
         this.progressBar.destroy();
@@ -75,5 +75,5 @@ export default class PreloadScene extends Phaser.Scene {
         this.loadingText.destroy();
     }
     
-    /*end function*/
+    /*end function on complete*/
 }

@@ -2,6 +2,7 @@ import Config from '../Config/config';
 import Key from '../Key/keyScene';
 import Options from '../Constants/options';
 import Style from '../Css/style';
+//import Class
 import Time from '../Class/Time/Time';
 import Audio from '../Class/Audio/Audio';
 import Sprite from '../Class/Sprite';
@@ -13,7 +14,7 @@ import Line from '../Class/Line/Line';
 import Maxbet from '../Class/Maxbet/Maxbet';
 import BaseSpin from '../Class/Spin/BaseSpin';
 import AutoSpin from '../Class/Spin/AutoSpin';
-
+//Scene Game
 export default class GameScene extends Phaser.Scene {
     constructor() {
         super({ key: Key.game });
@@ -24,7 +25,7 @@ export default class GameScene extends Phaser.Scene {
         this.load.bitmapFont('txt_bitmap', 'text_slot_machine.png', 'text_slot_machine.xml');
     }
 
-    /*end function*/
+    /*end function preload*/
 
     create() {
         //Class Audio
@@ -117,7 +118,7 @@ export default class GameScene extends Phaser.Scene {
         this.baseSpin = new BaseSpin(this, Key.baseSpin);
     }
 
-    /*end function*/
+    /*end function create*/
 
     audioPlayButton() {
         if(this.audioSoundName === 'btn_sound.png') {
@@ -125,7 +126,7 @@ export default class GameScene extends Phaser.Scene {
         }
     }
 
-    /*end function*/
+    /*end function audio play button*/
 
     setTextX(value) {
         if(value >= 100000000) {
@@ -149,7 +150,7 @@ export default class GameScene extends Phaser.Scene {
         }
     }
 
-    /*end function*/
+    /*end function set text X*/
 
     textCallback(data) {
         data.tint.topLeft = Options.hsv[Math.floor(Options.i)].color;
@@ -166,7 +167,7 @@ export default class GameScene extends Phaser.Scene {
     
         return data;
     }
-    /*end function*/
+    /*end function text callback*/
 
     update() { }
 }

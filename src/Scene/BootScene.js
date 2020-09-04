@@ -2,7 +2,7 @@ import Sprite from '../Class/Sprite';
 import Audio from '../Class/Audio/Audio';
 import Key from '../Key/keyScene';
 import Config from '../Config/config';
-
+//Scene Boot
 export default class BootScene extends Phaser.Scene {
     constructor() {
         super({ key: Key.boot });
@@ -23,5 +23,5 @@ export default class BootScene extends Phaser.Scene {
             this.scene.start(Key.game);
         });
     }
-    /*end function*/
+    /*end function create*/
 }

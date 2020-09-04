@@ -1,6 +1,6 @@
 import Phaser from "phaser";
 import Config from "./Config/config";
-
+//Class Game
 export default class Game {
   constructor() {
     new Phaser.Game(Config);
@@ -21,8 +21,9 @@ export default class Game {
       canvas.style.height = windowHeight + "px";
     }
   }
+  /*end function resize*/
 }
-
+//event windows on load
 window.onload = () => {
     const game = new Game();
     game.resize();
