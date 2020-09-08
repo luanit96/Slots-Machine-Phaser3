@@ -113,7 +113,7 @@ export default class AutoSpin {
 
     play() {
         this.btnPlay = new Sprite(this.scene, Config.width / 2, Config.height / 2 + 100,
-            'btn', 'btn_play.png').setScale(0.9);
+            'bgButtons', 'btn_play.png').setScale(0.9);
         this.btnPlay.on('pointerdown', () => {
             //play audio button
             this.scene.audioPlayButton();
@@ -131,7 +131,7 @@ export default class AutoSpin {
     exit() {
         this.btnExit = new Sprite(this.scene, Config.width - 30 , 
             Config.height - 635,
-            'btn', 'btn_exit.png').setScale(0.9);
+            'bgButtons', 'btn_exit.png').setScale(0.9);
         this.btnExit.on('pointerdown', () => {
             //play audio button
             this.scene.audioPlayButton();

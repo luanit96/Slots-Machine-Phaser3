@@ -9,9 +9,7 @@ export default class PreloadScene extends Phaser.Scene {
     preload() {
         //load image
         this.load.path = '../../assets/jsons/';
-        this.load.atlas('youwin', 'images/graphics/youwin.png', 'images/graphics/youwin.json');
-        this.load.atlas('title', 'images/title/title.png', 'images/title/title.json');
-        this.load.atlas('btn', 'images/btn/btn.png', 'images/btn/btn.json');
+        this.load.atlas('logo', 'images/logo/logo.png', 'images/logo/logo.json');
         this.load.atlas('about', 'images/about/about.png', 'images/about/about.json');
         this.load.atlas('background', 'images/bg/bg.png', 'images/bg/bg.json');
         this.load.atlas('bgPreload', 'images/bg/bgmenu.png', 'images/bg/bgmenu.json');
@@ -20,7 +18,6 @@ export default class PreloadScene extends Phaser.Scene {
         this.load.atlas('symbols_blur', 'images/symbols/symbols_blur.png', 'images/symbols/symbols_blur.json');
         this.load.atlas('line', 'images/lines/line.png', 'images/lines/line.json');
         this.load.atlas('sound', 'images/sound/sound.png','images/sound/sound.json');
-        this.load.atlas('freepin', 'images/freeSpin/freePin.png','images/freeSpin/freePin.json');
         this.load.atlas('autoSpin', 'images/autoSpin/auto.png','images/autoSpin/auto.json');
 
         //load audio

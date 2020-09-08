@@ -129,25 +129,24 @@ export default class GameScene extends Phaser.Scene {
     /*end function audio play button*/
 
     setTextX(value) {
-        if(value >= 100000000) {
+        if(value >= 100000000) 
             this.txtMoney.x = 217;
-        } else if(value >= 10000000) {
+        else if(value >= 10000000) 
             this.txtMoney.x = 220;
-        } else if(value >= 1000000) {
+        else if(value >= 1000000) 
             this.txtMoney.x = 230;
-        } else if(value >= 100000) {
+        else if(value >= 100000) 
             this.txtMoney.x = 240;
-        } else if(value >= 10000) {
+        else if(value >= 10000) 
             this.txtMoney.x = 240;
-        } else if(value >= 1000) {
+        else if(value >= 1000) 
             this.txtMoney.x = 250;
-        } else if(value >= 100) {
+        else if(value >= 100) 
             this.txtMoney.x = 260;
-        } else if(value >= 10) {
+        else if(value >= 10) 
             this.txtMoney.x = 270;
-        } else {
+        else 
             this.txtMoney.x = 280;
-        }
     }
 
     /*end function set text X*/

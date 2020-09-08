@@ -9,7 +9,6 @@ export default class Spin {
         this.scene = scene;
         this.printResult();
         this.clearColor();
-        this.time = 1500;
     }
 
     clearColor() {
@@ -74,6 +73,7 @@ export default class Spin {
             }
 
             if(streak >= 3) {
+                lineIndx ++;
                 Options.winningLines.push(lineIndx);
                 //audio win
                 this.audioPlayWin();
@@ -132,8 +132,9 @@ export default class Spin {
             return;
         }
         for(let i = 0; i < lineArr.length; i++) {
+            let lineName = 'payline_' + lineArr[i] + '.png';
             Options.lineArray.push(new Sprite(this.scene, Config.width / 2, 
-            Config.height / 2, 'line', 'payline_' + lineArr[i] +'.png'));
+            Config.height / 2, 'line', lineName));
         }
     }
 
@@ -228,31 +229,8 @@ export default class Spin {
     setTextureWin(value) {
         Options.moneyWin = value;
         this.scene.valueMoney += Options.moneyWin;
-        //count money win >= 2000
-        if(Options.moneyWin >= 2000) {
-            //set check click = true
-            Options.checkClick = true;
-            //set timer auto spin = true
-            if(typeof this.scene.autoSpin.timer != 'undefined') {
-                this.scene.autoSpin.timer.paused = true;
-                this.youWinTimer();
-            } else {
-                this.youWinTimer();
-            }
-        }
-        //set width text win
-        var width;
-        if(Options.moneyWin >= 100000) {
-            width = Config.width - 340;
-        } else if(Options.moneyWin >= 10000) {
-            width = Config.width - 335;
-        } else if(Options.moneyWin >= 1000) {
-            width = Config.width - 330;
-        } else if(Options.moneyWin >= 100) {
-            width = Config.width - 322;
-        } else {
-            width = Config.width - 340;
-        }
+        //function set width text win
+        var width = this.setTextWidthWin();
         //check empty text win
         if (!this.scene.txtWin) {
             this.scene.txtWin = this.scene.add.text(width, Config.height - 130, 'WIN: ' + Options.moneyWin + ' $ ', Style.styleWin);
@@ -266,77 +244,19 @@ export default class Spin {
 
     /*end function set texture win*/
 
-    youWinTimer() {
-        if(this.scene.audioMusicName === 'btn_music.png') {
-            this.scene.audioObject.musicDefault.stop();
-            this.scene.audioObject.audioBigWin.play(); 
-        }
-        //add effect win
-        this.youWin = new Sprite(this.scene, Config.width / 2, Config.height / 2, 'youwin', 'win.png').setDepth(1);
-        this.timeWin = Options.moneyWin;
-        this.timeMoneyWin = this.scene.add.text(Config.width / 2 - 50, Config.height / 2 - 50, 0, Style.styleTimeMoney).setDepth(1);
-        this.txtDollars = this.scene.add.text(Config.width / 2 + 70, Config.height / 2 - 50, '$', Style.styleDollar).setDepth(1);
-        
-        //time event loop
-        this.timer = this.scene.time.addEvent({
-            delay: 0,
-            callback: () => {
-                this.time ++;
-                if(this.time <= this.timeWin) {
-                    this.timeMoneyWin.setText(this.time);
-                    //set text x
-                    this.setTextX(this.time);
-                } else {
-                    //remove timer event
-                    this.timer.remove();
-                    //reset check click = false
-                    Options.checkClick = false;
-                    if(this.scene.audioMusicName === 'btn_music.png') {
-                        //stop audio
-                        this.scene.audioObject.audioBigWin.stop();
-                        this.scene.audioObject.audioWin.stop();
-                    }
-                    //timer event loop
-                    this.timerRemove = this.scene.time.addEvent({
-                        delay : 2000,
-                        callback : () => {
-                            if(this.scene.audioMusicName === 'btn_music.png') {
-                                //play audio default
-                                this.scene.audioObject.musicDefault.play();
-                            }
-                            //detroys image and text
-                            this.youWin.destroy();
-                            this.timeMoneyWin.destroy();
-                            this.txtDollars.destroy();
-                            //remove timer event loop
-                            this.timerRemove.remove();
-                            //set timer auto spin = false
-                            if(typeof this.scene.autoSpin.timer != 'undefined')
-                                this.scene.autoSpin.timer.paused = false;
-                        },
-                        callbackScope : this,
-                        loop : true
-                    });
-                }
-            },
-            callbackScope: this,
-            loop: true
-        });
+    setTextWidthWin() {
+        var width;
+        if(Options.moneyWin >= 100000) 
+            width = Config.width - 340;
+        else if(Options.moneyWin >= 10000) 
+            width = Config.width - 335;
+        else if(Options.moneyWin >= 1000) 
+            width = Config.width - 330;
+        else if(Options.moneyWin >= 100) 
+            width = Config.width - 322;
+        else 
+            width = Config.width - 340;
+        return width;
     }
-
-    /*end function you win timer */
-
-    setTextX(value) {
-        if(value >= 100000) {
-            this.timeMoneyWin.x = 465;
-            this.txtDollars.x = 785;
-        } else if(value >= 10000) {
-            this.timeMoneyWin.x = 495;
-            this.txtDollars.x = 770;
-        } else {
-            this.timeMoneyWin.x = 525;
-            this.txtDollars.x = 760;
-        }
-    }
-    /*end function set text X*/
+    /*end function set text width win*/
 }
