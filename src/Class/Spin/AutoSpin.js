@@ -77,8 +77,12 @@ export default class AutoSpin {
         this.btnPlus.on('pointerdown', () => {
             //play audio button
             this.scene.audioPlayButton();
-            this.btnPlus.setScale(0.9);
+            if(Options.txtAuto === 100) {
+                this.btnPlus.setTint(0xa09d9d);
+            }
             if(Options.txtAuto < 100) {
+                this.btnMinus.clearTint();
+                this.btnPlus.setScale(0.9);
                 Options.txtAuto += 5;
                 //set text x auto
                 Options.txtAuto < 100 ? this.txtAuto.x = 620 :
@@ -97,14 +101,17 @@ export default class AutoSpin {
         this.btnMinus.on('pointerdown', () => {
             //play audio button
             this.scene.audioPlayButton();
-
-            this.btnMinus.setScale(0.9);
+            if(Options.txtAuto === 5) {
+                this.btnMinus.setTint(0xa09d9d);
+            }  
             if(Options.txtAuto > 5) {
+                this.btnPlus.clearTint();
+                this.btnMinus.setScale(0.9);
                 Options.txtAuto -= 5;
                 //function set text x auto
                 this.setXAuto();
                 this.txtAuto.setText(Options.txtAuto);  
-            }   
+            } 
         });
         this.btnMinus.on('pointerup', () => this.btnMinus.setScale(1));
     }

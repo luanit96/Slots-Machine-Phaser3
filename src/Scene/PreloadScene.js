@@ -8,7 +8,7 @@ export default class PreloadScene extends Phaser.Scene {
 
     preload() {
         //load image
-        this.load.path = '../../assets/jsons/';
+        this.load.path = '../../assets/';
         this.load.atlas('logo', 'images/logo/logo.png', 'images/logo/logo.json');
         this.load.atlas('about', 'images/about/about.png', 'images/about/about.json');
         this.load.atlas('background', 'images/bg/bg.png', 'images/bg/bg.json');
@@ -27,8 +27,6 @@ export default class PreloadScene extends Phaser.Scene {
         this.load.audio('win', 'audio/win.mp3');
         this.load.audio('button', 'audio/button.mp3');
         this.load.audio('lose', 'audio/lose.mp3');
-        this.load.audio('bigwin', 'audio/big_win.mp3');
-        this.load.audio('freeSpin', 'audio/freespin.mp3');
         this.load.audio('musicDefault', 'audio/music_default.mp3');
 
         this.progressBar = this.add.graphics();

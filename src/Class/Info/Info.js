@@ -15,7 +15,7 @@ export default class Info {
         //add bitmap text
         const txtInfo = this.scene.add.dynamicBitmapText(Config.width - 1060, Config.height - 70, 'txt_bitmap', Options.txtInfo, Style.fontSize);
         txtInfo.setDisplayCallback(this.scene.textCallback);
-        this.info.on('pointerdown', () => this.showPayTable(), this);
+        this.info.on('pointerdown', this.showPayTable, this);
     }
 
     /*end function add info*/
@@ -26,14 +26,14 @@ export default class Info {
         //function show value
         this.showTable();
         //event click
-        this.paytable.on('pointerdown', () => this.deleteTable());
+        this.paytable.on('pointerdown', this.deleteTable, this);
     }
 
     /* end funtion show paytable*/
 
     showTable() {
         this.paytable = new Sprite(this.scene, Config.width / 2, Config.height / 2,
-            'about', 'paytable.png').setInteractive();
+            'about', 'paytable.png').setDepth(1).setInteractive();
     }
 
     /*end function show table*/

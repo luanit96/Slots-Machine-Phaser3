@@ -16,7 +16,7 @@ export default class Coin {
         this.txtCoin.setDisplayCallback(this.scene.textCallback);
         this.txtCountCoin = this.scene.add.text(Config.width - 700, Config.height - 140, Options.coin, Style.styleButton);
         //pointer down
-        this.coin.on('pointerdown', () => this.buttonCoin());
+        this.coin.on('pointerdown', this.buttonCoin, this);
         //pointer up
         this.coin.on('pointerup', () => this.coin.setScale(1));
     }

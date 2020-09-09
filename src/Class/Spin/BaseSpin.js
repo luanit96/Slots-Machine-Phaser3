@@ -17,7 +17,7 @@ export default class BaseSpin {
         //text spin
         this.txtSpin = this.scene.add.dynamicBitmapText(Config.width - 315, Config.height - 70, 'txt_bitmap', Options.txtSpin, Style.fontSize);
         this.txtSpin.setDisplayCallback(this.scene.textCallback);
-        this.bgSpin.on('pointerdown', () => this.playTweens());
+        this.bgSpin.on('pointerdown', this.playTweens, this);
         this.bgSpin.on('pointerup', () => this.bgSpin.setScale(1));
     }
 

@@ -18,7 +18,7 @@ export default class Credit {
 
             this.credits.setScale(0.6);
             this.paylines = new Sprite(this.scene,Config.width / 2, Config.height / 2,
-                'about', 'palines.png').setInteractive();
+                'about', 'palines.png').setDepth(1).setInteractive();
             this.paylines.on('pointerdown', () => {
                 //play audio button
                 this.scene.audioPlayButton();

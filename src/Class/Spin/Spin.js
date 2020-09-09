@@ -134,7 +134,7 @@ export default class Spin {
         for(let i = 0; i < lineArr.length; i++) {
             let lineName = 'payline_' + lineArr[i] + '.png';
             Options.lineArray.push(new Sprite(this.scene, Config.width / 2, 
-            Config.height / 2, 'line', lineName));
+                Config.height / 2, 'line', lineName));
         }
     }
 

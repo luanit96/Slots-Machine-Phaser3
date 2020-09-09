@@ -23,7 +23,7 @@ export default class Line {
                 this.scene.audioPlayButton();
             
                 if (Options.line < 20) {
-                    Options.line++;
+                    Options.line ++;
                     this.txtCountLine.setText(Options.line);
                     this.scene.maxBet.txtCountMaxBet.setText('BET: ' + Options.line * Options.coin);
                 } else {
