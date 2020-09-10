@@ -77,9 +77,6 @@ export default class AutoSpin {
         this.btnPlus.on('pointerdown', () => {
             //play audio button
             this.scene.audioPlayButton();
-            if(Options.txtAuto === 100) {
-                this.btnPlus.setTint(0xa09d9d);
-            }
             if(Options.txtAuto < 100) {
                 this.btnMinus.clearTint();
                 this.btnPlus.setScale(0.9);
@@ -88,6 +85,9 @@ export default class AutoSpin {
                 Options.txtAuto < 100 ? this.txtAuto.x = 620 :
                     this.txtAuto.x = 610;
                 this.txtAuto.setText(Options.txtAuto);
+            }
+            if(Options.txtAuto === 100) {
+                this.btnPlus.setTint(0xa09d9d);
             }
         });
         this.btnPlus.on('pointerup', () => this.btnPlus.setScale(1));
@@ -100,10 +100,7 @@ export default class AutoSpin {
             'autoSpin', 'btn_minus_bet.png');
         this.btnMinus.on('pointerdown', () => {
             //play audio button
-            this.scene.audioPlayButton();
-            if(Options.txtAuto === 5) {
-                this.btnMinus.setTint(0xa09d9d);
-            }  
+            this.scene.audioPlayButton(); 
             if(Options.txtAuto > 5) {
                 this.btnPlus.clearTint();
                 this.btnMinus.setScale(0.9);
@@ -111,7 +108,10 @@ export default class AutoSpin {
                 //function set text x auto
                 this.setXAuto();
                 this.txtAuto.setText(Options.txtAuto);  
-            } 
+            }
+            if(Options.txtAuto === 5) {
+                this.btnMinus.setTint(0xa09d9d);
+            }  
         });
         this.btnMinus.on('pointerup', () => this.btnMinus.setScale(1));
     }

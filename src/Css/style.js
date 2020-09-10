@@ -20,6 +20,11 @@ export default {
         color : '#ffffff',
         fontFamily : 'PT Serif'
     },
+    stylePayValue : {
+        fontSize : '30px',
+        color : '#630066',
+        fontFamily : 'PT Serif'
+    },
     fontSizeSpeed : 80,
     fontSize : 38
 };

@@ -8,6 +8,7 @@ export default class Info {
     constructor(scene, keyInfo = Key.info) {
         this.scene = scene;
         this.addInfo();
+        this.click = false;
     }
 
     addInfo() {
@@ -21,27 +22,63 @@ export default class Info {
     /*end function add info*/
 
     showPayTable() {
-        //play audio button
-        this.scene.audioPlayButton();
-        //function show value
-        this.showTable();
-        //event click
-        this.paytable.on('pointerdown', this.deleteTable, this);
+        if(!this.click) {
+            //set click = true
+            this.click = true;
+            //play audio button
+            this.scene.audioPlayButton();
+            //function show table
+            this.showTable();
+            this.btnExit = new Sprite(this.scene, Config.width - 30 , 
+                Config.height - 635, 'bgButtons', 'btn_exit.png').
+                setScale(0.9).setDepth(1);
+            this.btnExit.on('pointerdown', this.deleteTable, this);
+        }
     }
 
-    /* end funtion show paytable*/
+    /* end funtion show pay table*/
 
     showTable() {
+        this.payValues = [];
+
         this.paytable = new Sprite(this.scene, Config.width / 2, Config.height / 2,
-            'about', 'paytable.png').setDepth(1).setInteractive();
+            'about', 'paytable.png').setDepth(1);
+
+        var width = 190, width2 = width, height = 25, height2 = 245;
+
+        for(let i = 0; i < Options.payvalues.length; i++) {
+            if(i >= 5) {
+                for(let j = 0; j < Options.payvalues[i].length; j++) {
+                    height2 -= 30;
+                    this.payValues.push(this.scene.add.text(width2, Config.height / 2 + height2, Options.payvalues[i][j], Style.stylePayValue).setDepth(1));
+                }
+                width2 += 225;
+                height2 = 245;
+            } else {
+                for(let j = 0; j < Options.payvalues[i].length; j++) {
+                    height += 30;
+                    this.payValues.push(this.scene.add.text(width, Config.height / 2 - height, Options.payvalues[i][j], Style.stylePayValue).setDepth(1));
+                }
+                width += 225;
+                height = 25;
+            }
+        }
     }
 
     /*end function show table*/
 
     deleteTable() {
+        //set click = false
+        this.click = false;
         //play audio button
         this.scene.audioPlayButton();
         this.paytable.destroy();
+        this.btnExit.destroy();
+        if(this.payValues.length > 0) {
+            for(let i = 0; i < this.payValues.length; i++) {
+                this.payValues[i].destroy();
+            }
+        }
     }
 
     /*end function delete table*/
