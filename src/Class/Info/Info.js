@@ -1,11 +1,10 @@
 import Options from '../../Constants/options';
 import Style from '../../Css/style';
 import Config from '../../Config/config';
-import Key from '../../Key/keyScene';
 import Sprite from '../Sprite';
 //Class Info
 export default class Info {
-    constructor(scene, keyInfo = Key.info) {
+    constructor(scene) {
         this.scene = scene;
         this.addInfo();
         this.click = false;

@@ -1,11 +1,9 @@
-import Key from '../../Key/keyScene';
 import Config from '../../Config/config';
 import Style from '../../Css/style';
 //Class Time
 export default class Time {
-    constructor(scene, keyTime = Key.time) {
+    constructor(scene) {
         this.scene = scene;
-        this.keyTime = keyTime;
         this.addTime();
     }
 

@@ -1,5 +1,4 @@
 import Config from '../../Config/config';
-import Key from '../../Key/keyScene';
 import Options from '../../Constants/options';
 import Style from '../../Css/style';
 //import Class
@@ -7,7 +6,7 @@ import Sprite from '../Sprite';
 import Tween from '../Tween/Tween';
 //Class Auto Spin
 export default class AutoSpin {
-    constructor(scene, keyAutoSpin = Key.autoSpin) {
+    constructor(scene) {
         this.scene = scene;
         this.autoSpin();
     }
@@ -175,7 +174,7 @@ export default class AutoSpin {
                     this.scene.baseSpin.removeTextWin();
                     //save localStorage
                     this.scene.baseSpin.saveLocalStorage();
-                    this.tweens = new Tween(this.scene, Key.tween);
+                    this.tweens = new Tween(this.scene);
                     speed --;
                     this.txtSpeed.setText(speed);
                 } else {

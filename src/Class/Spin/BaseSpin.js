@@ -1,13 +1,12 @@
 import Config from '../../Config/config';
 import Options from '../../Constants/options';
 import Style from '../../Css/style';
-import Key from '../../Key/keyScene';
 //import Class
 import Sprite from '../Sprite';
 import Tween from '../../Class/Tween/Tween';
-
+//Class Base Spin
 export default class BaseSpin {
-    constructor(scene, keyBaseSpin = Key.baseSpin) {
+    constructor(scene) {
         this.scene = scene;
         this.addSpin();
     }
@@ -21,7 +20,7 @@ export default class BaseSpin {
         this.bgSpin.on('pointerup', () => this.bgSpin.setScale(1));
     }
 
-    /*end function*/
+    /*end function add spin*/
 
     playTweens() {
         if (!Options.checkClick && this.scene.valueMoney >=
@@ -37,11 +36,11 @@ export default class BaseSpin {
             //save localStorage
             this.saveLocalStorage();
             //Class Tween
-            this.tweens = new Tween(this.scene, Key.tween);
+            this.tweens = new Tween(this.scene);
         }
     }
 
-    /*end function*/
+    /*end function play tweens*/
 
     destroyLineArr() {
         if (Options.lineArray.length > 0) {
@@ -52,7 +51,7 @@ export default class BaseSpin {
         }
     }
 
-    /*end function*/
+    /*end function detroy line array*/
 
     removeTextWin() {
         //play audio button
@@ -72,7 +71,7 @@ export default class BaseSpin {
         }
     }
 
-    /*end function*/
+    /*end function remove text win*/
 
     setColor() {
         this.bgSpin.setTint(0xa09d9d);
@@ -84,7 +83,7 @@ export default class BaseSpin {
         this.scene.btnSound.setTint(0xa09d9d);
     }
 
-    /*end function*/
+    /*end function set color*/
 
     saveLocalStorage() {
         if (localStorage.getItem('money')) {
@@ -95,5 +94,5 @@ export default class BaseSpin {
         this.scene.setTextX(this.scene.valueMoney);
         this.scene.txtMoney.setText(this.scene.valueMoney + '$');
     }
-    /*end function*/
+    /*end function save localStorage*/
 }

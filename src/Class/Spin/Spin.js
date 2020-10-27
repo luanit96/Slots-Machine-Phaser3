@@ -1,11 +1,10 @@
-import Key from '../../Key/keyScene';
 import Config from '../../Config/config';
 import Options from '../../Constants/options';
 import Style from '../../Css/style';
 import Sprite from '../Sprite';
 //Class Spin
 export default class Spin {
-    constructor(scene, keySpin = Key.spin) {
+    constructor(scene) {
         this.scene = scene;
         this.printResult();
         this.clearColor();
@@ -24,7 +23,7 @@ export default class Spin {
     /*end function clear color*/
 
     printResult() {
-        var s1, s2, s3, s4, s5, autoSpin = this.scene.autoSpin.tweens,
+        let s1, s2, s3, s4, s5, autoSpin = this.scene.autoSpin.tweens,
         baseSpin = this.scene.baseSpin.tweens;
         if(autoSpin) {
             s1 = autoSpin.columnTween1.targets[0];
@@ -47,12 +46,12 @@ export default class Spin {
         s4.list[1].frame.name],[s5.list[3].frame.name, s5.list[2].frame.name,
         s5.list[1].frame.name]);
         //function winning lines
-        this.getwinningLines();
+        this.getWinningLines();
     }
 
     /*end function print result*/
 
-    getwinningLines() {
+    getWinningLines() {
         for(let lineIndx = 0; lineIndx < Options.line; 
             lineIndx ++) {
             let streak = 0;
@@ -71,7 +70,7 @@ export default class Spin {
                     streak ++;
                 }
             }
-
+            //check streak >= 3
             if(streak >= 3) {
                 lineIndx ++;
                 Options.winningLines.push(lineIndx);
@@ -88,42 +87,6 @@ export default class Spin {
         //reset Options
         this.resetOptions();
     }
-
-    // checkLinesRightToLeft() {
-    //     for(let lineIndx = 0; lineIndx < Options.line; 
-    //         lineIndx ++) {
-    //         let streak = 0;
-    //         let currentkind = null;
-    //         for(let coordIndx = Options.payLines[lineIndx].
-    //             length - 1; coordIndx >= 0 ; coordIndx --) {
-    //             let coords = Options.payLines[lineIndx][coordIndx];
-    //             let symbolAtCoords = Options.result[coords[0]][coords[1]];
-    //             if(coordIndx === 4) {
-    //                 currentkind = symbolAtCoords;
-    //                 streak = 1;
-    //             } else {
-    //                 if(symbolAtCoords != currentkind) {
-    //                     break;
-    //                 }
-    //                 streak ++;
-    //             }   
-    //         }
-    //         //check streak >= 3 push line index
-    //         if(streak >= 3) {
-    //             Options.winningLines.push(lineIndx);
-    //             //audio win
-    //             this.audioPlayWin();
-    //             //function math money
-    //             this.mathMoney(currentkind, streak);
-    //         }
-    //         //audio lose
-    //         this.audioPlayLose();
-    //     }
-    //     //get line array
-    //     this.getLineArray(Options.winningLines);
-    //     //reset Options
-    //     this.resetOptions();
-    // }
 
     /*end function get winning line*/
 
@@ -230,7 +193,7 @@ export default class Spin {
         Options.moneyWin = value;
         this.scene.valueMoney += Options.moneyWin;
         //function set width text win
-        var width = this.setTextWidthWin();
+        let width = this.setTextWidthWin();
         //check empty text win
         if (!this.scene.txtWin) {
             this.scene.txtWin = this.scene.add.text(width, Config.height - 130, 'WIN: ' + Options.moneyWin + ' $ ', Style.styleWin);
@@ -245,7 +208,7 @@ export default class Spin {
     /*end function set texture win*/
 
     setTextWidthWin() {
-        var width;
+        let width;
         if(Options.moneyWin >= 100000) 
             width = Config.width - 340;
         else if(Options.moneyWin >= 10000) 

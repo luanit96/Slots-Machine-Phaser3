@@ -3,7 +3,7 @@ import Key from '../Key/keyScene';
 //Scene Preload
 export default class PreloadScene extends Phaser.Scene {
     constructor() {
-        super({ key : Key.preload });
+        super(Key.preload);
     }
 
     preload() {
@@ -19,7 +19,7 @@ export default class PreloadScene extends Phaser.Scene {
         this.load.atlas('line', 'images/lines/line.png', 'images/lines/line.json');
         this.load.atlas('sound', 'images/sound/sound.png','images/sound/sound.json');
         this.load.atlas('autoSpin', 'images/autoSpin/auto.png','images/autoSpin/auto.json');
-
+        this.load.bitmapFont('txt_bitmap', 'fonts/bitmap/text_slot_machine.png', 'fonts/bitmap/text_slot_machine.xml');
         //load audio
         this.load.audio('backgroundDefault', 'audio/background-default.mp3');
         this.load.audio('reels', 'audio/reels.mp3');

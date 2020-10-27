@@ -6,12 +6,12 @@ module.exports = {
   mode: 'development',
   entry: './src/index.js',
   output: {
-    path: path.resolve(__dirname, 'dist'),
+    path: path.resolve(__dirname, 'build_project'),
     filename: 'index.js'
   },
   plugins: [
     new CleanWebpackPlugin([
-      'dist'
+      'build_project'
     ]),
     new HtmlWebpackPlugin()
   ],
@@ -27,6 +27,6 @@ module.exports = {
     }]
   },
   devServer: {
-    contentBase: path.join(__dirname, 'dist')
+    contentBase: path.join(__dirname, 'build_project')
   }
 };

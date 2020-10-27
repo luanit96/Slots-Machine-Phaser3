@@ -1,11 +1,10 @@
-import Key from '../../Key/keyScene';
 import Config from '../../Config/config';
 import Options from '../../Constants/options';
 import Style from '../../Css/style';
 import Sprite from '../Sprite';
 //Class Line
 export default class Line {
-    constructor(scene, keyLine = Key.lines) {
+    constructor(scene) {
         this.scene = scene;
         this.addLine();
     }

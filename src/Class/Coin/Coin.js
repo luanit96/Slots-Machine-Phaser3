@@ -1,11 +1,10 @@
-import Key from '../../Key/keyScene';
 import Config from '../../Config/config';
 import Options from '../../Constants/options';
 import Style from '../../Css/style';
 import Sprite from '../Sprite';
 //Class Coin
 export default class Coin {
-    constructor(scene, keyCoin = Key.coin) {
+    constructor(scene) {
         this.scene = scene;
         this.addCoin();
     }
@@ -16,14 +15,14 @@ export default class Coin {
         this.txtCoin.setDisplayCallback(this.scene.textCallback);
         this.txtCountCoin = this.scene.add.text(Config.width - 700, Config.height - 140, Options.coin, Style.styleButton);
         //pointer down
-        this.coin.on('pointerdown', this.buttonCoin, this);
+        this.coin.on('pointerdown', this.onCoin, this);
         //pointer up
         this.coin.on('pointerup', () => this.coin.setScale(1));
     }
 
     /*end function add coin*/
 
-    buttonCoin() {
+    onCoin() {
         if (!Options.checkClick && Options.txtAutoSpin === 'AUTO') {
             this.coin.setScale(0.9);
             //play audio button
@@ -39,5 +38,5 @@ export default class Coin {
             }
         }
     }
-    /*end function button coin*/
+    /*end function on coin*/
 }

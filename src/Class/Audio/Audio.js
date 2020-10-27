@@ -1,7 +1,7 @@
 import Key from '../../Key/keyScene';
 //Class Audio
 export default class Audio {
-    constructor(scene, keyAudio = Key.audio) {
+    constructor(scene) {
         this.scene = scene;
         this.loadAudio();
     }
@@ -16,7 +16,7 @@ export default class Audio {
         this.audioWin = this.scene.sound.add('win', { loop : true });
         this.audioButton = this.scene.sound.add('button');
         this.audioLose = this.scene.sound.add('lose', { volume: 2.5 });
-        this.musicDefault = this.scene.sound.add('musicDefault', {
+        this.musicDefault = this.scene.sound.add('musicDefault', { 
             loop: true,
             volume: 2
         });
