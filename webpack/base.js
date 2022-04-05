@@ -1,11 +1,17 @@
 const webpack = require("webpack");
 const path = require("path");
+const dotenv = require("dotenv").config();
+const port = process.env.PORT || 2000;
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const { CleanWebpackPlugin } = require("clean-webpack-plugin");
 
 module.exports = {
   mode: "development",
   devtool: "eval-source-map",
+  devServer: {
+    open: true,
+    port
+  },
   module: {
     rules: [
       {
@@ -26,9 +32,7 @@ module.exports = {
     ]
   },
   plugins: [
-    new CleanWebpackPlugin({
-      root: path.resolve(__dirname, "../")
-    }),
+    new CleanWebpackPlugin(),
     new webpack.DefinePlugin({
       CANVAS_RENDERER: JSON.stringify(true),
       WEBGL_RENDERER: JSON.stringify(true)
