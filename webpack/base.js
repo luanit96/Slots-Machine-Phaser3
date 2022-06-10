@@ -3,6 +3,7 @@ const path = require("path");
 const dotenv = require("dotenv").config();
 const port = process.env.PORT || 2000;
 const HtmlWebpackPlugin = require("html-webpack-plugin");
+const CopyWebpackPlugin = require("copy-webpack-plugin");
 const { CleanWebpackPlugin } = require("clean-webpack-plugin");
 
 module.exports = {
@@ -36,6 +37,9 @@ module.exports = {
     new webpack.DefinePlugin({
       CANVAS_RENDERER: JSON.stringify(true),
       WEBGL_RENDERER: JSON.stringify(true)
+    }),
+    new CopyWebpackPlugin({
+      patterns: [{ from: "assets", to: "assets" }]
     }),
     new HtmlWebpackPlugin({
       template: "./index.html"
